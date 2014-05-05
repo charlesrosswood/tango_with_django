@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- Allows the use of static files like images, css and js-->
+
+<html>
+	
+	<head>
+		<title> Rango index page </title>
+	</head>
+
+	<body>
+		<h1> Rango says... </h1>
+		hello world! <strong>bold text</strong><br />
+		{{ wall_posts }}
+		<a href="/rango/about/">About</a><br />
+		<a href="/rango/test/">Check out the parallax test page!</a><br />
+		<img src="{% static 'image1.jpg' %}" alt="This is the alt text" title="This is the alt text" width="50%"/> 
+	</body>
+</html>

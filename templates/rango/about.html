@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- Allows the use of static files like images, css and js-->
+
+<html>
+	
+	<head>
+		<title> Rango index page </title>
+	</head>
+
+	<body>
+		<h1> This page is about this project </h1>
+		hello world! <strong>{{ boldmessage }}</strong><br />
+		<img src="{% static 'Firefox_wallpaper.png' %}" alt="This is the alt text" title="This is the alt text" width="50%"/> 
+	</body>
+</html>
