@@ -1,6 +1,6 @@
 # Django settings for tango_with_django_project project.
 import os
-
+import dj_database_url
 # Dynamically setting the path to the apps files
 SETTINGS_DIR = os.path.dirname(__file__) # this gives the directory name for the directory this file (__file__) is in
 PROJECT_PATH = os.path.abspath( os.path.join(SETTINGS_DIR, os.pardir)) # os.pardir gives the parent directory to this settings file's directory, and abspath gives the absolute path to the directory 
@@ -15,21 +15,32 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'tango_with_django',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'postgres',
-        'PASSWORD': '1',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
-}
 
+if bool(os.environ.get('LOCAL_DEV',False)): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
+    print "here"
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'tango_with_django',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'postgres',
+            'PASSWORD': '1',
+            'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
+    }
+    
+    ALLOWED_HOSTS=['127.0.0.1']
+
+else: # else we're not on a local environment, i.e. we're on Heroku!
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+        }
+    
+    ALLOWED_HOSTS = ['http://charlesrosswood.herokuapp.com/']
+    
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -175,8 +186,6 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
