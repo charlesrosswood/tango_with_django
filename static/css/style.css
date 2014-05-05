@@ -27,16 +27,31 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     right:0;
 }
 
-/*#freedomain_link {
-    position:fixed;
-    right:0;
-    bottom:20px;
-    margin:0;
-    width:20%;
-    height:20%;
-    background:url(../images/freedomain.gif) no-repeat bottom right;
-    background-size:100%;
-}*/
+.titlebar{
+    position:relative;
+    width:100%;
+    background-color:#5c9900;
+/*    top:50%;*/    
+ /*   left:50%;*/
+    text-align:right;
+}
+
+.wall_posts{
+    background-color:#005c99;
+    border-style:solid;
+    border-width:5px;
+    border-color:white;
+}
+
+.column_names{
+    float: left;
+    margin-right: 10px;
+}
+
+.post_content{
+    /*float: right;*/
+    width: 200px;
+}
 
 .navigation{ 			/*This is for the navigation menu class navigation*/
     position:fixed;		/*A fixed position is fixed relative to teh browser window, even if scrolled*/

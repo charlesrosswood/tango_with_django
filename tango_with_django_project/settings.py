@@ -10,18 +10,18 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Charles Wood', 'charles.ross.wood@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 running_in_string = "RUNNING IN "
-if bool(os.environ.get('LOCAL_DEV',False)): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
+if bool(os.environ.get('LOCAL_DEV',False)) or (os.environ.get('HOME','') == '/home/charles'): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
     running_in_string += "LOCAL ENVIRONMENT"
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'tango_with_django',                      # Or path to database file if using sqlite3.
+            'NAME': 'Temp',                      # Or path to database file if using sqlite3.
             # The following settings are not used with sqlite3:
             'USER': 'postgres',
             'PASSWORD': '1',

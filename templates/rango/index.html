@@ -7,13 +7,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title> Rango index page </title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	</head>
 
 	<body>
 		<h1> Rango says... </h1>
 		hello world! <strong>bold text</strong><br />
-		{{ wall_posts }}
+		<a href="/rango/addpost/">See the current posts</a><br />
 		<a href="/rango/about/">About</a><br />
 		<a href="/rango/test/">Check out the parallax test page!</a><br />
 		<img src="{% static 'images/image1.jpg' %}" alt="This is the alt text" title="This is the alt text" width="50%"/> 

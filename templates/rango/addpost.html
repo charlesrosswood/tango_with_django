@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- Allows the use of static files like images, css and js-->
+
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Add post </title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+
+	<body>
+		<h1 class='titlebar'> This page is about adding a post </h1>
+<!-- 		<img src="{% static 'images/Firefox_wallpaper.png' %}" alt="This is the alt text" title="This is the alt text" width="50%"/>  -->
+
+	{% for post in posts %} 
+		<div class='wall_posts'>
+			<div class='column_names'>
+				user:
+			</div>
+			<div class='post_content'>
+				{{post.user}}
+			</div>
+			<div class='column_names'>
+				said:
+			</div>
+			<div class='post_content'>
+				{{post.post}}
+			</div>
+			<div class='column_names'>
+				on:
+			</div>
+			<div class='post_content'>
+				{{ post.date_posted.day }} - {{ post.date_posted.month }} - {{ post.date_posted.year }}
+			</div>
+		</div>
+	{% endfor %}
+
+	<form method="post" action="">
+		{{ formset }}
+<!-- 		Post: <textarea name="post"></textarea> -->
+	<input type="submit" value="Post">
+	</form>
+	
+	</body>
+</html>
+
