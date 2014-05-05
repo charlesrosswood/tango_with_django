@@ -1,43 +1,29 @@
-<!DOCTYPE html>
+{% extends "rango/base.html" %}
 
-{% load static %} <!-- Allows the use of static files like images, css and js-->
+{% block title %}Add user{% endblock %}
 
-<html>
-	
-	<head>
-		<meta charset="utf-8">
-		<title> Add user </title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	</head>
+{% block content %}
 
-	<body>
-		<h1 class='titlebar'> This page is about adding a user </h1>
-<!-- 		<img src="{% static 'images/Firefox_wallpaper.png' %}" alt="This is the alt text" title="This is the alt text" width="50%"/>  -->
-
-	{% for user in users %} 
-		<div class='wall_posts'>
-			<div class='column_names'>
-				user:
-			</div>
-			<div class='post_content'>
-				{{user.username}}
-			</div>
-			<div class='column_names'>
-				name:
-			</div>
-			<div class='post_content'>
-				{{user.first_name}} {{user.last_name}}
-			</div>
+{% for user in users %} 
+	<div class='wall_posts'>
+		<div class='column_names'>
+			user:
 		</div>
-	{% endfor %}
+		<div class='post_content'>
+			{{user.username}}
+		</div>
+		<div class='column_names'>
+			name:
+		</div>
+		<div class='post_content'>
+			{{user.first_name}} {{user.last_name}}
+		</div>
+	</div>
+{% endfor %}
 
 	<form method="post" action="">
 		{{ formset }}
 <!-- 		Post: <textarea name="post"></textarea> -->
 	<input type="submit" value="Post">
 	</form>
-	
-	</body>
-</html>
-
+{% endblock %}

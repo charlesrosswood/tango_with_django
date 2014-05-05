@@ -69,10 +69,12 @@ def add_post(request):
 		except:
 			key = key
 			value = request.POST[key]
-		form_dict.update( {key:value} )
+		form_dict.update( {key[7:]:value} )
+
+	print 'form_dict', form_dict
 
 	if form_dict != {}:
-		post = WallPost.create(post=form_dict['form-2-post'], user=int(form_dict['form-2-user']))
+		post = WallPost.create(post=form_dict['post'], user=int(form_dict['user']))
 
 	template = 'rango/addpost.html'
 	# this gets info about the machine the request from etc....check it out
@@ -112,15 +114,16 @@ def add_user(request):
 		except:
 			key = key
 			value = request.POST[key]
-		form_dict.update( {key:value} )
+		
+		form_dict.update( {key[7:]:value} )
 
 	if form_dict != {}:
 		siteuser = SiteUser.create(
-			first_name=form_dict['form-1-first_name'], 
-			last_name=form_dict['form-1-last_name'],
-			email=form_dict['form-1-email'],
-			username=form_dict['form-1-username'],
-			password=form_dict['form-1-password']
+			first_name=form_dict['first_name'], 
+			last_name=form_dict['last_name'],
+			email=form_dict['email'],
+			username=form_dict['username'],
+			password=form_dict['password']
 			)
 
 	template = 'rango/adduser.html'

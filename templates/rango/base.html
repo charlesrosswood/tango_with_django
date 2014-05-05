@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- Allows the use of static files like images, css and js-->
+
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %} Charles Wood base page {% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+
+	<body>
+		<div class='titlebar'>
+			<span id='titlename'>
+				SOME SITE
+			</span>
+			<span id='titleselector'>
+				<ul id='menulist'>
+					<li> Home </li>
+					<li> About </li>
+				</ul>
+				<img src="{% static 'images/arrow.png' %}" alt="menu" title="menu"/> 
+			</span>
+		</div>
+
+		<div id='content'>
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>
