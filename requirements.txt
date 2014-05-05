@@ -12,7 +12,6 @@ django-toolbelt==0.0.1
 docutils==0.11
 geopy==0.99
 gunicorn==18.0
-httplib2==0.7.2
 numpy==1.8.1
 oauth==1.0.1
 onboard==0.97.1
