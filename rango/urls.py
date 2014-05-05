@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'about/', views.about, name='about'),
     url(r'test/', views.test, name='test'),
     url(r'addpost/', views.add_post, name='addpost'),
+    url(r'adduser/', views.add_user, name='adduser'),
 )

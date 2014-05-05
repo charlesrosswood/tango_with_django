@@ -11,7 +11,7 @@ from django.views.decorators import csrf
 import datetime
 
 from rango.models import SiteUser, WallPost, WallPostComment 
-from rango.models import WallPostForm
+from rango.models import SiteUserForm, WallPostForm
 
 def index(request):
 	template = 'rango/index.html'
@@ -95,6 +95,54 @@ def add_post(request):
 	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
 	context_dict = {
 		'posts':post_dicts,
+		'formset':formset[-1]
+	}
+
+	return render_to_response(template, context_dict, context)
+	# return HttpResponse("Rango says hello world!")
+
+
+@csrf.csrf_exempt
+def add_user(request):
+	form_dict = {}
+	for key in request.POST:
+		try:
+			key = key.encode('utf-8')
+			value = request.POST[key].encode('utf-8')
+		except:
+			key = key
+			value = request.POST[key]
+		form_dict.update( {key:value} )
+
+	if form_dict != {}:
+		siteuser = SiteUser.create(
+			first_name=form_dict['form-1-first_name'], 
+			last_name=form_dict['form-1-last_name'],
+			email=form_dict['form-1-email'],
+			username=form_dict['form-1-username'],
+			password=form_dict['form-1-password']
+			)
+
+	template = 'rango/adduser.html'
+	# this gets info about the machine the request from etc....check it out
+	context = RequestContext( request )
+
+	users = SiteUser.objects.all()[:5]
+	user_dicts = []
+	for user in users:
+		user_dict = {}
+		user_dict.update( {'first_name':user.first_name} )
+		user_dict.update( {'last_name':user.last_name} )
+		user_dict.update( {'username':user.username} )
+
+		user_dicts.append( user_dict )
+
+	# Dealing with forms to pass up
+	User_formset = modelformset_factory(SiteUser, form=SiteUserForm)
+	formset = User_formset()
+	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
+	context_dict = {
+		'users':user_dicts,
 		'formset':formset[-1]
 	}
 
