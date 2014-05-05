@@ -27,28 +27,46 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     right:0;
 }
 
-.titleselector{            /*The buttons ribbons that appear at the bottom of each slide*/
-    display:block;
-    width:50px;
-    height:50px;
-    position:fixed;      /*Positioned relative to the slide too*/
-    /*bottom:0px;*/
-    left:10%%;
-    background-color:#333333;
-    background-image:url(../images/arrow.png);
-}
-.titleselector:hover{          /*How the button will act on hovering over it*/
-    background-color:#494949;   /*Change the background colour*/
-    cursor:pointer;
-}
-
 .titlebar{
     position:relative;
     width:100%;
     background-color:#5c9900;
+    height:50px;
     /*left:50%;*/
+}
+
+#titlename{
+    position:fixed;
+    width:100%;    
     text-align:center;
     font-size:30px;
+    /*left:50%;*/
+    display:inline;
+}
+
+#titleselector{            /*The buttons ribbons that appear at the bottom of each slide*/
+    position:fixed;      /*Positioned relative to the slide too*/
+    /*display:block;*/
+    /*top:0;*/
+    width:50px;
+    height:50px;
+    /*bottom:0px;*/
+    left:5%;
+    /*background-color:#333333;*/
+    background-image:url(../images/arrow.png);
+    display:inline;
+    float:left;
+}
+
+#titleselector:hover{          /*How the button will act on hovering over it*/
+    background-color:#494949;   /*Change the background colour*/
+    cursor:pointer;
+    display:inline;
+    float:left;
+}
+
+#menulist{
+    display:none;
 }
 
 .wall_posts{

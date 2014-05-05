@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     var links = $('.navigation').find('li');
     slide = $('.slide');
     button = $('.button');
-    titleselector = $('.titleselector')
+    titleselector = $('#titleselector')
     mywindow = $(window);
     htmlbody = $('html,body');
 
@@ -58,13 +58,16 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
     });
 
-    // //When the user clicks on the button, get the get the data-slide attribute value of the button and pass that variable to the goToByScroll function
-    // button.click(function (e) {
-    //     e.preventDefault();
-    //     dataslide = $(this).attr('data-slide');
-    //     goToByScroll(dataslide);
+    //When the user clicks on the button, get the get the data-slide attribute value of the button and pass that variable to the goToByScroll function
+    button.click(function (e) {
+        e.preventDefault();
+        dataslide = $(this).attr('data-slide');
+        goToByScroll(dataslide);
+    });
 
-    // });
-
+    titleselector.click(function () {
+        $("ul").slideDown();
+    });
+ 
 
 });
