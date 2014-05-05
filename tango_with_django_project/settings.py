@@ -15,9 +15,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
+running_in_string = "RUNNING IN "
 if bool(os.environ.get('LOCAL_DEV',False)): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
-    print "here"
+    running_in_string += "LOCAL ENVIRONMENT"
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -33,12 +33,19 @@ if bool(os.environ.get('LOCAL_DEV',False)): # i.e. if this is a local developmen
     ALLOWED_HOSTS=['127.0.0.1']
 
 else: # else we're not on a local environment, i.e. we're on Heroku!
+    running_in_string += "PRODUCTION ENVIRONMENT"
     DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
+        'default': dj_database_url.config()#default='postgres://localhost')
         }
     
     ALLOWED_HOSTS = ['http://charlesrosswood.herokuapp.com/']
-    
+
+underline_running_in_string = ''
+for i in xrange(len(running_in_string)):
+    underline_running_in_string += '='
+print "\t\t" + running_in_string
+print "\t\t" + underline_running_in_string
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 
