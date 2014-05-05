@@ -38,7 +38,7 @@ else: # else we're not on a local environment, i.e. we're on Heroku!
         'default': dj_database_url.config()#default='postgres://localhost')
         }
     
-    ALLOWED_HOSTS = ['http://charlesrosswood.herokuapp.com/']
+    ALLOWED_HOSTS = ['charlesrosswood.herokuapp.com']
 
 underline_running_in_string = ''
 for i in xrange(len(running_in_string)):
