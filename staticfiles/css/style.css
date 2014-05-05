@@ -108,13 +108,14 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     cursor:pointer;		/*Define what the mouse cursor should look like*/
     width:100px!important;	/*Give priority to this style over inline styles*/
 }
-.envatologo{			/*Styling for the logo*/
+.logo{			/*Styling for the logo*/
     position:fixed;		/*Position is relative to the browser window*/
     top:50%;			/*Position is half way up...*/
     left:50%;			/*...and in the middle*/
     width:446px;
-    margin-top:-41px;
-    margin-left:-223px;
+    height:200px;
+    margin-top:-100px;
+    margin-left:-223px; /* Make the margin left half the width*/
     z-index:1;			/*It has stacking priority like the navigation list*/
 }
 .slide{				/*Styling for all the slide classes*/
