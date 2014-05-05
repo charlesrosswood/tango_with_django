@@ -6,14 +6,14 @@
   <meta charset="utf-8">
     <title>Create a Parralax Website using Stellar.js</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'reset-min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-    <script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js.js' %}"></script>
-    <script type="text/javascript" src="{% static 'jquery.stellar.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'waypoints.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'jquery.easing.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
 
   </head>
 
@@ -26,7 +26,7 @@
       <li data-slide="4">Slide 4</li>
     </ul>
     
-    <img class="envatologo" src="{% static 'envatologo.png' %}"> <!-- an image import for the logo -->
+    <img class="envatologo" src="{% static 'images/envatologo.png' %}"> <!-- an image import for the logo -->
     
     <div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5"> <!-- a div for the slide. Note the HTML5 standard of data-attributes. Also the stellar.js specific background-ratio attribute, 0.5=half scroll speed -->
       <a class="button" data-slide="2" title=""></a> <!-- hyperlink tag -->
@@ -34,14 +34,14 @@
 
     <div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
       <div class="wrapper">
-        <img src="{% static 'blur-ball.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-55"alt="">
-        <img src="{% static 'blur-ball-big.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-102"alt="">
-        <img src="{% static 'focus-ball.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
-        <img src="{% static 'small-ball.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-25"alt="">
-        <img src="{% static 'blur-ball.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-55"alt="">
-        <img src="{% static 'blur-ball-big.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-102"alt="">
-        <img src="{% static 'focus-ball.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
-        <img src="{% static 'small-ball.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-25"alt="">	
+        <img src="{% static 'images/slide2/blur-ball.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-55"alt="">
+        <img src="{% static 'images/slide2/blur-ball-big.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-102"alt="">
+        <img src="{% static 'images/slide2/focus-ball.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
+        <img src="{% static 'images/slide2/small-ball.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-25"alt="">
+        <img src="{% static 'images/slide2/blur-ball.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-55"alt="">
+        <img src="{% static 'images/slide2/blur-ball-big.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-102"alt="">
+        <img src="{% static 'images/slide2/focus-ball.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
+        <img src="{% static 'images/slide2/small-ball.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-25"alt="">	
       </div>
       
       <span class="slideno">Slide 2</span>
@@ -50,12 +50,12 @@
 
     <div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
       <div class="wrapper">
-        <img src="{% static 'freelance.png' %}" data-stellar-ratio="1.4" data-stellar-vertical-offset="-102"alt="">
-        <img src="{% static 'psdtuts.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
-        <img src="{% static 'rockable.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-200"alt="">
-        <img src="{% static 'themeforest.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-200"alt="">
-        <img src="{% static 'tutshub.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-200"alt="">
-        <img src="{% static 'psdtuts.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-200"alt="">
+        <img src="{% static 'images/slide3/freelance.png' %}" data-stellar-ratio="1.4" data-stellar-vertical-offset="-102"alt="">
+        <img src="{% static 'images/slide3/psdtuts.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-53"alt="">
+        <img src="{% static 'images/slide3/rockable.png' %}" data-stellar-ratio="2.7" data-stellar-vertical-offset="-200"alt="">
+        <img src="{% static 'images/slide3/themeforest.png' %}" data-stellar-ratio="3" data-stellar-vertical-offset="-200"alt="">
+        <img src="{% static 'images/slide3/tutshub.png' %}" data-stellar-ratio="1" data-stellar-vertical-offset="-200"alt="">
+        <img src="{% static 'images/slide3/psdtuts.png' %}" data-stellar-ratio="1.5" data-stellar-vertical-offset="-200"alt="">
       </div>
       
       <span class="slideno">Slide 3</span>
