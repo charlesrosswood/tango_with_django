@@ -4,8 +4,96 @@
 		"selected_items":
 		[
 			[
+				"reg",
+				"registered_user"
+			],
+			[
+				"form",
+				"form_dict"
+			],
+			[
 				"Wall",
+				"WallPost_formset"
+			],
+			[
+				"model",
+				"modelformset_factory"
+			],
+			[
+				"WallPost",
 				"WallPostComment"
+			],
+			[
+				"Model",
+				"ModelForm"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"post",
+				"post_dicts"
+			],
+			[
+				"posts",
+				"post_dicts"
+			],
+			[
+				"date",
+				"date_posted"
+			],
+			[
+				"WallP",
+				"WallPost"
+			],
+			[
+				"is",
+				"isinstance"
+			],
+			[
+				"comment",
+				"comment"
+			],
+			[
+				"re",
+				"registered_users"
+			],
+			[
+				"run",
+				"running_in_string"
+			],
+			[
+				"static",
+				"staticfiles"
+			],
+			[
+				"bottom",
+				"bottom"
+			],
+			[
+				"succe",
+				"success_dict"
+			],
+			[
+				"user",
+				"user"
+			],
+			[
+				"in",
+				"identical_first_last_names"
+			],
+			[
+				"iden",
+				"identical_first_last_names"
+			],
+			[
+				"wall_pos",
+				"wall_post_comments"
+			],
+			[
+				"wall",
+				"wall_post_comments"
 			],
 			[
 				"S",
@@ -43,7 +131,7 @@
 			"file": "tango_with_django_project/settings.py",
 			"settings":
 			{
-				"buffer_size": 6430,
+				"buffer_size": 7761,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,23 +139,7 @@
 			"file": "rango/views.py",
 			"settings":
 			{
-				"buffer_size": 1516,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tango_with_django_project/urls.py",
-			"settings":
-			{
-				"buffer_size": 894,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/about.html",
-			"settings":
-			{
-				"buffer_size": 408,
+				"buffer_size": 4842,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,31 +147,15 @@
 			"file": "rango/models.py",
 			"settings":
 			{
-				"buffer_size": 1075,
+				"buffer_size": 5179,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "rango/admin.py",
+			"file": "test.py",
 			"settings":
 			{
-				"buffer_size": 191,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/index.html",
-			"settings":
-			{
-				"buffer_size": 421,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/testing_page.html",
-			"settings":
-			{
-				"buffer_size": 3921,
+				"buffer_size": 1021,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,8 +163,48 @@
 			"file": "rango/urls.py",
 			"settings":
 			{
-				"buffer_size": 770,
+				"buffer_size": 878,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/rango/addpost.html",
+			"settings":
+			{
+				"buffer_size": 1188,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/rango/base.html",
+			"settings":
+			{
+				"buffer_size": 753,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/rango/testing_page.html",
+			"settings":
+			{
+				"buffer_size": 4069,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/js/js.js",
+			"settings":
+			{
+				"buffer_size": 2812,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/css/style.css",
+			"settings":
+			{
+				"buffer_size": 7027,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -136,12 +232,25 @@
 	},
 	"file_history":
 	[
-		"/home/charles/Documents/GitHub/TestProject/mysite/templates/index_parallax.html",
+		"/home/charles/Documents/GitHub/tango_with_django_project/static/css/style.css",
+		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/adduser.html",
+		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/index.html",
+		"/home/charles/Documents/GitHub/tango_with_django_project/tango_with_django_project/urls.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/about.html",
+		"/home/charles/Documents/GitHub/tango_with_django_project/test.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/rango/models.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/rango/admin.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/tango_with_django_project/settings.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/testing_page.html",
+		"/home/charles/Documents/GitHub/tango_with_django_project/rango/test.py",
+		"/home/charles/Documents/GitHub/tango_with_django_project/static/jquery.min.js",
+		"/home/charles/Documents/GitHub/tango_with_django_project/static/style.css",
+		"/home/charles/Documents/GitHub/tango_with_django_project/static/reset-mis.css",
 		"/home/charles/Documents/GitHub/tango_with_django_project/rango/urls.py",
+		"/home/charles/Documents/GitHub/TestProject/mysite/templates/index_parallax.html",
 		"/home/charles/Documents/GitHub/TestProject/mysite/mysite/settings.py",
 		"/home/charles/Documents/GitHub/TestProject/mysite/myapp/models.py",
 		"/home/charles/Documents/GitHub/TestProject/mysite/smcore_template.html",
-		"/home/charles/Documents/GitHub/tango_with_django_project/tango_with_django_project/urls.py",
 		"/home/charles/Documents/GitHub/TestProject/mysite/myapp/views.py",
 		"/home/charles/Documents/GitHub/TestProject/mysite/templates/index.html",
 		"/home/charles/Documents/GitHub/mysite/mysite/settings.py",
@@ -177,6 +286,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"button",
+			"size",
+			"border",
+			"staticfiles",
+			"static_root",
+			"debug",
+			"border",
+			"dj_database_url",
+			"STATICFILES_DIRS",
+			"BASE_DIR",
+			"ALLOWED_HOSTS",
+			"debug",
+			"font",
 			"staticfiles_dir",
 			"BASE_DIR",
 			"front_end",
@@ -208,7 +330,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -216,15 +338,15 @@
 					"file": "tango_with_django_project/settings.py",
 					"settings":
 					{
-						"buffer_size": 6430,
+						"buffer_size": 7761,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5386,
-								5386
+								526,
+								526
 							]
 						],
 						"settings":
@@ -234,7 +356,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1786.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -244,46 +366,48 @@
 					"file": "rango/views.py",
 					"settings":
 					{
-						"buffer_size": 1516,
+						"buffer_size": 4842,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1436,
-								1436
+								3547,
+								3547
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 167.0,
+						"translation.y": 1530.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "tango_with_django_project/urls.py",
+					"file": "rango/models.py",
 					"settings":
 					{
-						"buffer_size": 894,
+						"buffer_size": 5179,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								731,
-								731
+								437,
+								437
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -293,23 +417,23 @@
 				},
 				{
 					"buffer": 3,
-					"file": "templates/rango/about.html",
+					"file": "test.py",
 					"settings":
 					{
-						"buffer_size": 408,
+						"buffer_size": 1021,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								271,
-								271
+								405,
+								405
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -319,23 +443,25 @@
 				},
 				{
 					"buffer": 4,
-					"file": "rango/models.py",
+					"file": "rango/urls.py",
 					"settings":
 					{
-						"buffer_size": 1075,
+						"buffer_size": 878,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1074,
-								1074
+								872,
+								872
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -345,23 +471,24 @@
 				},
 				{
 					"buffer": 5,
-					"file": "rango/admin.py",
+					"file": "templates/rango/addpost.html",
 					"settings":
 					{
-						"buffer_size": 191,
+						"buffer_size": 1188,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								190,
-								190
+								371,
+								371
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -371,18 +498,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "templates/rango/index.html",
+					"file": "templates/rango/base.html",
 					"settings":
 					{
-						"buffer_size": 421,
+						"buffer_size": 753,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								421,
-								421
+								519,
+								519
 							]
 						],
 						"settings":
@@ -400,15 +527,15 @@
 					"file": "templates/rango/testing_page.html",
 					"settings":
 					{
-						"buffer_size": 3921,
+						"buffer_size": 4069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3556,
-								3556
+								1024,
+								1024
 							]
 						],
 						"settings":
@@ -418,33 +545,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "rango/urls.py",
+					"file": "static/js/js.js",
 					"settings":
 					{
-						"buffer_size": 770,
+						"buffer_size": 2812,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								767,
-								767
+								53,
+								53
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "static/css/style.css",
+					"settings":
+					{
+						"buffer_size": 7027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2084,
+								2084
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1323.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -485,7 +642,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 353.0
+		"height": 90.0
 	},
 	"replace":
 	{
@@ -497,6 +654,42 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"sty",
+				"static/css/style.css"
+			],
+			[
+				"js",
+				"static/js/js.js"
+			],
+			[
+				"index",
+				"templates/rango/index.html"
+			],
+			[
+				"stye",
+				"static/css/style.css"
+			],
+			[
+				"mode",
+				"rango/models.py"
+			],
+			[
+				"settin",
+				"tango_with_django_project/settings.py"
+			],
+			[
+				"test",
+				"test.py"
+			],
+			[
+				"models",
+				"rango/models.py"
+			],
+			[
+				"css",
+				"static/style.css"
+			],
 			[
 				"urls",
 				"rango/urls.py"
@@ -519,7 +712,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 229.0,
 	"status_bar_visible": true
 }
