@@ -9,18 +9,26 @@
 		<title>{% block title %} Charles Wood base page {% endblock %}</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.stellar.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+
 	</head>
 
 	<body>
 		<div class='titlebar'>
 			<span id='titlename'>
-				SOME SITE
+				{% block page_title%} SOME SITE {% endblock %}
 			</span>
-			<span id='titleselector'>
 				<ul id='menulist'>
 					<li> Home </li>
 					<li> About </li>
 				</ul>
+			<!-- <button class='menuselector'> menu </button>  -->
+			<span id='menuselector'>
 				<img src="{% static 'images/arrow.png' %}" alt="menu" title="menu"/> 
 			</span>
 		</div>
@@ -28,5 +36,6 @@
 		<div id='content'>
 			{% block content %}{% endblock %}
 		</div>
+	
 	</body>
 </html>

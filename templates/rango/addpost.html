@@ -1,19 +1,10 @@
-<!DOCTYPE html>
+{% extends "rango/base.html" %}
 
-{% load static %} <!-- Allows the use of static files like images, css and js-->
+{% block title %}Add post{% endblock %}
 
-<html>
-	
-	<head>
-		<meta charset="utf-8">
-		<title> Add post </title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	</head>
+{% block page_title %}Add a post{% endblock %}
 
-	<body>
-		<h1 class='titlebar'> This page is about adding a post </h1>
-<!-- 		<img src="{% static 'images/Firefox_wallpaper.png' %}" alt="This is the alt text" title="This is the alt text" width="50%"/>  -->
+{% block content %}
 
 	{% for post in posts %} 
 		<div class='wall_posts'>
@@ -44,6 +35,4 @@
 	<input type="submit" value="Post">
 	</form>
 	
-	</body>
-</html>
-
+{% endblock %}

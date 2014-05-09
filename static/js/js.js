@@ -8,7 +8,8 @@ jQuery(document).ready(function ($) {
     var links = $('.navigation').find('li');
     slide = $('.slide');
     button = $('.button');
-    titleselector = $('#titleselector')
+    menuselector = $('.menuselector');
+    menulist = $('#menulist');
     mywindow = $(window);
     htmlbody = $('html,body');
 
@@ -65,8 +66,8 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
     });
 
-    titleselector.click(function () {
-        $("ul").slideDown();
+    menuselector.click(function () {
+        menulist.slideDown();
     });
  
 
