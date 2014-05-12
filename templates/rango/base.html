@@ -23,14 +23,27 @@
 			<span id='titlename'>
 				{% block page_title%} SOME SITE {% endblock %}
 			</span>
-				<ul id='menulist'>
-					<li> Home </li>
-					<li> About </li>
-				</ul>
+			<ul id='menulist'>
+				<li> 
+					<a href="/rango/">Home</a><br />
+				</li>
+				<li> 
+					<a href="/rango/about/">About</a><br />
+				</li>
+				<li> 
+					<a href="/rango/test/">Parallax page</a><br />
+				</li>
+				<li> 
+					<a href="/rango/adduser/">Add a user</a><br />
+				</li>
+				<li> 
+					<a href="/rango/addpost/">Add a post</a><br />
+				</li>
+			</ul>
 			<!-- <button class='menuselector'> menu </button>  -->
-			<span id='menuselector'>
-				<img src="{% static 'images/arrow.png' %}" alt="menu" title="menu"/> 
-			</span>
+			<div id='menuselector'>
+				<img src="{% static 'images/arrow_down.png' %}" alt="menu" title="menu" onclick="changeMenuButton()"/> 
+			</div>
 		</div>
 
 		<div id='content'>
@@ -39,3 +52,19 @@
 	
 	</body>
 </html>
+
+<script language="javascript">
+    function changeMenuButton() {
+
+        if (document.getElementById("menuselector").src == "{% static 'images/arrow_down.png' %}") 
+        {
+        	$('#menulist').slideDown();
+            document.getElementById("menuselector").src = "{% static 'images/arrow_up.png' %}";
+        }
+        else 
+        {
+        	$('#menulist').slideUp();
+            document.getElementById("menuselector").src = "{% static 'images/arrow_down.png' %}";
+        }
+    }
+</script>

@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     var links = $('.navigation').find('li'),
     slide = $('.slide'),
     button = $('.button'),
-    menuselector = $('.menuselector'),
+    menuselector = $('#menuselector'),
     menulist = $('#menulist'),
     mywindow = $(window),
     htmlbody = $('html,body');
@@ -66,9 +66,12 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
     });
 
-    menuselector.click(function () {
-        menulist.slideDown();
-    });
- 
+    // menuselector.click(function () {
+    //     menulist.slideDown();
+    // });
+
+    // menuselector.click(function () {
+    //     menulist.slideUp();
+    // }); 
 
 });

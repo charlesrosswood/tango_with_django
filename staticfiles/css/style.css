@@ -20,10 +20,19 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     padding:0;
 }
 
+a, a:visited{
+    text-decoration: none;
+    color:inherit;
+}
+
+a:hover{
+    color: red;
+}
+
 /* Adding styling to the index page */
 #freedomain_link{
     position:fixed; /*The element (referenced by ID using '#') will be positioned relative to the browser window */
-    bottom:0;
+    top:0;
     right:0;
 }
 
@@ -37,7 +46,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     width:100%;
     background-color:#5c9900;
     height:50px;
-    z-index:2;
+    z-index:1;
     /*left:50%;*/
 }
 
@@ -49,6 +58,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     /*left:50%;*/
     display:inline;
     z-index: 1;
+    color:white;
 }
 
 #menuselector{            /*The buttons ribbons that appear at the bottom of each slide*/
@@ -63,7 +73,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     background-image:url(../images/arrow.png);
     display:inline;
     float:left;
-    z-index:1;
+    z-index:2;
 }
 
 #menuselector:hover{         /*How the button will act on hovering over it*/
@@ -74,8 +84,13 @@ html,body{			/*Global styling for both HTML and BODY elements*/
 }
 
 #menulist{
+    position:relative;
     display:inline-block;
     display:none;
+    color:white;
+    background-color:#5c9900;
+    z-index:2;
+    width:20%;
 }
 
 .wall_posts{
