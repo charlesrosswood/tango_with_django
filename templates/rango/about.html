@@ -1,19 +1,12 @@
-<!DOCTYPE html>
+{% extends "rango/base.html" %}
 
-{% load static %} <!-- Allows the use of static files like images, css and js-->
+{% load static %}
 
-<html>
-	
-	<head>
-		<meta charset="utf-8">
-		<title> Rango index page </title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	</head>
+{% block title %}About{% endblock %}
 
-	<body>
-		<h1> This page is about this project </h1>
-		hello world! <strong>{{ boldmessage }}</strong><br />
-		<img src="{% static 'images/Firefox_wallpaper.png' %}" alt="This is the alt text" title="This is the alt text" width="50%"/> 
-	</body>
-</html>
+{% block page_title%}About{% endblock %} 
+
+{% block content %}
+This micro-project is being used to teach me server coding and templating within Django, along with HTML5, CSS3 and JavaScript. <br />
+<img src="{% static 'images/Garden_HDR.jpg' %}" alt="An HDR shot of my old garden" title="An HDR shot of my old garden" width="75%"/> 
+{% endblock %}

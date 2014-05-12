@@ -27,11 +27,17 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     right:0;
 }
 
-.titlebar{
+#content{
     position:relative;
+    top:50px;
+}
+
+.titlebar{
+    position:fixed;
     width:100%;
     background-color:#5c9900;
     height:50px;
+    z-index:2;
     /*left:50%;*/
 }
 
@@ -42,6 +48,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     font-size:30px;
     /*left:50%;*/
     display:inline;
+    z-index: 1;
 }
 
 #menuselector{            /*The buttons ribbons that appear at the bottom of each slide*/
@@ -56,6 +63,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     background-image:url(../images/arrow.png);
     display:inline;
     float:left;
+    z-index:1;
 }
 
 #menuselector:hover{         /*How the button will act on hovering over it*/
@@ -66,6 +74,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
 }
 
 #menulist{
+    display:inline-block;
     display:none;
 }
 

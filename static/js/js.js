@@ -5,12 +5,12 @@ jQuery(document).ready(function ($) {
     $(window).stellar();
 
     //Cache some variables
-    var links = $('.navigation').find('li');
-    slide = $('.slide');
-    button = $('.button');
-    menuselector = $('.menuselector');
-    menulist = $('#menulist');
-    mywindow = $(window);
+    var links = $('.navigation').find('li'),
+    slide = $('.slide'),
+    button = $('.button'),
+    menuselector = $('.menuselector'),
+    menulist = $('#menulist'),
+    mywindow = $(window),
     htmlbody = $('html,body');
 
 
