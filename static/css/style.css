@@ -85,7 +85,8 @@ a:hover{
 
 #menulist{
     position:relative;
-    left:50px;
+    left:0px;
+    top:50px;
     display:inline-block;
     display:none;
     color:white;

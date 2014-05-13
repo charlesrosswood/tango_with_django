@@ -23,7 +23,7 @@
 			<span id='titlename'>
 				{% block page_title%} SOME SITE {% endblock %}
 			</span>
-			<ul id='menulist'>
+			<ul id='menulist' style="display-block">
 				<li> 
 					<a href="/rango/">Home</a><br />
 				</li>
@@ -56,15 +56,25 @@
 <script language="javascript">
     function changeMenuButton() {
 
-        if (document.getElementById("menuselector").src == "{% static 'images/arrow_down.png' %}") 
+    	var menuselector = document.getElementById("menuselector");
+    	// var menu = document.getElementById("menulist");
+
+		// menu.style.display = menu.style.display == "block" ? "none" : "block";
+        if (menuselector.src == "{% static 'images/arrow_down.png' %}") 
         {
         	$('#menulist').slideDown();
-            document.getElementById("menuselector").src = "{% static 'images/arrow_up.png' %}";
+            menuselector.src = "{% static 'images/arrow_up.png' %}";
         }
-        else 
+        else if (menuselector.src == "{% static 'images/arrow_up.png' %}")  
         {
         	$('#menulist').slideUp();
-            document.getElementById("menuselector").src = "{% static 'images/arrow_down.png' %}";
+            menuselector.src = "{% static 'images/arrow_down.png' %}";
+        }
+        else// if (menuselector.src == undefined) i.e. at the page load so you only have to click once.
+        {
+        	$('#menulist').slideDown();
+            menuselector.src = "{% static 'images/arrow_up.png' %}";
+       	
         }
     }
 </script>

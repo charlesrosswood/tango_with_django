@@ -188,24 +188,6 @@
 			}
 		},
 		{
-			"file": "templates/rango/base.html",
-			"settings":
-			{
-				"buffer_size": 1266,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 76 files for \"rango index page\"\n\n0 matches across 0 files\n",
-			"settings":
-			{
-				"buffer_size": 68,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
 			"file": "templates/rango/index.html",
 			"settings":
 			{
@@ -225,7 +207,15 @@
 			"file": "static/css/style.css",
 			"settings":
 			{
-				"buffer_size": 7139,
+				"buffer_size": 7363,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/js/js.js",
+			"settings":
+			{
+				"buffer_size": 2933,
 				"line_ending": "Windows"
 			}
 		}
@@ -254,6 +244,7 @@
 	},
 	"file_history":
 	[
+		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/base.html",
 		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/testing_page.html",
 		"/home/charles/Documents/GitHub/tango_with_django_project/static/js/js.js",
 		"/home/charles/Documents/GitHub/tango_with_django_project/static/css/style.css",
@@ -299,7 +290,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -310,6 +301,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"color",
 			"rango index page",
 			"50",
 			"button",
@@ -356,7 +348,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -551,18 +543,18 @@
 				},
 				{
 					"buffer": 7,
-					"file": "templates/rango/base.html",
+					"file": "templates/rango/index.html",
 					"settings":
 					{
-						"buffer_size": 1266,
+						"buffer_size": 956,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								910,
-								910
+								956,
+								956
 							]
 						],
 						"settings":
@@ -578,64 +570,6 @@
 				},
 				{
 					"buffer": 8,
-					"settings":
-					{
-						"buffer_size": 68,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "templates/rango/index.html",
-					"settings":
-					{
-						"buffer_size": 956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								362,
-								362
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
 					"file": "templates/rango/about.html",
 					"settings":
 					{
@@ -662,19 +596,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 9,
 					"file": "static/css/style.css",
 					"settings":
 					{
-						"buffer_size": 7139,
+						"buffer_size": 7363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1520,
-								1520
+								1882,
+								1882
 							]
 						],
 						"settings":
@@ -684,7 +618,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 495.0,
+						"translation.y": 783.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "static/js/js.js",
+					"settings":
+					{
+						"buffer_size": 2933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -738,12 +700,12 @@
 		"selected_items":
 		[
 			[
-				"sty",
-				"static/css/style.css"
-			],
-			[
 				"js",
 				"static/js/js.js"
+			],
+			[
+				"sty",
+				"static/css/style.css"
 			],
 			[
 				"index",
