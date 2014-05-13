@@ -207,7 +207,7 @@
 			"file": "static/css/style.css",
 			"settings":
 			{
-				"buffer_size": 7363,
+				"buffer_size": 7376,
 				"line_ending": "Windows"
 			}
 		},
@@ -217,6 +217,14 @@
 			{
 				"buffer_size": 2933,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/rango/base.html",
+			"settings":
+			{
+				"buffer_size": 2536,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -600,15 +608,15 @@
 					"file": "static/css/style.css",
 					"settings":
 					{
-						"buffer_size": 7363,
+						"buffer_size": 7376,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1882,
-								1882
+								2017,
+								2017
 							]
 						],
 						"settings":
@@ -618,7 +626,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 783.0,
+						"translation.y": 945.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -647,6 +655,32 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/rango/base.html",
+					"settings":
+					{
+						"buffer_size": 2536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2396,
+								2396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 645.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
