@@ -1,10 +1,11 @@
 from django.db import models
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 from datetime import datetime
 # Create your models here.
 
-class SiteUser(models.User):
+class SiteUser(models.Model):
 	first_name = models.CharField(max_length=100, null=True, blank=True)
 	last_name = models.CharField(max_length=100, null=True, blank=True)
 	email = models.EmailField(max_length=254, null=True, blank=False)
