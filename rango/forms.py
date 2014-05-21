@@ -1,14 +1,14 @@
 from django.db import models
-from django.forms import ModelForm
+from django import forms
 
 from rango.models import SiteUser, WallPost, WallPostComment
 from django.contrib.auth.models import User
 
-class SiteUserForm(ModelForm):
+class SiteUserForm(forms.ModelForm):
 	class Meta:
 		model = SiteUser
 
-class WallPostForm(ModelForm):
+class WallPostForm(forms.ModelForm):
 	class Meta:
 		model = WallPost
 		fields = (
@@ -16,7 +16,7 @@ class WallPostForm(ModelForm):
 			'user'
 			)
 
-class WallPostCommentForm(ModelForm):
+class WallPostCommentForm(forms.ModelForm):
 	class Meta:
 		model = WallPostComment
 		fields = (
@@ -25,7 +25,7 @@ class WallPostCommentForm(ModelForm):
 			'user'
 			)
 
-class UserForm(ModelForm):
+class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
