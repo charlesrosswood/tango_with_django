@@ -20,6 +20,15 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     padding:0;
 }
 
+a, a:visited{
+    text-decoration: none;
+    color:inherit;
+}
+
+a:hover{
+    color: red;
+}
+
 /* Adding styling to the index page */
 #freedomain_link{
     position:fixed; /*The element (referenced by ID using '#') will be positioned relative to the browser window */
@@ -27,11 +36,17 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     right:0;
 }
 
-.titlebar{
+#content{
     position:relative;
+    top:50px;
+}
+
+.titlebar{
+    position:fixed;
     width:100%;
     background-color:#5c9900;
     height:50px;
+    z-index:1;
     /*left:50%;*/
 }
 
@@ -42,23 +57,27 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     font-size:30px;
     /*left:50%;*/
     display:inline;
+    z-index: 1;
+    color:white;
 }
 
-#menubutton{            /*The buttons ribbons that appear at the bottom of each slide*/
+
+#menuselector{            /*The buttons ribbons that appear at the bottom of each slide*/
     position:fixed;      /*Positioned relative to the slide too*/
     /*display:block;*/
-    /*top:0;*/
+    top:0;
     width:50px;
     height:50px;
     /*bottom:0px;*/
-    left:5%;
+    left:0px;
     /*background-color:#333333;*/
     background-image:url(../images/arrow.png);
     display:inline;
     float:left;
+    z-index:2;
 }
 
-#menubutton:hover{          /*How the button will act on hovering over it*/
+#menuselector:hover{         /*How the button will act on hovering over it*/
     background-color:#494949;   /*Change the background colour*/
     cursor:pointer;
     display:inline;
@@ -66,7 +85,15 @@ html,body{			/*Global styling for both HTML and BODY elements*/
 }
 
 #menulist{
+    position:relative;
+    left:0px;
+    top:50px;
+    display:inline-block;
     display:none;
+    color:white;
+    background-color:#5c9900;
+    z-index:2;
+    width:20%;
 }
 
 .wall_posts{

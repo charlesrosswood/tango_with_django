@@ -1,28 +1,23 @@
-<!DOCTYPE html>
+{% extends "rango/base.html" %}
 
-{% load static %} <!-- Allows the use of static files like images, css and js-->
+{% load static %}
 
-<html>
-	
-	<head>
-		<meta charset="utf-8">
-		<title> Rango index page </title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/reset-min.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	</head>
+{% block title %}Homepage{% endblock %}
 
-	<body>
-		<h1> Rango says... </h1>
-		hello world! <strong>bold text</strong><br />
-		<a href="/rango/addpost/">See the current posts</a><br />
-		<a href="/rango/adduser/">See the current users</a><br />
-		<a href="/rango/about/">About</a><br />
-		<a href="/rango/test/">Check out the parallax test page!</a><br />
-		<img src="{% static 'images/image1.jpg' %}" alt="This is the alt text" title="This is the alt text" width="50%"/> 
-		<div id="freedomain_link">
-			<a href="http://www.freedomain.co.nr">
-				<img src="{% static 'images/freedomain.gif' %}" alt="Free URLs" title="Free URLs" width="88" height="31"/> 
-			</a>
-		</div>
-	</body>
-</html>
+{% block page_title%}Homepage{% endblock %} 
+
+{% block content %}
+<a href="{% static 'images/thesis.pdf' %}" target="_blank">Thesis download (PDF)<br />
+		<img src="{% static 'images/Thesis_download_link.png' %}" alt="Thesis download" title="Thesis download" width="400"/>
+</a><br />
+<a href="/rango/addpost/">See the current posts</a><br />
+<a href="/rango/adduser/">See the current users</a><br />
+<a href="/rango/about/">About</a><br />
+<a href="/rango/test/">Check out the parallax test page!</a><br />
+<img src="{% static 'images/High_def_stonehenge.jpg' %}" alt="Mutliple exposures of Stonehenge" title="Mutliple exposures of Stonehenge" width="50%"/> 
+<div id="freedomain_link">
+	<a href="http://www.freedomain.co.nr">
+		<img src="{% static 'images/freedomain.gif' %}" alt="Free URLs" title="Free URLs" width="88" height="31"/> 
+	</a>
+</div>
+{% endblock %}

@@ -5,11 +5,12 @@ jQuery(document).ready(function ($) {
     $(window).stellar();
 
     //Cache some variables
-    var links = $('.navigation').find('li');
-    slide = $('.slide');
-    button = $('.button');
-    menubutton = $('#menubutton')
-    mywindow = $(window);
+    var links = $('.navigation').find('li'),
+    slide = $('.slide'),
+    button = $('.button'),
+    menuselector = $('#menuselector'),
+    menulist = $('#menulist'),
+    mywindow = $(window),
     htmlbody = $('html,body');
     menulist = $('#menulist');
 
@@ -66,9 +67,12 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
     });
 
-    menubutton.click(function () {
-        menulist.slideDown();
-    });
- 
+    // menuselector.click(function () {
+    //     menulist.slideDown();
+    // });
+
+    // menuselector.click(function () {
+    //     menulist.slideUp();
+    // }); 
 
 });
