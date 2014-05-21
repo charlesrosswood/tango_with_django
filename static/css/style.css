@@ -44,7 +44,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     display:inline;
 }
 
-#titleselector{            /*The buttons ribbons that appear at the bottom of each slide*/
+#menubutton{            /*The buttons ribbons that appear at the bottom of each slide*/
     position:fixed;      /*Positioned relative to the slide too*/
     /*display:block;*/
     /*top:0;*/
@@ -58,7 +58,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     float:left;
 }
 
-#titleselector:hover{          /*How the button will act on hovering over it*/
+#menubutton:hover{          /*How the button will act on hovering over it*/
     background-color:#494949;   /*Change the background colour*/
     cursor:pointer;
     display:inline;

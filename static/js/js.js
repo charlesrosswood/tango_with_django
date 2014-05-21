@@ -8,9 +8,10 @@ jQuery(document).ready(function ($) {
     var links = $('.navigation').find('li');
     slide = $('.slide');
     button = $('.button');
-    titleselector = $('#titleselector')
+    menubutton = $('#menubutton')
     mywindow = $(window);
     htmlbody = $('html,body');
+    menulist = $('#menulist');
 
 
     //Setup waypoints plugin
@@ -65,8 +66,8 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
     });
 
-    titleselector.click(function () {
-        $("ul").slideDown();
+    menubutton.click(function () {
+        menulist.slideDown();
     });
  
 

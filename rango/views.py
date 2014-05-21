@@ -11,7 +11,8 @@ from django.views.decorators import csrf
 import datetime
 
 from rango.models import SiteUser, WallPost, WallPostComment 
-from rango.models import SiteUserForm, WallPostForm
+# from rango.models import SiteUserForm, WallPostForm
+from rango.forms import *
 
 def index(request):
 	template = 'rango/index.html'
@@ -103,7 +104,6 @@ def add_post(request):
 	return render_to_response(template, context_dict, context)
 	# return HttpResponse("Rango says hello world!")
 
-
 @csrf.csrf_exempt
 def add_user(request):
 	form_dict = {}
@@ -116,6 +116,9 @@ def add_user(request):
 			value = request.POST[key]
 		
 		form_dict.update( {key[7:]:value} )
+	template = 'rango/adduser.html'
+	context = RequestContext( request )
+
 
 	if form_dict != {}:
 		siteuser = SiteUser.create(
@@ -126,9 +129,7 @@ def add_user(request):
 			password=form_dict['password']
 			)
 
-	template = 'rango/adduser.html'
 	# this gets info about the machine the request from etc....check it out
-	context = RequestContext( request )
 
 	users = SiteUser.objects.all()[:5]
 	user_dicts = []
@@ -146,7 +147,42 @@ def add_user(request):
 	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
 	context_dict = {
 		'users':user_dicts,
-		'formset':formset[-1]
+		'formset':formset[-1],
+	}
+
+	return render_to_response(template, context_dict, context)
+
+def signup(request):
+
+	template = 'rango/signup.html'
+	context = RequestContext( request )
+
+	# a boolean value to note whether a user has registered or not
+	registration = False
+
+	# the easy way to populate a generated form from a POST request
+	if request.method == 'POST':
+		siteuser_form = UserForm(data=request.POST)
+
+		if siteuser_form.is_valid(): # method to check whether all the fields are correct
+			user = siteuser_form.save() # save the user object
+
+			user.set_password( user.password ) # hash the password using the set_password method
+			user.save() # resave the user and hashed password
+
+		else:
+			print siteuser_form.errors # display any errors in the form back to the user (and in a console print)
+
+	# else the request was blank so we need to set up a blank user form
+	else:
+		siteuser_form = UserForm()
+
+	# this gets info about the machine the request from etc....check it out
+
+	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
+	context_dict = {
+		'registered': registered,
+		'siteuser_form':siteuser_form,
 	}
 
 	return render_to_response(template, context_dict, context)

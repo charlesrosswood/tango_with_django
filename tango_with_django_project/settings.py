@@ -16,7 +16,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 running_in_string = "RUNNING IN "
-if bool(os.environ.get('LOCAL_DEV',False)) or (os.environ.get('HOME','') == '/home/charles'): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
+if bool(os.environ.get('LOCAL_DEV',False)) or (os.environ.get('HOME','') == '/home/charles') or (os.environ.get('USER','') == 'cwod'): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
     running_in_string += "LOCAL ENVIRONMENT"
     DATABASES = {
         'default': {
