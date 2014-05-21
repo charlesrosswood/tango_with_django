@@ -158,7 +158,7 @@ def signup(request):
 	context = RequestContext( request )
 
 	# a boolean value to note whether a user has registered or not
-	registration = False
+	registered = False
 
 	# the easy way to populate a generated form from a POST request
 	if request.method == 'POST':
@@ -169,6 +169,8 @@ def signup(request):
 
 			user.set_password( user.password ) # hash the password using the set_password method
 			user.save() # resave the user and hashed password
+
+			registered = True
 
 		else:
 			print siteuser_form.errors # display any errors in the form back to the user (and in a console print)
