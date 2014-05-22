@@ -38,12 +38,14 @@
 {% block script %}
 <script>
 	$(window).resize(function(){
-
-	    $('.signup').css({
-	        position:'absolute',
-	        left: ($(window).width() - $('.signup').outerWidth())/2,
-	        top: ($(window).height() - $('.signup').outerHeight())/2
-	    });
+		setInterval(function() {
+			$('.signup').css({
+		        position:'absolute',
+		        left: ($(window).width() - $('.signup').outerWidth())/2,
+		        top: ($(window).height() - $('.signup').outerHeight())/2
+		    });
+		}, 1000);
+	    
 
 	});
 
