@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.forms.models import modelformset_factory
 from django.views.decorators import csrf
+from django.core.urlresolvers import reverse
 
 import datetime
 
@@ -172,6 +173,7 @@ def signup(request):
 
 			registered = True
 
+			return HttpResponseRedirect(reverse('index'))
 		else:
 			print siteuser_form.errors # display any errors in the form back to the user (and in a console print)
 

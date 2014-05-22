@@ -23,8 +23,20 @@
 				<form id="siteuser_form" method="post" action="/rango/signup/" enctype="multipart/form-data">
 
 					{% csrf_token %}
+					{% for field in siteuser_form %}
+						<!-- <div class="fieldWrapper"> -->
+						{{ field.errors }}
+						<span class="form_labels">
+							{{ field.label_tag }} 
+						</span>
+						<span class="form_inputs">
+							{{ field }}
+						</span>
+						<br/>
+						<!-- </div> -->
 
-					{{ siteuser_form.as_p }}
+					{% endfor %}
+					<!-- {{ siteuser_form.as_p }} -->
 
 					<input type="submit" name="submit" value="Register" />
 				</form>
