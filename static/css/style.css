@@ -20,7 +20,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     padding:0;
 }
 
-.youSpinMeRightRoundBabyRightRoundLikeARecordBabyRightRoundRightRound {
+.spinner{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
@@ -83,11 +83,18 @@ a:hover{
     /*bottom:0px;*/
     left:0px;
     /*background-color:#333333;*/
-    background-image:url(../images/arrow.png);
+    /*background-image:url(../images/arrow.png);*/
     display:inline;
     float:left;
     z-index:2;
 }
+
+#menuselector img {
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+}       
 
 #menuselector:hover{         /*How the button will act on hovering over it*/
     background-color:#494949;   /*Change the background colour*/
