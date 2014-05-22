@@ -21,7 +21,7 @@
 	<body>
 		<div class='titlebar'>
 			<span id='titlename'>
-				{% block page_title%} SOME SITE {% endblock %}
+				{% block page_title %} SOME SITE {% endblock %}
 			</span>
 			<ul id='menulist' style="display-block">
 				<li> 
@@ -55,30 +55,32 @@
 		</div>
 	
 	</body>
+
+	<script language="javascript">
+	    function changeMenuButton() {
+
+	    	var menuselector = document.getElementById("menuselector");
+	    	// var menu = document.getElementById("menulist");
+
+			// menu.style.display = menu.style.display == "block" ? "none" : "block";
+	        if (menuselector.src == "{% static 'images/arrow_down.png' %}") 
+	        {
+	        	$('#menulist').slideDown();
+	            menuselector.src = "{% static 'images/arrow_up.png' %}";
+	        }
+	        else if (menuselector.src == "{% static 'images/arrow_up.png' %}")  
+	        {
+	        	$('#menulist').slideUp();
+	            menuselector.src = "{% static 'images/arrow_down.png' %}";
+	        }
+	        else// if (menuselector.src == undefined) i.e. at the page load so you only have to click once.
+	        {
+	        	$('#menulist').slideDown();
+	            menuselector.src = "{% static 'images/arrow_up.png' %}";
+	       	
+	        }
+	    }
+	</script>
+    {% block script %}{% endblock %}
+
 </html>
-
-<script language="javascript">
-    function changeMenuButton() {
-
-    	var menuselector = document.getElementById("menuselector");
-    	// var menu = document.getElementById("menulist");
-
-		// menu.style.display = menu.style.display == "block" ? "none" : "block";
-        if (menuselector.src == "{% static 'images/arrow_down.png' %}") 
-        {
-        	$('#menulist').slideDown();
-            menuselector.src = "{% static 'images/arrow_up.png' %}";
-        }
-        else if (menuselector.src == "{% static 'images/arrow_up.png' %}")  
-        {
-        	$('#menulist').slideUp();
-            menuselector.src = "{% static 'images/arrow_down.png' %}";
-        }
-        else// if (menuselector.src == undefined) i.e. at the page load so you only have to click once.
-        {
-        	$('#menulist').slideDown();
-            menuselector.src = "{% static 'images/arrow_up.png' %}";
-       	
-        }
-    }
-</script>
