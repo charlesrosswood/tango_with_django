@@ -15,20 +15,37 @@
 
 	{% else %}
 		<div class="signup">
-			Enter your details to register
-		</div>
+			<div id="signup_title">
+				Enter your details to register
+			</div>
 
-		<div class="signup">
-			<form id="siteuser_form" method="post" action="/rango/signup/" enctype="multipart/form-data">
+			<div id="signup_form">
+				<form id="siteuser_form" method="post" action="/rango/signup/" enctype="multipart/form-data">
 
-				{% csrf_token %}
+					{% csrf_token %}
 
-				{{ siteuser_form.as_p }}
+					{{ siteuser_form.as_p }}
 
-				<input type="submit" name="submit" value="Register" />
-			</form>
+					<input type="submit" name="submit" value="Register" />
+				</form>
+			</div>
 		</div>
 		
 	{% endif %}
 
 {% endblock %}
+
+<script>
+	$(window).resize(function(){
+
+	    $('.signup').css({
+	        position:'absolute',
+	        left: ($(window).width() - $('.signup').outerWidth())/2,
+	        top: ($(window).height() - $('.signup').outerHeight())/2
+	    });
+
+	});
+
+	// To initially run the function:
+	$(window).resize();
+</script>
