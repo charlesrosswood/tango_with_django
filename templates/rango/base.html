@@ -23,7 +23,7 @@
 			<span id='titlename'>
 				{% block page_title %} SOME SITE {% endblock %}
 			</span>
-			<ul id='menulist' style="display-block">
+			<ul id='menulist'> <!-- style="display:block"> -->
 				<li> 
 					<a href="/rango/">Home</a><br />
 				</li>
@@ -57,29 +57,33 @@
 	</body>
 
 	<script language="javascript">
-	    function changeMenuButton() {
+	// var menuselector = document.getElementById("menuselector");
+	$('#menuselector').click(function() {
+		$(this).find('img').toggleClass("youSpinMeRightRoundBabyRightRoundLikeARecordBabyRightRoundRightRound");
+    	$('#menulist').slideToggle('easeOutBounce');
+	});
+	    // function changeMenuButton() {
 
-	    	var menuselector = document.getElementById("menuselector");
 	    	// var menu = document.getElementById("menulist");
 
-			// menu.style.display = menu.style.display == "block" ? "none" : "block";
-	        if (menuselector.src == "{% static 'images/arrow_down.png' %}") 
-	        {
-	        	$('#menulist').slideDown();
-	            menuselector.src = "{% static 'images/arrow_up.png' %}";
-	        }
-	        else if (menuselector.src == "{% static 'images/arrow_up.png' %}")  
-	        {
-	        	$('#menulist').slideUp();
-	            menuselector.src = "{% static 'images/arrow_down.png' %}";
-	        }
-	        else// if (menuselector.src == undefined) i.e. at the page load so you only have to click once.
-	        {
-	        	$('#menulist').slideDown();
-	            menuselector.src = "{% static 'images/arrow_up.png' %}";
+			// // menu.style.display = menu.style.display == "block" ? "none" : "block";
+	  //       if (menuselector.src == "{% static 'images/arrow_down.png' %}") 
+	  //       {
+	  //       	$('#menulist').slideDown();
+	  //           menuselector.src = "{% static 'images/arrow_up.png' %}";
+	  //       }
+	  //       else if (menuselector.src == "{% static 'images/arrow_up.png' %}")  
+	  //       {
+	  //       	$('#menulist').slideUp();
+	  //           menuselector.src = "{% static 'images/arrow_down.png' %}";
+	  //       }
+	  //       else// if (menuselector.src == undefined) i.e. at the page load so you only have to click once.
+	  //       {
+	  //       	$('#menulist').slideDown();
+	  //           menuselector.src = "{% static 'images/arrow_up.png' %}";
 	       	
-	        }
-	    }
+	  //       }
+	    // }
 	</script>
     {% block script %}{% endblock %}
 
