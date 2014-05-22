@@ -2,10 +2,14 @@
 
 {% block title %}Add post{% endblock %}
 
+{% block css_and_js_imports %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
+{% endblock %}
+
 {% block page_title %}Add a post{% endblock %}
 
 {% block content %}
-
+<!-- 
 	{% for post in posts %} 
 		<div class='wall_posts'>
 			<div class='column_names'>
@@ -27,12 +31,48 @@
 				{{ post.date_posted.day }} - {{ post.date_posted.month }} - {{ post.date_posted.year }}
 			</div>
 		</div>
-	{% endfor %}
+	{% endfor %} -->
 
-	<form method="post" action="">
-		{{ formset }}
-<!-- 		Post: <textarea name="post"></textarea> -->
-	<input type="submit" value="Post">
-	</form>
+	<div class="add_post_form">
+		<form id="post_form" method="post" action="/rango/addpost/" enctype="multipart/form-data">
+		<!-- <form method="post" action=""> -->
+			{% csrf_token %}
+			{% for field in post_form %}
+			<!-- <div class="fieldWrapper"> -->
+				{{ field.errors }}
+				<span class="form_labels">
+					{{ field.label_tag }} 
+				</span>
+				<span class="form_inputs">
+					{{ field }}
+				</span>
+				<br/>
+			<!-- </div> -->
+
+			{% endfor %}
+			<!-- {{ formset }} -->
+	<!-- 		Post: <textarea name="post"></textarea> -->
+		<input type="submit" value="Post">
+		</form>
+	</div>
 	
+{% endblock %}
+
+{% block script %}
+<script>
+	$(window).resize(function(){
+		setInterval(function() {
+			$('.add_post_form').css({
+		        position:'absolute',
+		        left: ($(window).width() - $('.add_post_form').outerWidth())/2,
+		        top: ($(window).height() - $('.add_post_form').outerHeight())/2,
+		    }).fadeIn(5000);
+		}, 20);
+	    
+
+	});
+
+	// To initially run the function:
+	$(window).resize();
+</script>
 {% endblock %}

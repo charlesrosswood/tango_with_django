@@ -1,0 +1,6 @@
+/* Adding styling to the index page */
+#freedomain_link{
+    position:fixed; /*The element (referenced by ID using '#') will be positioned relative to the browser window */
+    bottom:0;
+    right:0;
+}

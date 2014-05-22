@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('font/BEBAS___-webfont.eot');
+    src: url('font/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+    url('font/BEBAS___-webfont.woff') format('woff'),
+    url('font/BEBAS___-webfont.ttf') format('truetype'),
+    url('font/BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+html,body{			/*Global styling for both HTML and BODY elements*/
+    font-family: 'BebasRegular';
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+.spinning{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
+a, a:visited{
+    text-decoration: none;
+    color:inherit;
+}
+
+a:hover{
+    color: red;
+}
+
+#content{
+    position:relative;
+    top:50px;
+}
+
+.titlebar{
+    position:fixed;
+    width:100%;
+    background-color:#5c9900;
+    height:50px;
+    z-index:1;
+    /*left:50%;*/
+}
+
+#titlename{
+    position:fixed;
+    width:100%;    
+    text-align:center;
+    font-size:30px;
+    /*left:50%;*/
+    display:inline;
+    z-index: 1;
+    color:white;
+}
+
+
+#menuselector{            /*The buttons ribbons that appear at the bottom of each slide*/
+    position:fixed;      /*Positioned relative to the slide too*/
+    /*display:block;*/
+    top:0;
+    width:50px;
+    height:50px;
+    /*bottom:0px;*/
+    left:0px;
+    /*background-color:#333333;*/
+    /*background-image:url(../images/arrow.png);*/
+    display:inline;
+    float:left;
+    z-index:2;
+}
+
+#menuselector img {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+}       
+
+#menuselector:hover{         /*How the button will act on hovering over it*/
+    background-color:#494949;   /*Change the background colour*/
+    cursor:pointer;
+    display:inline;
+    float:left;
+}
+
+#menulist{
+    position:relative;
+    left:0px;
+    top:50px;
+    /*display:inline-block;*/
+    display:none;
+    color:white;
+    background-color:#5c9900;
+    z-index:2;
+    width:20%;
+}

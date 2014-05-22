@@ -62,25 +62,9 @@ def test(request):
 	return render_to_response(template, context_dict, context)
 	# return HttpResponse("Rango says hello world!")
 
-@csrf.csrf_exempt
-def add_post(request):
-	form_dict = {}
-	for key in request.POST:
-		try:
-			key = key.encode('utf-8')
-			value = request.POST[key].encode('utf-8')
-		except:
-			key = key
-			value = request.POST[key]
-		form_dict.update( {key[7:]:value} )
-
-	print 'form_dict', form_dict
-
-	if form_dict != {}:
-		post = WallPost.create(post=form_dict['post'], user=int(form_dict['user']))
-
-	template = 'rango/addpost.html'
-	# this gets info about the machine the request from etc....check it out
+# @csrf.csrf_exempt
+def wall(request):
+	template = 'rango/wall.html'
 	context = RequestContext( request )
 
 	posts = WallPost.objects.all().order_by('-date_posted')[:5]
@@ -94,13 +78,62 @@ def add_post(request):
 
 		post_dicts.append( post_dict )
 
-	# Dealing with forms to pass up
-	WallPost_formset = modelformset_factory(WallPost, form=WallPostForm)
-	formset = WallPost_formset()
-	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
 	context_dict = {
 		'posts':post_dicts,
-		'formset':formset[-1]
+		}
+
+	return render_to_response(template, context_dict, context)
+
+def add_post(request):
+	template = 'rango/addpost.html'
+	context = RequestContext( request )
+	# form_dict = {}
+	# for key in request.POST:
+	# 	try:
+	# 		key = key.encode('utf-8')
+	# 		value = request.POST[key].encode('utf-8')
+	# 	except:
+	# 		key = key
+	# 		value = request.POST[key]
+	# 	form_dict.update( {key[7:]:value} )
+
+	# print 'form_dict', form_dict
+
+	if request.method == 'POST':
+		post_form = WallPostForm(data=request.POST)
+
+		if post_form.is_valid(): # method to check whether all the fields are correct
+			post = post_form.save() # save the user object
+
+			return HttpResponseRedirect(reverse('wall'))
+		else:
+			print post_form.errors
+			
+	else:
+		post_form = WallPostForm()
+	# if form_dict != {}:
+	# 	post = WallPost.create(post=form_dict['post'], user=int(form_dict['user']))
+
+	# this gets info about the machine the request from etc....check it out
+
+	# posts = WallPost.objects.all().order_by('-date_posted')[:5]
+	# post_dicts = []
+	# for post in posts:
+	# 	post_dict = {}
+	# 	post_dict.update( {'user':post.user.username} )
+	# 	post_dict.update( {'post':post.post} )
+	# 	post_dict.update( {'likes':post.likes} )
+	# 	post_dict.update( {'date_posted':post.date_posted} )
+
+	# 	post_dicts.append( post_dict )
+
+	# Dealing with forms to pass up
+	# WallPost_formset = modelformset_factory(WallPost, form=WallPostForm)
+	# formset = WallPost_formset()
+	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
+	context_dict = {
+		# 'posts':post_dicts,
+		'post_form':post_form
 	}
 
 	return render_to_response(template, context_dict, context)

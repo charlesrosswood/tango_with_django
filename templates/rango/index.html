@@ -4,20 +4,26 @@
 
 {% block title %}Homepage{% endblock %}
 
+{% block css_and_js_imports %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
 {% block page_title%}Homepage{% endblock %} 
 
 {% block content %}
-<a href="{% static 'images/thesis.pdf' %}" target="_blank">Thesis download (PDF)<br />
-		<img src="{% static 'images/Thesis_download_link.png' %}" alt="Thesis download" title="Thesis download" width="400"/>
-</a><br />
-<a href="/rango/addpost/">See the current posts</a><br />
-<a href="/rango/adduser/">See the current users</a><br />
-<a href="/rango/about/">About</a><br />
-<a href="/rango/test/">Check out the parallax test page!</a><br />
-<img src="{% static 'images/High_def_stonehenge.jpg' %}" alt="Mutliple exposures of Stonehenge" title="Mutliple exposures of Stonehenge" width="50%"/> 
-<div id="freedomain_link">
-	<a href="http://www.freedomain.co.nr">
-		<img src="{% static 'images/freedomain.gif' %}" alt="Free URLs" title="Free URLs" width="88" height="31"/> 
-	</a>
-</div>
+	<a href="{% static 'images/thesis.pdf' %}" target="_blank">Thesis download (PDF)<br />
+			<img src="{% static 'images/Thesis_download_link.png' %}" alt="Thesis download" title="Thesis download" width="400"/>
+	</a><br />
+	<a href="/rango/addpost/">See the current posts</a><br />
+	<a href="/rango/adduser/">See the current users</a><br />
+	<a href="/rango/about/">About</a><br />
+	<a href="/rango/test/">Check out the parallax test page!</a><br />
+	<img src="{% static 'images/High_def_stonehenge.jpg' %}" alt="Mutliple exposures of Stonehenge" title="Mutliple exposures of Stonehenge" width="50%"/> 
+	<div id="freedomain_link">
+		<a href="http://www.freedomain.co.nr">
+			<img src="{% static 'images/freedomain.gif' %}" alt="Free URLs" title="Free URLs" width="88" height="31"/> 
+		</a>
+	</div>
 {% endblock %}
+
+{% block js %}{% endblock %}

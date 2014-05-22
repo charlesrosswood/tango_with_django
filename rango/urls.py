@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^about/$', views.about, name='about'),
     url(r'^test/$', views.test, name='test'),
     url(r'^addpost/$', views.add_post, name='addpost'),
+    url(r'^wall/$', views.wall, name='wall'),
     url(r'^adduser/$', views.add_user, name='adduser'),
     url(r'^signup/$', views.signup, name='signup'), 
 )

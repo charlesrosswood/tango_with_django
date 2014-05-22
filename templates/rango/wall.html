@@ -1,0 +1,57 @@
+{% extends "rango/base.html" %}
+
+{% block title %}Wall{% endblock %}
+
+{% block css_and_js_imports %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wall.css' %}">
+{% endblock %}
+
+{% block page_title %}Wall{% endblock %}
+
+{% block content %}
+
+<div class='wall_posts'>
+	{% for post in posts %} 
+		<div class='wall_post'>
+			<div class='column_names'>
+				user:
+			</div>
+			<div class='post_content'>
+				{{post.user}}
+			</div>
+			<div class='column_names'>
+				said:
+			</div>
+			<div class='post_content'>
+				{{post.post}}
+			</div>
+			<div class='column_names'>
+				on:
+			</div>
+			<div class='post_content'>
+				{{ post.date_posted.day }} - {{ post.date_posted.month }} - {{ post.date_posted.year }}
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	$(window).resize(function(){
+		setInterval(function() {
+			$('.wall_posts').css({
+		        position:'absolute',
+		        left: ($(window).width() - $('.wall_posts').outerWidth())/2,
+		        top: ($(window).height() - $('.wall_posts').outerHeight())/2,
+		    }).fadeIn(5000);
+		}, 20);
+	    
+
+	});
+
+	// To initially run the function:
+	$(window).resize();
+</script>
+{% endblock %}

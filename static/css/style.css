@@ -194,6 +194,7 @@ a:hover{
     left:50%;
     background-color:#333333;
     background-image:url(../images/arrow.png);
+    z-index:1;
 }
 .button:hover{			/*How the button will act on hovering over it*/
     background-color:#494949;	/*Change the background colour*/
