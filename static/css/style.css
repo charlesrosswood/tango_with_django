@@ -20,7 +20,7 @@ html,body{			/*Global styling for both HTML and BODY elements*/
     padding:0;
 }
 
-.spinner{
+.spinning{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
