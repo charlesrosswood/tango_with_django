@@ -1,0 +1,73 @@
+{% extends "rango/base.html" %}
+
+{% load static %}
+
+{% block title %}Add a csv{% endblock %}
+
+{% block css_and_js_imports %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/addcsv.css' %}">
+{% endblock %}
+
+{% block page_title %}Add a csv{% endblock %} 
+
+{% block content %}
+
+	{% if file_loaded %}
+
+		<div class="addcsv">
+			Thank you for uploading your CSV! <br />
+			<a href='/rango/'> Return home </a> 
+		</div>
+
+	{% else %}
+		<div class="addcsv">
+			<div id="addcsv_title">
+				Upload your CSV for analysis
+			</div>
+
+			<div id="addcsv_form">
+				<form id="addcsv_form" method="post" action="/rango/addcsv/" enctype="multipart/form-data">
+
+					{% csrf_token %}
+					{% for field in csv_form %}
+						<!-- <div class="fieldWrapper"> -->
+						{{ field.errors }}
+						<span class="form_labels">
+							{{ field.label_tag }} 
+						</span>
+						<span class="form_inputs">
+							{{ field }}
+						</span>
+						<br/>
+						<!-- </div> -->
+
+					{% endfor %}
+					<!-- {{ siteuser_form.as_p }} -->
+
+					<input type="submit" name="submit" value="Send" />
+				</form>
+			</div>
+		</div>
+		
+	{% endif %}
+
+{% endblock %}
+
+{% block js %}
+<script>
+	$(window).resize(function(){
+		setInterval(function() {
+			$('.addcsv').css({
+		        position:'absolute',
+		        left: ($(window).width() - $('.addcsv').outerWidth())/2,
+		        top: ($(window).height() - $('.addcsv').outerHeight())/2,
+		    }).fadeIn(5000);
+		}, 20);
+	    
+
+	});
+
+	// To initially run the function:
+	$(window).resize();
+</script>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.db import models
 from django import forms
 
-from rango.models import SiteUser, WallPost, WallPostComment
+from rango.models import SiteUser, WallPost, WallPostComment, CSVfiles
 from django.contrib.auth.models import User
 
 class SiteUserForm(forms.ModelForm):
@@ -35,3 +35,7 @@ class UserForm(forms.ModelForm):
         	'email', 
         	'password'
         	)
+
+class UploadFileForm(forms.ModelForm):
+	class Meta:
+		model = CSVfiles

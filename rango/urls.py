@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^wall/$', views.wall, name='wall'),
     url(r'^adduser/$', views.add_user, name='adduser'),
     url(r'^signup/$', views.signup, name='signup'), 
+    url(r'^addcsv/$', views.add_csv, name='addcsv'), 
 )

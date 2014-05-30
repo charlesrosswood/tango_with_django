@@ -207,7 +207,8 @@ def signup(request):
 
 			registered = True
 
-			return HttpResponseRedirect(reverse('index'))
+			# return render_to_response(template, context_dict, context)
+			# return HttpResponseRedirect(reverse('index'))
 		else:
 			print siteuser_form.errors # display any errors in the form back to the user (and in a console print)
 
@@ -221,6 +222,39 @@ def signup(request):
 	context_dict = {
 		'registered': registered,
 		'siteuser_form':siteuser_form,
+	}
+
+	return render_to_response(template, context_dict, context)
+	# return HttpResponse("Rango says hello world!")
+
+def add_csv(request):
+
+	template = 'rango/add_csv.html'
+	context = RequestContext( request )
+
+	file_uploaded = False
+	# the easy way to populate a generated form from a POST request
+	if request.method == 'POST':
+		csv_form = UploadFileForm(data=request.POST, files=request.FILES)
+
+		if csv_form.is_valid(): # method to check whether all the fields are correct
+			csv_form.save() # save the user object
+			file_uploaded = True
+			# return render_to_response(template, context_dict, context)
+			# return HttpResponseRedirect(reverse('index'))
+		else:
+			print csv_form.errors # display any errors in the form back to the user (and in a console print)
+
+	# else the request was blank so we need to set up a blank user form
+	else:
+		csv_form = UploadFileForm()
+
+	# this gets info about the machine the request from etc....check it out
+
+	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
+	context_dict = {
+		'csv_form':csv_form,
+		'file_uploaded':file_uploaded
 	}
 
 	return render_to_response(template, context_dict, context)

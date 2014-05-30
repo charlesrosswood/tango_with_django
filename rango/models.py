@@ -157,3 +157,6 @@ class WallPostComment(models.Model):
 			success_dict['success'] = False
 
 		return success_dict
+
+class CSVfiles(models.Model):
+	csv_file = models.FileField(upload_to='csv_files/')

@@ -1,0 +1,21 @@
+.wall_post{
+    background-color:#005c99;
+    border-style:solid;
+    border-width:5px;
+    border-color:white;
+}
+
+.column_names{
+    float: left;
+    margin-right: 10px;
+}
+
+.post_content{
+    /*float: right;*/
+    width: 200px;
+}
+
+.wall_posts{
+    /*text-align:center;*/
+    display:none;
+}
