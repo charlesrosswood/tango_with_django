@@ -6,7 +6,7 @@ SETTINGS_DIR = os.path.dirname(__file__) # this gives the directory name for the
 PROJECT_PATH = os.path.abspath( os.path.join(SETTINGS_DIR, os.pardir)) # os.pardir gives the parent directory to this settings file's directory, and abspath gives the absolute path to the directory 
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -16,7 +16,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 running_in_string = "RUNNING IN "
-if bool(os.environ.get('LOCAL_DEV',False)) or (os.environ.get('HOME','') == '/home/charles') or (os.environ.get('USER','') == 'cwod'): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
+if bool(os.environ.get('LOCAL_DEV',False)) or (os.environ.get('HOME','') == '/home/charles') or (os.environ.get('USER','') == 'cwod') or (os.environ.get('USERDOMAIN','').lower() == 'capco'): # i.e. if this is a local development (is LOCAL_DEV isn't hasn't been set as an environment variable, like on Heroku, then False will be returned)
     running_in_string += "LOCAL ENVIRONMENT"
     DATABASES = {
         'default': {

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"temp",
+				"temp_to_add"
+			],
+			[
+				"csv",
+				"csv_list"
+			],
+			[
+				"category",
+				"category"
+			],
+			[
+				"file",
+				"file_uploaded"
+			],
+			[
 				"inline",
 				"inline-block"
 			],
@@ -132,99 +148,35 @@
 	"buffers":
 	[
 		{
-			"file": "tango_with_django_project/settings.py",
+			"file": "rango/urls.py",
 			"settings":
 			{
-				"buffer_size": 7761,
-				"line_ending": "Unix"
+				"buffer_size": 1095,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "rango/views.py",
 			"settings":
 			{
-				"buffer_size": 4842,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "rango/models.py",
-			"settings":
-			{
-				"buffer_size": 5179,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "test.py",
-			"settings":
-			{
-				"buffer_size": 1021,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "rango/urls.py",
-			"settings":
-			{
-				"buffer_size": 878,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/addpost.html",
-			"settings":
-			{
-				"buffer_size": 777,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/adduser.html",
-			"settings":
-			{
-				"buffer_size": 606,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/index.html",
-			"settings":
-			{
-				"buffer_size": 956,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/rango/about.html",
-			"settings":
-			{
-				"buffer_size": 437,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "static/css/style.css",
-			"settings":
-			{
-				"buffer_size": 7376,
+				"buffer_size": 8837,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "static/js/js.js",
+			"file": "templates/rango/d3_stuff.html",
 			"settings":
 			{
-				"buffer_size": 2933,
+				"buffer_size": 3547,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "templates/rango/base.html",
+			"file": "templates/rango/signup.html",
 			"settings":
 			{
-				"buffer_size": 2536,
-				"line_ending": "Unix"
+				"buffer_size": 1532,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -252,6 +204,43 @@
 	},
 	"file_history":
 	[
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/about.html",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/views/request_handlers.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/analysis.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/models.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/basemodels.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_API_handler.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/fitting_handler.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/locations.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/world_data.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/goalanalysis_handler.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/scenario_output_handler.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/root@172.31.2.194/smcore/handlers/scenario_output_handler.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/authoritydata_handler.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/tango_with_django_project/settings.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/views.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/add_csv.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/static/css/addcsv.css",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/financials.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/urls.py",
+		"/C/Users/cwod/Dropbox/temp/smcore_mandates.csv",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/media/csv_files/Export_from_money_dashboard.csv",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/forms.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/signup.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/static/css/signup.css",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/base.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/media/csv_files/Lloyds_CA_2013-10-01_to_2014-01-02.csv",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/static/css/base.css",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/urls.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/add_csv.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/wall.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/static/js/js.js",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/static/css/style.css",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/index.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/adduser.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/addpost.html",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/test.py",
 		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/base.html",
 		"/home/charles/Documents/GitHub/tango_with_django_project/templates/rango/testing_page.html",
 		"/home/charles/Documents/GitHub/tango_with_django_project/static/js/js.js",
@@ -309,6 +298,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fit_this",
+			"filter_sort_transactions",
+			"process_all_transactions",
+			"entity",
+			"entity_id",
+			"build_result_for_tag",
+			"tag_sorted_inputs",
+			"sort_by_tag",
+			"analy",
+			"analyu",
+			"get_schools_data",
+			"get_places_data",
+			"get_mobile_coverages",
+			"get_HPI",
+			"get_boundary",
+			"print \"time",
+			"print \"time taken",
+			"create",
+			"});\n",
+			"PROJECT_PATH",
+			"CSVfiles",
 			"color",
 			"rango index page",
 			"50",
@@ -356,23 +366,23 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "tango_with_django_project/settings.py",
+					"file": "rango/urls.py",
 					"settings":
 					{
-						"buffer_size": 7761,
+						"buffer_size": 1095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								526,
-								526
+								75,
+								75
 							]
 						],
 						"settings":
@@ -392,15 +402,15 @@
 					"file": "rango/views.py",
 					"settings":
 					{
-						"buffer_size": 4842,
+						"buffer_size": 8837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3547,
-								3547
+								1403,
+								1403
 							]
 						],
 						"settings":
@@ -409,106 +419,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1530.0,
+						"translation.y": 223.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "rango/models.py",
+					"file": "templates/rango/d3_stuff.html",
 					"settings":
 					{
-						"buffer_size": 5179,
+						"buffer_size": 3547,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
+								1644,
+								1644
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 680.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "test.py",
+					"file": "templates/rango/signup.html",
 					"settings":
 					{
-						"buffer_size": 1021,
+						"buffer_size": 1532,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								405,
-								405
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "rango/urls.py",
-					"settings":
-					{
-						"buffer_size": 878,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								872,
-								872
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "templates/rango/addpost.html",
-					"settings":
-					{
-						"buffer_size": 777,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								32,
-								32
+								1451,
+								1451
 							]
 						],
 						"settings":
@@ -517,170 +473,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "templates/rango/adduser.html",
-					"settings":
-					{
-						"buffer_size": 606,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								31,
-								31
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "templates/rango/index.html",
-					"settings":
-					{
-						"buffer_size": 956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								956,
-								956
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "templates/rango/about.html",
-					"settings":
-					{
-						"buffer_size": 437,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								417,
-								417
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "static/css/style.css",
-					"settings":
-					{
-						"buffer_size": 7376,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2017,
-								2017
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 945.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "static/js/js.js",
-					"settings":
-					{
-						"buffer_size": 2933,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								255,
-								255
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "templates/rango/base.html",
-					"settings":
-					{
-						"buffer_size": 2536,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2396,
-								2396
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 645.0,
+						"translation.y": 322.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -734,6 +527,62 @@
 		"selected_items":
 		[
 			[
+				"fittingpackage",
+				"GitHub/ScenarioManager/smcore/models/fittingPackage.py"
+			],
+			[
+				"fitting_handler",
+				"GitHub/ScenarioManager/smcore/handlers/fitting_handler.py"
+			],
+			[
+				"transaction_api_handler",
+				"GitHub/ScenarioManager/smcore/handlers/transaction_API_handler.py"
+			],
+			[
+				"basemod",
+				"GitHub/ScenarioManager/smcore/models/basemodels.py"
+			],
+			[
+				"scenario_output_handler",
+				"GitHub/ScenarioManager/smcore/handlers/scenario_output_handler.py"
+			],
+			[
+				"goalanalysis_handler",
+				"GitHub/ScenarioManager/smcore/handlers/goalanalysis_handler.py"
+			],
+			[
+				"request",
+				"GitHub/ScenarioManager/smcore/views/request_handlers.py"
+			],
+			[
+				"finan",
+				"GitHub/ScenarioManager/smcore/models/financials.py"
+			],
+			[
+				"urls",
+				"GitHub/ScenarioManager/smcore/urls.py"
+			],
+			[
+				"addcs",
+				"tango_with_django/static/css/addcsv.css"
+			],
+			[
+				"base.html",
+				"tango_with_django/templates/rango/base.html"
+			],
+			[
+				"base.css",
+				"tango_with_django/static/css/base.css"
+			],
+			[
+				"base",
+				"tango_with_django/templates/rango/base.html"
+			],
+			[
+				"sign",
+				"tango_with_django/static/css/signup.css"
+			],
+			[
 				"js",
 				"static/js/js.js"
 			],
@@ -770,10 +619,6 @@
 				"static/style.css"
 			],
 			[
-				"urls",
-				"rango/urls.py"
-			],
-			[
 				"settings",
 				"mysite/mysite/settings.py"
 			]
@@ -792,6 +637,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 229.0,
+	"side_bar_width": 363.0,
 	"status_bar_visible": true
 }

@@ -6,20 +6,28 @@
 
 {% block css_and_js_imports %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/addcsv.css' %}">
+	<script type="text/javascript" src="{% static 'js/d3.min.js' %}"></script>
+
 {% endblock %}
 
 {% block page_title %}Add a csv{% endblock %} 
 
 {% block content %}
 
-	{% if file_loaded %}
+<!-- 	{% if file_uploaded %}
 
 		<div class="addcsv">
 			Thank you for uploading your CSV! <br />
 			<a href='/rango/'> Return home </a> 
 		</div>
+		<div class="viewchart">
+			Click to view chart
+		</div> -->
 
-	{% else %}
+<!-- 		<div class="chart">
+		</div> -->
+
+	<!-- {% else %} -->
 		<div class="addcsv">
 			<div id="addcsv_title">
 				Upload your CSV for analysis
@@ -49,7 +57,7 @@
 			</div>
 		</div>
 		
-	{% endif %}
+	<!-- {% endif %} -->
 
 {% endblock %}
 
@@ -66,8 +74,28 @@
 	    
 
 	});
-
+	
 	// To initially run the function:
 	$(window).resize();
+
+	// var graphs = {{ graph }};
+	
+	// var data = [4, 7, 18, 19, 34, 39, 3];
+	// var data = {{ graph.untagged }};
+	// var scale_data = d3.scale.linear()
+	// 					.domain( [0, d3.max(data)] )
+	// 					.range( [0, $(window).width() - 20] );
+
+	// $('.viewchart').click(function() {
+	// 	$('.viewchart div').slideToggle(1000,"easeOutExpo");
+	// 	d3.select(".viewchart")
+	// 		.selectAll("div")
+	// 			.data(data)
+	// 		.enter().append("div")
+	// 			.style("width", function(d) { return scale_data(d) + "px"; })
+	// 			.text(function(d) { return d; });
+	// });
+
+	
 </script>
 {% endblock %}
