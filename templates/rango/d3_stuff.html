@@ -25,28 +25,29 @@
 {% block js %}
 
 <script>
-	$(window).resize(function(){
-		setInterval(function() {
-			$('.aGraph').css({
-		        position:'absolute',
-		        left: ($(window).width() - $('.aGraph').outerWidth())/2,
-		        top: ($(window).height() - $('.aGraph').outerHeight())/2,
-		    }).fadeIn(5000);
-		}, 20);
+	// $(window).resize(function(){
+	// 	setInterval(function() {
+	// 		$('.aGraph').css({
+	// 	        position:'absolute',
+	// 	        left: ($(window).width() - $('.aGraph').outerWidth())/2,
+	// 	        top: ($(window).height() - $('.aGraph').outerHeight())/2,
+	// 	    }).fadeIn(5000);
+	// 	}, 20);
 	    
 
-	});
+	// });
 	
-	// To initially run the function:
-	$(window).resize();
+	// // To initially run the function:
+	// $(window).resize();
+
+	var graphs = {{ graph|safe }};
 
 	$('select').on('change', function (e) {
-		$(window).resize();
+		// $(window).resize();
 	    var optionSelected = $("option:selected", this);
 	    var valueSelected = this.value;
 	    console.log(valueSelected);
 
-		var graphs = {{ graph|safe }};
 		console.log(graphs);
 		/* implementation heavily influenced by http://bl.ocks.org/1166403 */
 		
@@ -81,6 +82,8 @@
 
 		// console.log( Unzip(data, 0));
 		// console.log( Unzip(data, 1));
+		
+		// Used originally to delete the old graph
 		d3.select("svg").remove();
 
 		var x = d3.scale.linear().domain([d3.min(Unzip(data, 0)), d3.max(Unzip(data, 0))]).range([0, w]);

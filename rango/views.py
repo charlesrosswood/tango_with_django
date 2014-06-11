@@ -258,7 +258,7 @@ def add_csv(request):
 			analysed_txns = analysis.binned_amounts( csv_file )
 			graph = json.dumps(analysed_txns)
 
-			template = 'rango/d3_stuff.html'
+			template = 'rango/d3_new_stuff.html'
 			
 			context_dict = {
 				'graph': graph,

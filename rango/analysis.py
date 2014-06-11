@@ -19,7 +19,17 @@ from rango.models import CSVfiles
 # from rango.models import SiteUserForm, WallPostForm
 # from rango.forms import *
 
+def binning_data( dataset, num_of_bins ):
+	"""
+	This function will take an x-y dataset and returned the binned version
+	of the dataset, e.g. 
+	an array of [ [x-max value of bin, number of occurances in bin],... ]
+	"""
+	array = []
 
+	
+
+	return array
 
 def binned_amounts( csvfile ):
 	"""
