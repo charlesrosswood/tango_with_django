@@ -19,17 +19,45 @@ from rango.models import CSVfiles
 # from rango.models import SiteUserForm, WallPostForm
 # from rango.forms import *
 
-def binning_data( dataset, num_of_bins ):
+def binning_data( data, num_of_bins ):
 	"""
 	This function will take an x-y dataset and returned the binned version
 	of the dataset, e.g. 
 	an array of [ [x-max value of bin, number of occurances in bin],... ]
 	"""
-	array = []
+	binned_data = []
 
-	
+	min_data = min(data)
+	max_data = max(data)
+	data_range = abs(max_data - min_data)
+	bin_size = data_range / float(num_of_bins)
 
-	return array
+	bin_mins = [min_data]
+	bin_maxs = [bin_mins[-1] + bin_size]
+
+	while bin_maxs[-1] < max_data:
+		bin_mins.append( bin_maxs[-1] )
+		bin_maxs.append( bin_mins[-1] + bin_size )
+
+	frequencies = [0] * len(bin_maxs)
+	xy_dataset = []
+
+	for datum in data:
+		success = False
+		for i in xrange(len(bin_maxs)):
+			if (datum >= bin_mins[i]) and (datum  < bin_maxs[i]):
+				frequencies[i] += 1 
+				success = True
+			elif (datum >= bin_mins[-1]) and (datum  <= bin_maxs[-1]):
+				frequencies[-1] += 1
+				success = True
+		if success == False:
+			print "Failed to bin data: ", datum
+
+	for i in xrange(len(bin_maxs)):
+		xy_dataset.append( [ bin_maxs[i], frequencies[i] ] )
+
+	return xy_dataset
 
 def binned_amounts( csvfile ):
 	"""
@@ -66,38 +94,12 @@ def binned_amounts( csvfile ):
 	return_dict = {}
 
 	for category, data in data_dict.iteritems():
-		binned_data = []
+		return_dict.update( {category:{}} )
 
-		min_data = min(data)
-		max_data = max(data)
-		data_range = abs(max_data - min_data)
-		bin_size = data_range / 30.0
-
-		# bin_min = min_data
-		# bin_max = bin_min + bin_size
-
-		bin_mins = [min_data]
-		bin_maxs = [bin_mins[-1] + bin_size]
-
-		while bin_maxs[-1] < max_data:
-			bin_mins.append( bin_maxs[-1] )
-			bin_maxs.append( bin_mins[-1] + bin_size )
-
-		frequencies = [0] * len(bin_maxs)
-		xy_dataset = []
-
-		for datum in data:
-			success = False
-			for i in xrange(len(bin_maxs)):
-				if (datum >= bin_mins[i]) and (datum  < bin_maxs[i]):
-					frequencies[i] += 1 
-					success = True
-			if success == False:
-				print "Failed to bin data: ", datum
-
-		for i in xrange(len(bin_maxs)):
-			xy_dataset.append( [ bin_maxs[i], frequencies[i] ] )
-
-		return_dict.update( {category:xy_dataset} )
+		for i in xrange(10):
+			num_of_bins = ((i+1)*3)
+			xy_dataset = binning_data( data, num_of_bins )
+			dict_to_add = {i:xy_dataset}
+			return_dict[ category ].update( dict_to_add )
 
 	return return_dict

@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"bin",
+				"binRange"
+			],
+			[
+				"retrn",
+				"return_dict"
+			],
+			[
+				"retur",
+				"return_dict"
+			],
+			[
+				"re",
+				"return_dict"
+			],
+			[
+				"bin_",
+				"bin_maxs"
+			],
+			[
+				"dra",
+				"drawGraph"
+			],
+			[
+				"upDate",
+				"updateGraph"
+			],
+			[
+				"num",
+				"num_of_bins"
+			],
+			[
+				"x_range",
+				"x_range"
+			],
+			[
+				"x_a",
+				"x_axis_max"
+			],
+			[
+				"x_axis",
+				"x_axis_min"
+			],
+			[
+				"x_axi",
+				"x_axis_min"
+			],
+			[
+				"data",
+				"data_x_range"
+			],
+			[
+				"xMax",
+				"xMax"
+			],
+			[
+				"get",
+				"getCategoryValue"
+			],
+			[
+				"up",
+				"updateGraph"
+			],
+			[
+				"ths",
+				"thisthin"
+			],
+			[
+				"default",
+				"defaultSlider"
+			],
+			[
+				"rang",
+				"rangeselection"
+			],
+			[
 				"y",
 				"y"
 			],
@@ -22,14 +98,6 @@
 			[
 				"add",
 				"addcsv"
-			],
-			[
-				"bin",
-				"bin_maxs"
-			],
-			[
-				"bin_",
-				"bin_size"
 			],
 			[
 				"bin_ma",
@@ -128,10 +196,6 @@
 				"comment"
 			],
 			[
-				"re",
-				"registered_users"
-			],
-			[
 				"run",
 				"running_in_string"
 			],
@@ -219,7 +283,7 @@
 			"file": "rango/analysis.py",
 			"settings":
 			{
-				"buffer_size": 2870,
+				"buffer_size": 3071,
 				"line_ending": "Windows"
 			}
 		},
@@ -232,14 +296,6 @@
 			}
 		},
 		{
-			"file": "static/css/d3stuff.css",
-			"settings":
-			{
-				"buffer_size": 340,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "tango_with_django_project/settings.py",
 			"settings":
 			{
@@ -248,18 +304,18 @@
 			}
 		},
 		{
-			"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
+			"file": "templates/rango/d3_new_stuff.html",
 			"settings":
 			{
-				"buffer_size": 21712,
+				"buffer_size": 9810,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "templates/rango/d3_new_stuff.html",
+			"file": "static/css/d3stuff.css",
 			"settings":
 			{
-				"buffer_size": 7443,
+				"buffer_size": 407,
 				"line_ending": "Windows"
 			}
 		}
@@ -288,6 +344,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/apiModel.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/api_functions/api.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/C_UDxs/build.sh",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/SQL_queries.sql",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/Transaction_differences_query.sql",
@@ -304,7 +363,6 @@
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/basemodels.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_API_handler.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/fitting_handler.py",
-		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/locations.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/world_data.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/goalanalysis_handler.py",
@@ -386,6 +444,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"log",
 			"font",
 			"fit_this",
 			"filter_sort_transactions",
@@ -455,7 +514,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -518,15 +577,15 @@
 					"file": "rango/analysis.py",
 					"settings":
 					{
-						"buffer_size": 2870,
+						"buffer_size": 3071,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								823,
-								823
+								2784,
+								2784
 							]
 						],
 						"settings":
@@ -535,7 +594,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 121.0,
+						"translation.y": 638.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -552,8 +611,8 @@
 						"selection":
 						[
 							[
-								524,
-								524
+								671,
+								1051
 							]
 						],
 						"settings":
@@ -562,41 +621,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 966.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "static/css/d3stuff.css",
-					"settings":
-					{
-						"buffer_size": 340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								60,
-								60
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "tango_with_django_project/settings.py",
 					"settings":
 					{
@@ -624,46 +655,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
-					"settings":
-					{
-						"buffer_size": 21712,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19341,
-								19341
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7666.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "templates/rango/d3_new_stuff.html",
 					"settings":
 					{
-						"buffer_size": 7443,
+						"buffer_size": 9810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6158,
-								6158
+								9769,
+								9769
 							]
 						],
 						"settings":
@@ -673,7 +677,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1344.0,
+						"translation.y": 3523.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "static/css/d3stuff.css",
+					"settings":
+					{
+						"buffer_size": 407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -726,6 +758,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"apimod",
+				"GitHub/ScenarioManager/smcore/models/apiModel.py"
+			],
+			[
+				"api",
+				"GitHub/ScenarioManager/smcore/api_functions/api.py"
+			],
 			[
 				"d3_new",
 				"tango_with_django/templates/rango/d3_new_stuff.html"

@@ -1,6 +1,6 @@
 .aGraph{
     /*text-align:center;*/
-    /*display:none;*/
+    display:none;
 }
 
 path {
@@ -28,4 +28,12 @@ path {
 .y.axis line, .y.axis path {
   fill: none;
   stroke: #000;
+}
+
+#x_range {
+  margin-top: 20px;
+}
+
+#bin_range {
+  margin-top: 20px;
 }

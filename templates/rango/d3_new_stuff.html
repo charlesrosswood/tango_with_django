@@ -6,16 +6,17 @@
 
 {% block css_and_js_imports %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/d3stuff.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.nouislider.css' %}">
+
     <script type="text/javascript" src="{% static 'js/d3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nouislider.min.js' %}"></script>
 {% endblock %}
 
 {% block page_title %}Visualise data{% endblock %} 
 
 {% block content %}
 
-<div id = "range">
-    <input type="range" min="0" max="1" step="0.02" value="0.05">
-</div>
+<div id="graph" class="aGraph" style="position:relative;top:0px;left:0;">
 
 <select name="category_choice" id="category_choice">
     {% for category in graph_types %}
@@ -27,114 +28,103 @@
     {% endfor %}
 </select>
 
-<!-- <div id="graph" class="aGraph" style="position:relative;top:0px;left:0;"></div> -->
+<div id="bin_range"></div>
+
+<div id="x_range"></div>
+
+
+</div>
 {% endblock %}
 
 {% block js %}
 
 <script>
-
     // define dimensions of graph
     var m = [80, 80, 80, 80]; // margins
     var w = 1000 - m[1] - m[3]; // width
     var h = 400 - m[0] - m[2]; // height
 
-    var graphs = {{ graph|safe }};
+    $(window).resize(function(){
+     setInterval(function() {
+         $('.aGraph').css({
+             position:'absolute',
+             left: ($(window).width() - $('.aGraph').outerWidth())/2,
+             top: ($(window).height() - $('.aGraph').outerHeight())/2,
+         }).fadeIn(5000);
+     }, 20);
+        
 
-    var optionSelected = $("option:selected"); // Used for setting the default on page load
-    var valueSelected = optionSelected[0].value;
-
-    var data = graphs[valueSelected]; // Actually exracting the dataset we want
-
-    console.log(graphs);
-    console.log(valueSelected);
-    console.log(data);
-
-    var graph = d3.select("body").append("svg")
-          .attr("width", w + m[1] + m[3])
-          .attr("height", h + m[0] + m[2])
-        .append("g")
-          .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+    });
     
+    // To initially run the function:
+    $(window).resize();
 
-    var x = d3.scale.linear().domain([d3.min(Unzip(data, 0)), d3.max(Unzip(data, 0))]).range([0, w]);
-    // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-    // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-    var y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
+    // Max a nice slider for x range
+    $("#x_range").noUiSlider({
+        start: [0.00, 1.00],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 1.0
+        }
+    });
+    $("#x_range").width(w);
+    $("#x_range").css('marginLeft', m[0] + 'px');
 
-    // create yAxis
-    var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
-    // create left yAxis
-    var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+    // Max a nice slider for bin range
+    $("#bin_range").noUiSlider({
+        start: 5,
+        step: 1,
+        range: {
+            'min': 0,
+            'max': 9
+        }
+    });
+    $("#bin_range").width(w);
+    $("#bin_range").css('marginLeft', m[0] + 'px');
+
+
+
+    var graphs = {{ graph|safe }}; // Django markup to get the data
+
+    var categoryChoice = getCategoryValue();
+    var binRange = parseInt($("#bin_range").val());
+    var xMin = parseFloat($("#x_range").val()[0]);
+    var xMax = parseFloat($("#x_range").val()[1]);
     
-    graph.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + h + ")")
-          .call(xAxis);
+    drawGraph(categoryChoice, binRange, xMin, xMax); // this draws the graph on page load
 
-    graph.append("g")
-          .attr("class", "y axis")
-          // .attr("transform", "translate(-25,0)")
-          .call(yAxisLeft);
+    // A jQuery event to update the graph on changing the bin size slider
+    $("#bin_range").on('change', function() {
+        categoryChoice = getCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
 
-    // Add the x-axis labels    
-    graph.append("text")
-        .attr("class", "x label")
-        .attr("text-anchor", "end")
-        .attr("x", w-20)
-        .attr("y", h+40)
-        .text("Amount spent £");
-
-    // Add the y-axis to the left
-    graph.append("text")
-        .attr("class", "y label")
-        .attr("text-anchor", "end")
-        .attr("y", -70)
-        .attr("dy", ".75em")
-        .attr("transform", "rotate(-90)")
-        .text("Frequency of spend");
-
-   
-   
-    // create a line function that can convert data[] into x and y points
-    var line = d3.svg.line()
-        // assign the X function to plot our line as we wish
-        .x(function(d) { 
-            // return the X coordinate where we want to plot this datapoint
-            return x(d[0]); 
-        })
-        .y(function(d) { 
-            // return the Y coordinate where we want to plot this datapoint
-            return y(d[1]); 
-        })
-        .interpolate("basis");
+        updateGraph(categoryChoice, binRange, xMin, xMax);
+    });
     
-    graph.append("path")
-        .attr("d", line(data));
-    // $('select').on('change', function (e) {
-        // $(window).resize();
-    /* implementation heavily influenced by http://bl.ocks.org/1166403 */
-    
-    
-    // create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-    // var y_data = [3, 6, 2, 7, 5, 2, 0, 3, 8, 9, 2, 5, 9, 3, 6, 3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 2, 7];
-    // var x_data = [1,2,3,4,5,6,17,23,30,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-    // var data = [ [1,3], [2,6], [3,2], [4,7], [5,4], [6,6] ];
-    // var x_min = Math.min.apply(null, x_data),
-    //     x_max = Math.max.apply(null, x_data),
-    //     y_min = Math.min.apply(null, y_data),
-    //     y_max = Math.max.apply(null, y_data);
+    $("#x_range").on('change', function() {
+        categoryChoice = getCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
 
-    // X scale will fit all values from data[] within pixels 0-w
-    // var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
-    // var x = d3.scale.linear().domain([x_min, x_max]).range([0, w]);
+        updateGraph(categoryChoice, binRange, xMin, xMax);
+    });
 
-    // console.log( Unzip(data, 0));
-    // console.log( Unzip(data, 1));
-    
-    // Used originally to delete the old graph
-    // d3.select("svg").remove();
+    // a jQuery event to update the graph on changing the category from the drop down
+    $('#category_choice').on('change', function (e) {
+        categoryChoice = getCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
 
+        updateGraph(categoryChoice, binRange, xMin, xMax);
+    });
+
+    // A function to perform Python-style unzipping
+    // ============================================
     function Unzip(array, index_to_unzip) {
         var unzipped_array = [];    
 
@@ -144,27 +134,120 @@
 
         return unzipped_array;
     };
+
+    // A function to get the value of the slider
+    // =========================================
+    function getBinRange() {
+        return parseFloat($("#binRange").val());
+    };
+    
+    // A function to get the value of the slider
+    // =========================================
+    function getxMin() {
+        return parseFloat($("#xMin").val());
+    };
+    
+    // A function to get the value of the slider
+    // =========================================
+    function getxMax() {
+        return parseFloat($("#xMax").val());
+    };
+
+    // A function to get the value of the category drop down menu
+    // ==========================================================
+    function getCategoryValue() {
+        return $('#category_choice').val();
+    }
+
+    // A function to draw the graph first time around
+    // =========================================
+    function drawGraph(categoryChoice, binRange, xMin, xMax){
+
+        console.log(categoryChoice);
+
+        var data = graphs[categoryChoice][binRange]; // Actually exracting the dataset we want
+        var data_x_min = d3.min(Unzip(data, 0));
+        var data_x_max = d3.max(Unzip(data, 0));
+        var data_x_range = Math.abs(data_x_max-data_x_min); 
+
+        var x_axis_min = data_x_min + (xMin*data_x_range);
+        var x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
+
+        var graph = d3.select(".aGraph").append("svg")
+              .attr("width", w + m[1] + m[3])
+              .attr("height", h + m[0] + m[2])
+            .append("g")
+              .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
         
-            // automatically determining max range can work something like this
-            // var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
 
+        var x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
+        // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+        // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
+        var y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
 
+        // create yAxis
+        var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+        // create left yAxis
+        var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+        
+        graph.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + h + ")")
+              .call(xAxis);
 
-            // Add an SVG element with the desired dimensions and margin.
+        graph.append("g")
+              .attr("class", "y axis")
+              // .attr("transform", "translate(-25,0)")
+              .call(yAxisLeft);
 
-            // Add the x-axis.
+        // Add the x-axis labels    
+        graph.append("text")
+            .attr("class", "x label")
+            .attr("text-anchor", "end")
+            .attr("x", w-20)
+            .attr("y", h+40)
+            .text("Amount spent £");
 
-                // Add the line by appending an svg:path element with the data line we created above
-            // do this AFTER the axes above so that the line is above the tick-lines
-        // });
-
-    $('#category_choice').on('change', function (e) { // Used for dynamic changes, when you choose a new option in the drop down menu
-        optionSelected = $("option:selected", this);
-        valueSelected = optionSelected[0].value;
-
-        var data = graphs[valueSelected];
-
+        // Add the y-axis to the left
+        graph.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "end")
+            .attr("y", -70)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text("Frequency of spend");
+        // create a line function that can convert data[] into x and y points
         var line = d3.svg.line()
+            // assign the X function to plot our line as we wish
+            .x(function(d) { 
+                // return the X coordinate where we want to plot this datapoint
+                return x(d[0]); 
+            })
+            .y(function(d) { 
+                // return the Y coordinate where we want to plot this datapoint
+                return y(d[1]); 
+            })
+            .interpolate("basis");
+
+        graph.append("path")
+            .attr("d", line(data));
+    };
+
+    // A function to update the graph with a transition
+    // ================================================
+    function updateGraph(categoryChoice, binRange, xMin, xMax) {
+
+        console.log(categoryChoice);
+        
+        data = graphs[categoryChoice][binRange];
+        data_x_min = d3.min(Unzip(data, 0));
+        data_x_max = d3.max(Unzip(data, 0));
+        data_x_range = Math.abs(data_x_max-data_x_min); 
+
+        x_axis_min = data_x_min + (xMin*data_x_range);
+        x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
+        
+        line = d3.svg.line()
             // assign the X function to plot our line as we wish
             .x(function(d) { 
                 // return the X coordinate where we want to plot this datapoint
@@ -176,21 +259,20 @@
             })
         .interpolate("basis");
 
-        console.log(valueSelected);
         
-        var x = d3.scale.linear().domain([d3.min(Unzip(data, 0)), d3.max(Unzip(data, 0))]).range([0, w]);
+        x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
         // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
         // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-        var y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
+        y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
         
             // create yAxis
-        var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+        xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
         // create left yAxis
-        var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+        yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
         // x.domain(d3.extent(data_new, function(d) { return x(d[0]); }));
         // y.domain([0, d3.max(data_new, function(d) { return x(d[1]); })]);
 
-        var graph = d3.select("body").transition();
+        graph = d3.select(".aGraph").transition();
 
         graph.select(".x.axis")
             // .duration(750)
@@ -203,9 +285,8 @@
             // .duration(750)
         graph.selectAll("path")
             .attr("d", line(data));
+    };
 
-        console.log(data);
-        });
 
 </script>
 
