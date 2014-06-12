@@ -206,7 +206,7 @@
             .attr("text-anchor", "end")
             .attr("x", w-20)
             .attr("y", h+40)
-            .text("Amount spent £");
+            .text("£/day");
 
         // Add the y-axis to the left
         graph.append("text")
@@ -215,7 +215,7 @@
             .attr("y", -70)
             .attr("dy", ".75em")
             .attr("transform", "rotate(-90)")
-            .text("Frequency of spend");
+            .text("Frequency");
         // create a line function that can convert data[] into x and y points
         var line = d3.svg.line()
             // assign the X function to plot our line as we wish

@@ -11,6 +11,7 @@ setup_environ(settings)
 # from django.http import HttpResponseRedirect
 
 import datetime
+from dateutil.relativedelta import *
 import csv
 import json
 
@@ -59,7 +60,52 @@ def binning_data( data, num_of_bins ):
 
 	return xy_dataset
 
-def binned_amounts( csvfile ):
+def groupingTransactions( x, y, minimum_x_constraint ):
+	"""
+	This function will group y_data values together based on some condition on 
+	how close x_values are allowed to get.
+	"""
+	if len(x) != len(y):
+		print "ERROR: datasets of different lengths"
+		return [], []
+
+	if len(y) > 1:
+
+		new_x = []
+		new_y = []
+
+		summed_transaction_amounts = 0 # adds the transaction amount for transactions on one day
+		for i in xrange(1,len(x)):
+
+			if i == 1: # if it's the first transaction in the list...
+				current_date = x[i] # ...then set the running date to that date
+				summed_transaction_amounts += y[i]
+			elif (x[i] < (current_date+minimum_x_constraint)) and (i != len(x)-1): # else if the transaction is part of the same transaction (e.g. it happened on the same date)...
+				summed_transaction_amounts += y[i] # ...add the transaction amount to the amount to add
+				# continue # ...do nothing
+			elif (x[i] < (current_date+minimum_x_constraint)) and (i == len(x)-1): # else if this is the last transaction in the list...
+				# current_date = x[i] # ...make the date to add the current date
+				summed_transaction_amounts += y[i] # ...add the transaction amount on and append the data point
+				new_x.append( current_date )
+				new_y.append( summed_transaction_amounts )
+			elif i == len(x)-1:
+				new_x.append( current_date )
+				new_y.append( summed_transaction_amounts )
+
+				new_x.append( x[i] )
+				new_y.append( y[i] )
+			else: # else the transaction is neither the first nor last in the list, and isn't on the same day as the previous one
+				new_x.append( current_date ) # add the previous defined date
+				new_y.append( summed_transaction_amounts ) # add the previous total transactions
+				current_date = x[i]
+				summed_transaction_amounts = y[i]
+	
+	else:
+		return [], []
+	
+	return new_x, new_y
+
+def read_csv( csvfile ):
 	"""
 	This function does no analysis, it just groups transactions that occur
 	in a particular category together, it does not generate a histogram.
@@ -68,6 +114,41 @@ def binned_amounts( csvfile ):
 	csv_list = csvfile.csv_file.read().split('\n')
 
 	data_dict = {}
+	data_dict[ 'totals' ] = {'amount':[], 'date':[]}
+	data_dict[ 'in' ] = {'amount':[], 'date':[]}
+	data_dict[ 'out' ] = {'amount':[], 'date':[]}
+
+	title_row = csv_list[0].split('"')
+	new_title_row = []
+	for i in xrange(len(title_row)):
+		if i%2 == 0: # then even element
+			temp_to_add = title_row[i].split(',')
+			temp_to_add = [element.replace('\r','') for element in temp_to_add if (element.strip() != '' and element.strip() != ',')]
+			new_title_row.extend( temp_to_add )
+		else: # then odd element
+			new_title_row.extend( [str(title_row[i]).replace('\r','')] )
+
+	try:
+		group_column = new_title_row.index("Group")
+	except:
+		group_column = new_title_row.index("transactionTag")
+	# group_column = new_title_row.index("Tag")
+	try:
+		tag_column = new_title_row.index("Tag")
+	except:
+		tag_column = 0 
+
+	try:
+		amount_column = new_title_row.index("Amount")
+	except:
+		amount_column = new_title_row.index("transactionAmount")
+
+	try:		
+		date_column = new_title_row.index("Date")
+	except:
+		date_column = new_title_row.index("transactionDateTime")
+
+	print 'date_column', date_column
 
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
@@ -75,31 +156,76 @@ def binned_amounts( csvfile ):
 			new_row = []
 			for i in xrange(len(row)):
 				if i%2 == 0: # then even element
-					temp_to_add = row[i].split(',')
-					temp_to_add = [element for element in temp_to_add if (element.strip() != '' and element.strip() != ',')]
+					temp_to_add = row[i][1:-1].split(',')
+
+					temp_to_add = [element.replace('\r','') for element in temp_to_add if ( element.strip() != ',' and element.strip() != '')]
 					new_row.extend( temp_to_add )
 				else: # then odd element
-					new_row.extend( [str(row[i])] )
+					new_row.extend( [str(row[i]).replace('\r','')] )
 
-			category = new_row[4].lower()
+			category = new_row[group_column].lower()
+
+			try:
+				date = datetime.datetime.strptime(new_row[date_column], '%d/%m/%Y')
+			except:
+				elements_of_date = new_row[date_column].split('-')
+				date_stringy = str(elements_of_date[0])
+				for element_of_date in elements_of_date[1:]:
+					if len(element_of_date) < 2:
+						element_of_date = '0' + str(element_of_date)
+					date_stringy += '-' + str(element_of_date)
+
+				date = datetime.datetime.strptime(date_stringy, '%Y-%m-%d')
+
+			amount = float(new_row[amount_column])
+
 			if category not in data_dict.keys():
-				data_dict.update( {category:[float(new_row[3])]} )
-				data_dict.update( {'totals':[float(new_row[3])]} )
+				data_dict.update( {category:{'amount':[], 'date':[]}})
+
+			data_dict[category][ 'amount' ].append( amount )
+			data_dict[category][ 'date' ].append( date )
+
+			data_dict[ 'totals' ][ 'amount' ].append( amount )
+			data_dict[ 'totals' ][ 'date' ].append( date )
+
+			if amount < 0.0 :
+				data_dict[ 'out' ][ 'amount' ].append( amount )
+				data_dict[ 'out' ][ 'date' ].append( date )
 			else:
-				data_dict[ category ].append(float(new_row[3]))
-				data_dict[ 'totals' ].append(float(new_row[3]))
+				data_dict[ 'in' ][ 'amount' ].append( amount )
+				data_dict[ 'in' ][ 'date' ].append( date )
 
 	csvfile.csv_file.close()
 
 	return_dict = {}
 
-	for category, data in data_dict.iteritems():
-		return_dict.update( {category:{}} )
+	today = datetime.datetime.now()
 
-		for i in xrange(10):
-			num_of_bins = ((i+1)*3)
-			xy_dataset = binning_data( data, num_of_bins )
-			dict_to_add = {i:xy_dataset}
-			return_dict[ category ].update( dict_to_add )
+	for category, data in data_dict.iteritems():
+
+		days_since_now = []
+		for i in xrange(len(data[ 'date' ])):
+			days_since_now.append( abs((today - data[ 'date' ][i]).total_seconds()/86400.0) )
+
+		new_diffs, grouped_spends = groupingTransactions( days_since_now, data_dict[category][ 'amount' ], 1 )
+
+		if new_diffs != [] and grouped_spends != []:
+			inserting_zero_element = [0.0] + new_diffs
+			import json
+			print category
+
+			spends_per_day = []
+			for i in xrange(len(grouped_spends)):
+				spends_per_day.append( grouped_spends[i] / (inserting_zero_element[i+1]-inserting_zero_element[i]) )
+
+			print json.dumps( spends_per_day, indent=3 )
+
+			return_dict.update( {category:{}} )
+
+			for i in xrange(10):
+				num_of_bins = ((i+1)*3)
+				xy_dataset = binning_data( spends_per_day, num_of_bins )
+				dict_to_add = {i:xy_dataset}
+				return_dict[ category ].update( dict_to_add )
 
 	return return_dict

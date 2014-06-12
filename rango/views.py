@@ -255,7 +255,7 @@ def add_csv(request):
 			csv_file = csv_form.save() # save the user object
 			file_uploaded = True
 			# print 'csv_file.csv_file is', csv_file.csv_file
-			analysed_txns = analysis.binned_amounts( csv_file )
+			analysed_txns = analysis.read_csv( csv_file )
 			graph = json.dumps(analysed_txns)
 
 			template = 'rango/d3_new_stuff.html'

@@ -4,6 +4,94 @@
 		"selected_items":
 		[
 			[
+				"new",
+				"new_row"
+			],
+			[
+				"dae",
+				"date_column"
+			],
+			[
+				"dat",
+				"date_column"
+			],
+			[
+				"ee",
+				"elements_of_date"
+			],
+			[
+				"date",
+				"date_stringy"
+			],
+			[
+				"elem",
+				"elements_of_date"
+			],
+			[
+				"tota",
+				"total"
+			],
+			[
+				"days",
+				"days_since_now"
+			],
+			[
+				"grou",
+				"grouped_spends"
+			],
+			[
+				"runnin",
+				"running_total2"
+			],
+			[
+				"array",
+				"array1"
+			],
+			[
+				"running",
+				"running_total1"
+			],
+			[
+				"runni",
+				"running_total1"
+			],
+			[
+				"arra",
+				"array1"
+			],
+			[
+				"runn",
+				"running_total2"
+			],
+			[
+				"spend",
+				"spend_per_day"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"in",
+				"in"
+			],
+			[
+				"data",
+				"data_dict"
+			],
+			[
+				"current",
+				"current_x"
+			],
+			[
+				"curren",
+				"current_x"
+			],
+			[
+				"mini",
+				"minimum_x_constraint"
+			],
+			[
 				"bin",
 				"binRange"
 			],
@@ -50,10 +138,6 @@
 			[
 				"x_axi",
 				"x_axis_min"
-			],
-			[
-				"data",
-				"data_x_range"
 			],
 			[
 				"xMax",
@@ -180,10 +264,6 @@
 				"post_dicts"
 			],
 			[
-				"date",
-				"date_posted"
-			],
-			[
 				"WallP",
 				"WallPost"
 			],
@@ -214,10 +294,6 @@
 			[
 				"user",
 				"user"
-			],
-			[
-				"in",
-				"identical_first_last_names"
 			],
 			[
 				"iden",
@@ -275,7 +351,7 @@
 			"file": "rango/views.py",
 			"settings":
 			{
-				"buffer_size": 9001,
+				"buffer_size": 8995,
 				"line_ending": "Windows"
 			}
 		},
@@ -283,15 +359,7 @@
 			"file": "rango/analysis.py",
 			"settings":
 			{
-				"buffer_size": 3071,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/rango/d3_stuff.html",
-			"settings":
-			{
-				"buffer_size": 5107,
+				"buffer_size": 7449,
 				"line_ending": "Windows"
 			}
 		},
@@ -307,7 +375,7 @@
 			"file": "templates/rango/d3_new_stuff.html",
 			"settings":
 			{
-				"buffer_size": 9810,
+				"buffer_size": 9792,
 				"line_ending": "Windows"
 			}
 		},
@@ -316,6 +384,14 @@
 			"settings":
 			{
 				"buffer_size": 407,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
+			"settings":
+			{
+				"buffer_size": 10817,
 				"line_ending": "Windows"
 			}
 		}
@@ -344,6 +420,13 @@
 	},
 	"file_history":
 	[
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/MyStatements/AA_data.csv",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/Training/nothing.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/d3_stuff.html",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/MyStatements/Export_from_money_dashboard.csv",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/C_UDxs/group_transactions.C",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/group_transactions.C",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/apiModel.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/api_functions/api.py",
@@ -444,6 +527,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"print",
+			"groupingTransactions",
+			"print",
+			"repayment",
 			"log",
 			"font",
 			"fit_this",
@@ -514,7 +601,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -550,15 +637,15 @@
 					"file": "rango/views.py",
 					"settings":
 					{
-						"buffer_size": 9001,
+						"buffer_size": 8995,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8154,
-								8154
+								8473,
+								8473
 							]
 						],
 						"settings":
@@ -567,7 +654,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3234.0,
+						"translation.y": 3032.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -577,15 +664,15 @@
 					"file": "rango/analysis.py",
 					"settings":
 					{
-						"buffer_size": 3071,
+						"buffer_size": 7449,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2784,
-								2784
+								4844,
+								4844
 							]
 						],
 						"settings":
@@ -594,40 +681,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 638.0,
+						"translation.y": 1635.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "templates/rango/d3_stuff.html",
-					"settings":
-					{
-						"buffer_size": 5107,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								671,
-								1051
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "tango_with_django_project/settings.py",
 					"settings":
 					{
@@ -649,25 +709,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "templates/rango/d3_new_stuff.html",
 					"settings":
 					{
-						"buffer_size": 9810,
+						"buffer_size": 9792,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9769,
-								9769
+								7027,
+								7027
 							]
 						],
 						"settings":
@@ -677,13 +737,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3523.0,
+						"translation.y": 2679.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "static/css/d3stuff.css",
 					"settings":
 					{
@@ -706,6 +766,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
+					"settings":
+					{
+						"buffer_size": 10817,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7037,
+								8506
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2340.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -746,7 +833,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 90.0
+		"height": 100.0
 	},
 	"replace":
 	{
@@ -758,6 +845,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"trans",
+				"GitHub/ScenarioManager/smcore/handlers/transaction_handler.py"
+			],
+			[
+				"group_t",
+				"GitHub/ScenarioManager/db/C_UDxs/group_transactions.C"
+			],
+			[
+				"groupt",
+				"GitHub/ScenarioManager/db/group_transactions.C"
+			],
 			[
 				"apimod",
 				"GitHub/ScenarioManager/smcore/models/apiModel.py"
