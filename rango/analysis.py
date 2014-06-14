@@ -156,7 +156,7 @@ def read_csv( csvfile ):
 			new_row = []
 			for i in xrange(len(row)):
 				if i%2 == 0: # then even element
-					temp_to_add = row[i][1:-1].split(',')
+					temp_to_add = row[i].split(',')
 
 					temp_to_add = [element.replace('\r','') for element in temp_to_add if ( element.strip() != ',' and element.strip() != '')]
 					new_row.extend( temp_to_add )
