@@ -32,8 +32,13 @@ path {
 
 #x_range {
   margin-top: 20px;
+  z-index: 0;
 }
 
 #bin_range {
   margin-top: 20px;
+}
+
+.some_label {
+  text-align: center;
 }

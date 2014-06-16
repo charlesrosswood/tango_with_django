@@ -16,22 +16,47 @@
 
 {% block content %}
 
+
 <div id="graph" class="aGraph" style="position:relative;top:0px;left:0;">
 
-<select name="category_choice" id="category_choice">
-    {% for category in graph_types %}
-        {% if category == "totals" %}
-            <option value="{{ category }}" selected> {{ category }} </option>
-        {% else %}
-            <option value="{{ category }}"> {{ category }} </option>
-        {% endif %}
-    {% endfor %}
-</select>
+    <select name="tags_or_categories" id="tags_or_categories">
+        {% for category in graph_types %}
+            {% if category == "totals" %}
+                <option value="{{ category }}" selected> {{ category }} </option>
+            {% else %}
+                <option value="{{ category }}"> {{ category }} </option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    
+    <select name="dataset_choice" id="dataset_choice">
+        {% for category in dataset_options %}
+            {% if category == "frequency" %}
+                <option value="{{ category }}" selected> {{ category }} </option>
+            {% else %}
+                <option value="{{ category }}"> {{ category }} </option>
+            {% endif %}
+        {% endfor %}
+    </select>
 
-<div id="bin_range"></div>
+    <div class="some_label"> 
+        Number of bins
+        <div id="bin_range"></div>
+    </div>
 
-<div id="x_range"></div>
+    <br>
 
+    <div class="some_label">
+        x-axis range
+        <div id="x_range"></div>
+    </div>
+
+    <br>
+
+    <div class="some_label">
+        y-axis range
+        <div id="y_range"></div>
+    </div>
 
 </div>
 {% endblock %}
@@ -73,54 +98,115 @@
 
     // Max a nice slider for bin range
     $("#bin_range").noUiSlider({
-        start: 5,
+        start: 9,
         step: 1,
         range: {
             'min': 0,
-            'max': 9
+            'max': 19
         }
     });
     $("#bin_range").width(w);
     $("#bin_range").css('marginLeft', m[0] + 'px');
 
 
+    // Max a nice slider for x range
+    $("#y_range").noUiSlider({
+        start: [0.00, 1.00],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 1.0
+        }
+    });
+    $("#y_range").width(w);
+    $("#y_range").css('marginLeft', m[0] + 'px');
 
     var graphs = {{ graph|safe }}; // Django markup to get the data
 
-    var categoryChoice = getCategoryValue();
+    var categoryChoice = getTagOrCategoryValue();
+    var datasetChoice = getDatasetCategoryValue();
     var binRange = parseInt($("#bin_range").val());
     var xMin = parseFloat($("#x_range").val()[0]);
     var xMax = parseFloat($("#x_range").val()[1]);
+    var yMin = parseFloat($("#y_range").val()[0]);
+    var yMax = parseFloat($("#y_range").val()[1]);
     
-    drawGraph(categoryChoice, binRange, xMin, xMax); // this draws the graph on page load
+    drawGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice); // this draws the graph on page load
 
     // A jQuery event to update the graph on changing the bin size slider
     $("#bin_range").on('change', function() {
-        categoryChoice = getCategoryValue();
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
         binRange = parseInt($("#bin_range").val());
         xMin = parseFloat($("#x_range").val()[0]);
         xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, binRange, xMin, xMax);
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
     });
     
     $("#x_range").on('change', function() {
-        categoryChoice = getCategoryValue();
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
         binRange = parseInt($("#bin_range").val());
         xMin = parseFloat($("#x_range").val()[0]);
         xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, binRange, xMin, xMax);
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
+    });
+
+    $("#y_range").on('change', function() {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
+
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
     });
 
     // a jQuery event to update the graph on changing the category from the drop down
-    $('#category_choice').on('change', function (e) {
-        categoryChoice = getCategoryValue();
+    $('#tags_or_categories').on('change', function (e) {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
         binRange = parseInt($("#bin_range").val());
         xMin = parseFloat($("#x_range").val()[0]);
         xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, binRange, xMin, xMax);
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
+    });
+    
+    // a jQuery event to update the graph on changing the category from the drop down
+    $('#category_choice').on('change', function (e) {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
+
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
+    });
+
+    // a jQuery event to update the graph on changing the category from the drop down
+    $('#dataset_choice').on('change', function (e) {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
+        binRange = parseInt($("#bin_range").val());
+        xMin = parseFloat($("#x_range").val()[0]);
+        xMax = parseFloat($("#x_range").val()[1]);
+        yMin = parseFloat($("#y_range").val()[0]);
+        yMax = parseFloat($("#y_range").val()[1]);
+
+        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
     });
 
     // A function to perform Python-style unzipping
@@ -155,23 +241,37 @@
 
     // A function to get the value of the category drop down menu
     // ==========================================================
-    function getCategoryValue() {
-        return $('#category_choice').val();
+    function getTagOrCategoryValue() {
+        return $('#tags_or_categories').val();
+    }
+
+    // A function to get the value of the category drop down menu
+    // ==========================================================
+    function getDatasetCategoryValue() {
+        return $('#dataset_choice').val();
     }
 
     // A function to draw the graph first time around
     // =========================================
-    function drawGraph(categoryChoice, binRange, xMin, xMax){
+    function drawGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice){
 
         console.log(categoryChoice);
 
-        var data = graphs[categoryChoice][binRange]; // Actually exracting the dataset we want
+        var data = graphs[categoryChoice][binRange][datasetChoice]; // Actually exracting the dataset we want
+        console.log(data);
         var data_x_min = d3.min(Unzip(data, 0));
         var data_x_max = d3.max(Unzip(data, 0));
         var data_x_range = Math.abs(data_x_max-data_x_min); 
 
         var x_axis_min = data_x_min + (xMin*data_x_range);
         var x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
+
+        var data_y_min = d3.min(Unzip(data, 1));
+        var data_y_max = d3.max(Unzip(data, 1));
+        var data_y_range = Math.abs(data_y_max-data_y_min); 
+
+        var y_axis_min = data_y_min + (yMin*data_y_range);
+        var y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
 
         var graph = d3.select(".aGraph").append("svg")
               .attr("width", w + m[1] + m[3])
@@ -183,12 +283,12 @@
         var x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
         // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
         // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-        var y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
+        var y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
 
         // create yAxis
         var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
         // create left yAxis
-        var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+        var yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
         
         graph.append("g")
               .attr("class", "x axis")
@@ -200,13 +300,20 @@
               // .attr("transform", "translate(-25,0)")
               .call(yAxisLeft);
 
+        var x_label;
+        if (datasetChoice == 'frequency') {
+            x_label = "time period (days)";
+        } else {
+            x_label = "£/day";
+        }
+
         // Add the x-axis labels    
         graph.append("text")
             .attr("class", "x label")
             .attr("text-anchor", "end")
             .attr("x", w-20)
             .attr("y", h+40)
-            .text("£/day");
+            .text(x_label);
 
         // Add the y-axis to the left
         graph.append("text")
@@ -235,17 +342,24 @@
 
     // A function to update the graph with a transition
     // ================================================
-    function updateGraph(categoryChoice, binRange, xMin, xMax) {
+    function updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice) {
 
         console.log(categoryChoice);
         
-        data = graphs[categoryChoice][binRange];
+        data = graphs[categoryChoice][binRange][datasetChoice];
         data_x_min = d3.min(Unzip(data, 0));
         data_x_max = d3.max(Unzip(data, 0));
         data_x_range = Math.abs(data_x_max-data_x_min); 
 
         x_axis_min = data_x_min + (xMin*data_x_range);
         x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
+
+        data_y_min = d3.min(Unzip(data, 1));
+        data_y_max = d3.max(Unzip(data, 1));
+        data_y_range = Math.abs(data_y_max-data_y_min); 
+
+        y_axis_min = data_y_min + (yMin*data_y_range);
+        y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
         
         line = d3.svg.line()
             // assign the X function to plot our line as we wish
@@ -263,12 +377,12 @@
         x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
         // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
         // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-        y = d3.scale.linear().domain([d3.min(Unzip(data, 1)), d3.max(Unzip(data, 1))]).range([h, 0]);
+        y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
         
-            // create yAxis
+        // create yAxis
         xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
         // create left yAxis
-        yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+        yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
         // x.domain(d3.extent(data_new, function(d) { return x(d[0]); }));
         // y.domain([0, d3.max(data_new, function(d) { return x(d[1]); })]);
 
@@ -281,6 +395,17 @@
         graph.select(".y.axis")
             // .duration(750)
             .call(yAxisLeft);
+
+        var x_label;
+        if (datasetChoice == 'frequency') {
+            x_label = "time period (days)";
+        } else {
+            x_label = "£/day";
+        }
+
+        graph.select(".x.label")
+            .text(x_label);
+
         // graph.transition().attr("d", line(data));      
             // .duration(750)
         graph.selectAll("path")

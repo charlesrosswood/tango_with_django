@@ -4,8 +4,56 @@
 		"selected_items":
 		[
 			[
+				"data",
+				"data_dict"
+			],
+			[
+				"cat",
+				"category_choice"
+			],
+			[
+				"tags",
+				"tags_categories"
+			],
+			[
+				"tag",
+				"tag"
+			],
+			[
+				"y_ax",
+				"y_axis_max"
+			],
+			[
+				"y_",
+				"y_axis_min"
+			],
+			[
+				"y_axis",
+				"y_axis_max"
+			],
+			[
+				"fre",
+				"frequencies"
+			],
+			[
+				"bin",
+				"bin_maxs"
+			],
+			[
+				"freq",
+				"frequency_dataset"
+			],
+			[
 				"new",
-				"new_row"
+				"new_diffs"
+			],
+			[
+				"x",
+				"x_label"
+			],
+			[
+				"x_",
+				"x_label"
 			],
 			[
 				"dae",
@@ -76,10 +124,6 @@
 				"in"
 			],
 			[
-				"data",
-				"data_dict"
-			],
-			[
 				"current",
 				"current_x"
 			],
@@ -90,10 +134,6 @@
 			[
 				"mini",
 				"minimum_x_constraint"
-			],
-			[
-				"bin",
-				"binRange"
 			],
 			[
 				"retrn",
@@ -166,10 +206,6 @@
 			[
 				"y",
 				"y"
-			],
-			[
-				"x",
-				"xAxis"
 			],
 			[
 				"sele",
@@ -348,26 +384,18 @@
 			}
 		},
 		{
-			"file": "rango/views.py",
-			"settings":
-			{
-				"buffer_size": 8995,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "rango/analysis.py",
 			"settings":
 			{
-				"buffer_size": 7449,
+				"buffer_size": 8261,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "tango_with_django_project/settings.py",
+			"file": "rango/views.py",
 			"settings":
 			{
-				"buffer_size": 7857,
+				"buffer_size": 9110,
 				"line_ending": "Windows"
 			}
 		},
@@ -375,7 +403,7 @@
 			"file": "templates/rango/d3_new_stuff.html",
 			"settings":
 			{
-				"buffer_size": 9792,
+				"buffer_size": 14425,
 				"line_ending": "Windows"
 			}
 		},
@@ -383,15 +411,15 @@
 			"file": "static/css/d3stuff.css",
 			"settings":
 			{
-				"buffer_size": 407,
+				"buffer_size": 459,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
+			"file": "static/css/base.css",
 			"settings":
 			{
-				"buffer_size": 10817,
+				"buffer_size": 2185,
 				"line_ending": "Windows"
 			}
 		}
@@ -420,13 +448,15 @@
 	},
 	"file_history":
 	[
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/tango_with_django_project/settings.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
+		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/views.py",
+		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/MyStatements/Export_from_money_dashboard.csv",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/MyStatements/AA_data.csv",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/Training/nothing.py",
 		"/C/cygwin64/home/cwod/GitHub/tango_with_django/templates/rango/d3_stuff.html",
-		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/MyStatements/Export_from_money_dashboard.csv",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/C_UDxs/group_transactions.C",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/db/group_transactions.C",
-		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/fittingPackage.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/apiModel.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/api_functions/api.py",
@@ -452,8 +482,6 @@
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/scenario_output_handler.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/root@172.31.2.194/smcore/handlers/scenario_output_handler.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/authoritydata_handler.py",
-		"/C/cygwin64/home/cwod/GitHub/tango_with_django/tango_with_django_project/settings.py",
-		"/C/cygwin64/home/cwod/GitHub/tango_with_django/rango/views.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/models/financials.py",
 		"/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/urls.py",
 		"/C/Users/cwod/Dropbox/temp/smcore_mandates.csv",
@@ -527,6 +555,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"binning_data",
+			"time_diffs",
+			"datasetChoice",
 			"print",
 			"groupingTransactions",
 			"print",
@@ -634,18 +665,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "rango/views.py",
+					"file": "rango/analysis.py",
 					"settings":
 					{
-						"buffer_size": 8995,
+						"buffer_size": 8261,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8473,
-								8473
+								8239,
+								8239
 							]
 						],
 						"settings":
@@ -654,25 +685,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3032.0,
+						"translation.y": 2520.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "rango/analysis.py",
+					"file": "rango/views.py",
 					"settings":
 					{
-						"buffer_size": 7449,
+						"buffer_size": 9110,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4844,
-								4844
+								8302,
+								8302
 							]
 						],
 						"settings":
@@ -681,53 +712,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1635.0,
+						"translation.y": 1035.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "tango_with_django_project/settings.py",
-					"settings":
-					{
-						"buffer_size": 7857,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								525,
-								525
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "templates/rango/d3_new_stuff.html",
 					"settings":
 					{
-						"buffer_size": 9792,
+						"buffer_size": 14425,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7027,
-								7027
+								1525,
+								1525
 							]
 						],
 						"settings":
@@ -737,25 +740,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2679.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "static/css/d3stuff.css",
 					"settings":
 					{
-						"buffer_size": 407,
+						"buffer_size": 459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								407,
-								407
+								459,
+								459
 							]
 						],
 						"settings":
@@ -771,28 +774,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/C/Users/cwod/Documents/Client Projects/RBS - Future Bank/Code/GitHub/ScenarioManager/smcore/handlers/transaction_handler.py",
+					"buffer": 5,
+					"file": "static/css/base.css",
 					"settings":
 					{
-						"buffer_size": 10817,
+						"buffer_size": 2185,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7037,
-								8506
+								1005,
+								1005
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2340.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -845,6 +849,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"views",
+				"tango_with_django/rango/views.py"
+			],
 			[
 				"trans",
 				"GitHub/ScenarioManager/smcore/handlers/transaction_handler.py"

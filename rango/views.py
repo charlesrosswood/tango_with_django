@@ -257,12 +257,13 @@ def add_csv(request):
 			# print 'csv_file.csv_file is', csv_file.csv_file
 			analysed_txns = analysis.read_csv( csv_file )
 			graph = json.dumps(analysed_txns)
-
+			dataset_options = ['spends per day', 'frequency']
 			template = 'rango/d3_new_stuff.html'
 			
 			context_dict = {
 				'graph': graph,
-				'graph_types':analysed_txns.keys()
+				'graph_types':sorted(analysed_txns.keys(), key=str.lower),
+				'dataset_options': dataset_options
 			}
 
 			return render_to_response(template, context_dict, context)

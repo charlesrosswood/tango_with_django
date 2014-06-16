@@ -46,12 +46,23 @@ def binning_data( data, num_of_bins ):
 	for datum in data:
 		success = False
 		for i in xrange(len(bin_maxs)):
-			if (datum >= bin_mins[i]) and (datum  < bin_maxs[i]):
+			# print "range", bin_mins[i], bin_maxs[i], 'datum', datum
+			if (datum >= bin_mins[i]) and (datum  <= bin_maxs[i]):
+				# if (i != len(bin_maxs)-1) and (datum < bin_maxs[i]):
 				frequencies[i] += 1 
 				success = True
-			elif (datum >= bin_mins[-1]) and (datum  <= bin_maxs[-1]):
-				frequencies[-1] += 1
-				success = True
+				# elif (i == len(bin_maxs)) and (datum <= bin_maxs[i]):
+				# 	if category == 'employment':
+				# 		print "datum", datum, "range", bin_mins[-1], bin_maxs[-1]
+				# 	frequencies[i] += 1 
+				# 	success = True
+
+			# elif (datum >= bin_mins[-1]) and (datum  <= bin_maxs[-1]):
+			# 	if category == 'employment':
+			# 		print "datum", datum, "range", bin_mins[-1], bin_maxs[-1]
+			# 	frequencies[-1] += 1
+			# 	success = True
+
 		if success == False:
 			print "Failed to bin data: ", datum
 
@@ -113,7 +124,7 @@ def read_csv( csvfile ):
 	csvfile.csv_file.open(mode='rb') # opening the file for reading ans such like
 	csv_list = csvfile.csv_file.read().split('\n')
 
-	data_dict = {}
+	data_dict = { }
 	data_dict[ 'totals' ] = {'amount':[], 'date':[]}
 	data_dict[ 'in' ] = {'amount':[], 'date':[]}
 	data_dict[ 'out' ] = {'amount':[], 'date':[]}
@@ -136,7 +147,7 @@ def read_csv( csvfile ):
 	try:
 		tag_column = new_title_row.index("Tag")
 	except:
-		tag_column = 0 
+		tag_column = new_title_row.index("transactionTag") 
 
 	try:
 		amount_column = new_title_row.index("Amount")
@@ -148,15 +159,13 @@ def read_csv( csvfile ):
 	except:
 		date_column = new_title_row.index("transactionDateTime")
 
-	print 'date_column', date_column
-
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
 			row = row.split('"')
 			new_row = []
 			for i in xrange(len(row)):
 				if i%2 == 0: # then even element
-					temp_to_add = row[i][1:-1].split(',')
+					temp_to_add = row[i].split(',')
 
 					temp_to_add = [element.replace('\r','') for element in temp_to_add if ( element.strip() != ',' and element.strip() != '')]
 					new_row.extend( temp_to_add )
@@ -164,6 +173,7 @@ def read_csv( csvfile ):
 					new_row.extend( [str(row[i]).replace('\r','')] )
 
 			category = new_row[group_column].lower()
+			tag = new_row[tag_column].lower()
 
 			try:
 				date = datetime.datetime.strptime(new_row[date_column], '%d/%m/%Y')
@@ -181,9 +191,13 @@ def read_csv( csvfile ):
 
 			if category not in data_dict.keys():
 				data_dict.update( {category:{'amount':[], 'date':[]}})
+			if tag not in data_dict.keys():
+				data_dict.update( {tag:{'amount':[], 'date':[]}})
 
 			data_dict[category][ 'amount' ].append( amount )
 			data_dict[category][ 'date' ].append( date )
+			data_dict[tag][ 'amount' ].append( amount )
+			data_dict[tag][ 'date' ].append( date )
 
 			data_dict[ 'totals' ][ 'amount' ].append( amount )
 			data_dict[ 'totals' ][ 'date' ].append( date )
@@ -211,21 +225,23 @@ def read_csv( csvfile ):
 
 		if new_diffs != [] and grouped_spends != []:
 			inserting_zero_element = [0.0] + new_diffs
-			import json
-			print category
 
 			spends_per_day = []
+			time_diffs = []
+
 			for i in xrange(len(grouped_spends)):
 				spends_per_day.append( grouped_spends[i] / (inserting_zero_element[i+1]-inserting_zero_element[i]) )
-
-			print json.dumps( spends_per_day, indent=3 )
+				time_diffs.append( (inserting_zero_element[i+1]-inserting_zero_element[i]) )
 
 			return_dict.update( {category:{}} )
 
-			for i in xrange(10):
+			for i in xrange(20):
 				num_of_bins = ((i+1)*3)
-				xy_dataset = binning_data( spends_per_day, num_of_bins )
-				dict_to_add = {i:xy_dataset}
+				spends_per_day_dataset = binning_data( spends_per_day, num_of_bins )
+				frequency_dataset = binning_data( time_diffs, num_of_bins )
+
+				dict_to_add = {i:{'spends per day':spends_per_day_dataset, 'frequency':frequency_dataset}}
 				return_dict[ category ].update( dict_to_add )
+
 
 	return return_dict
