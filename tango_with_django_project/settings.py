@@ -6,7 +6,7 @@ SETTINGS_DIR = os.path.dirname(__file__) # this gives the directory name for the
 PROJECT_PATH = os.path.abspath( os.path.join(SETTINGS_DIR, os.pardir)) # os.pardir gives the parent directory to this settings file's directory, and abspath gives the absolute path to the directory 
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
