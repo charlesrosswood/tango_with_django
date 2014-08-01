@@ -21,7 +21,7 @@
 
     <select name="tags_or_categories" id="tags_or_categories">
         {% for category in graph_types %}
-            {% if category == "totals" %}
+            {% if category == "Grocery Stores; Supermarkets" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
@@ -31,7 +31,7 @@
     
     <select name="dataset_choice" id="dataset_choice">
         {% for category in dataset_options %}
-            {% if category == "frequency" %}
+            {% if category == "turk tag" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
@@ -39,13 +39,13 @@
         {% endfor %}
     </select>
 
-    <div class="some_label"> 
+ <!--    <div class="some_label"> 
         Number of bins
         <div id="bin_range"></div>
     </div>
 
     <br>
-
+ -->
     <div class="some_label">
         x-axis range
         <div id="x_range"></div>
@@ -96,17 +96,17 @@
     $("#x_range").width(w);
     $("#x_range").css('marginLeft', m[0] + 'px');
 
-    // Make a nice slider for bin range
-    $("#bin_range").noUiSlider({
-        start: 9,
-        step: 1,
-        range: {
-            'min': 0,
-            'max': 19
-        }
-    });
-    $("#bin_range").width(w);
-    $("#bin_range").css('marginLeft', m[0] + 'px');
+    // // Make a nice slider for bin range
+    // $("#bin_range").noUiSlider({
+    //     start: 9,
+    //     step: 1,
+    //     range: {
+    //         'min': 0,
+    //         'max': 19
+    //     }
+    // });
+    // $("#bin_range").width(w);
+    // $("#bin_range").css('marginLeft', m[0] + 'px');
 
 
     // Make a nice slider for x range
@@ -125,7 +125,7 @@
 
     var categoryChoice = getTagOrCategoryValue();
     var datasetChoice = getDatasetCategoryValue();
-    var binRange = parseInt($("#bin_range").val());
+    // var binRange = parseInt($("#bin_range").val());
     var xMin = parseFloat($("#x_range").val()[0]);
     var xMax = parseFloat($("#x_range").val()[1]);
     var yMin = parseFloat($("#y_range").val()[0]);
@@ -133,18 +133,18 @@
     
     drawGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice); // this draws the graph on page load
 
-    // A jQuery event to update the graph on changing the bin size slider
-    $("#bin_range").on('change', function() {
-        categoryChoice = getTagOrCategoryValue();
-        datasetChoice = getDatasetCategoryValue();
-        binRange = parseInt($("#bin_range").val());
-        xMin = parseFloat($("#x_range").val()[0]);
-        xMax = parseFloat($("#x_range").val()[1]);
-        yMin = parseFloat($("#y_range").val()[0]);
-        yMax = parseFloat($("#y_range").val()[1]);
+    // // A jQuery event to update the graph on changing the bin size slider
+    // $("#bin_range").on('change', function() {
+    //     categoryChoice = getTagOrCategoryValue();
+    //     datasetChoice = getDatasetCategoryValue();
+    //     binRange = parseInt($("#bin_range").val());
+    //     xMin = parseFloat($("#x_range").val()[0]);
+    //     xMax = parseFloat($("#x_range").val()[1]);
+    //     yMin = parseFloat($("#y_range").val()[0]);
+    //     yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
-    });
+    //     updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
+    // });
     
     $("#x_range").on('change', function() {
         categoryChoice = getTagOrCategoryValue();
@@ -221,11 +221,11 @@
         return unzipped_array;
     };
 
-    // A function to get the value of the slider
-    // =========================================
-    function getBinRange() {
-        return parseFloat($("#binRange").val());
-    };
+    // // A function to get the value of the slider
+    // // =========================================
+    // function getBinRange() {
+    //     return parseFloat($("#binRange").val());
+    // };
     
     // A function to get the value of the slider
     // =========================================
@@ -257,7 +257,7 @@
 
         console.log(categoryChoice);
 
-        var data = graphs[categoryChoice][binRange][datasetChoice]; // Actually exracting the dataset we want
+        var data = graphs[categoryChoice][binRange][datasetChoice]; // Actually extracting the dataset we want
         console.log(data);
         var data_x_min = d3.min(Unzip(data, 0));
         var data_x_max = d3.max(Unzip(data, 0));
