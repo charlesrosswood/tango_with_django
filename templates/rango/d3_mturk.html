@@ -420,7 +420,8 @@
 
         var left_width = 100;
 
-        // graph = d3.select(".aGraph").append("svg")
+        // graph = d3.select(".aGraph").transition();
+        //     .append("svg")
         //     .attr("width", w + m[1] + m[3] + left_width)
         //     .attr("height", h + m[0] + m[2]);
 
@@ -440,19 +441,21 @@
            .domain(indices)
            .rangeRoundBands([0, h]);
 
-        sel = d3.selectAll("rect")
+        graph = d3.select(".aGraph").transition();
+
+        graph.selectAll("rect")
            .data(values)
            // .transition()
-           .enter()
-           .append("rect")
+           // .enter()
+           // .append("rect")
            .attr("x", left_width)
            .attr("y", function (value, index) { 
                 // use the index as input instead of value; y(index) instead of y(value)
                 return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand())
-           .transition();
+           .attr("height", y.rangeBand());
+           // .transition();
            // .exit().remove();
 
         // graph.selectAll("text.score")
