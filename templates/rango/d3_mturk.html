@@ -298,38 +298,11 @@
         graph = d3.select(".aGraph").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
             .attr("height", h + m[0] + m[2]);
-        // chart = d3.select($("#step-1")[0]) 
-        //   .append('svg')
-        //   .attr('class', 'chart')
-        //   .attr('width', width)
-        //   .attr('height', height);
 
 
 
         console.log(categoryChoice);
-
-        // var data = graphs[categoryChoice]; // Actually extracting the dataset we want
-        // console.log(data);
-        // var data_x_min = d3.min(Unzip(data, 'value'));
-        // var data_x_max = d3.max(Unzip(data, 'value'));
-        // var data_x_range = Math.abs(data_x_max-data_x_min); 
-
-        // var x_axis_min = data_x_min + (xMin*data_x_range);
-        // var x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
-
-        // var data_y_min = d3.min(Unzip(data, 1));
-        // var data_y_max = d3.max(Unzip(data, 1));
-        // var data_y_range = Math.abs(data_y_max-data_y_min); 
-
-        // var y_axis_min = data_y_min + (yMin*data_y_range);
-        // var y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
-
-        // var graph = d3.select(".aGraph").append("svg")
-        //       .attr("width", w + m[1] + m[3])
-        //       .attr("height", h + m[0] + m[2])
-        //     .append("g")
-        //       .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-        
+      
         var x, y;
         x = d3.scale.linear()
            .domain([0, d3.max(values)])
@@ -350,15 +323,78 @@
            .attr("width", x)
            .attr("height", y.rangeBand());
 
-       // graph.selectAll("text")
-       //    .data(values)
-       //    .enter().append("text")
-       //    .attr("x", x)
-       //    .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
-       //    .attr("dx", -5)
-       //    .attr("dy", ".36em")
-       //    .attr("text-anchor", "end")
-       //    .text(String);
+        graph.selectAll("text.score")
+          .data(values)
+          .enter().append("text")
+          .attr("x", function(d) { return x(d) + left_width; })
+          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("dx", -5)
+          .attr("dy", ".36em")
+          .attr("text-anchor", "end")
+          .attr('class', 'score')
+          .text(String);
+
+        graph.selectAll("text.name")
+          .data(tags)
+          .enter().append("text")
+          .attr("x", left_width / 2)
+          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("dy", ".36em")
+          .attr("text-anchor", "middle")
+          .attr('class', 'name')
+          .text(String);
+    };
+
+
+
+    // A function to update the graph with a transition
+    // ================================================
+    function updateGraph(categoryChoice, xMin, xMax, yMin, yMax){
+
+        var tags = string_Unzip(graphs[categoryChoice], 'high level tag'), //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
+        values = Unzip(graphs[categoryChoice], 'value'),//[8, 4, 9, 12, 11],
+        // graph,
+        // width = 400,
+        bar_height = h / tags.length,
+        // height = bar_height * tags.length;
+        indices = d3.range(0, values.length); 
+        
+        console.log("width, height, margins");
+        console.log(w);
+        console.log(h);
+        console.log(m);
+
+        var left_width = 100;
+
+        // graph = d3.select(".aGraph").append("svg")
+        //     .attr("width", w + m[1] + m[3] + left_width)
+        //     .attr("height", h + m[0] + m[2]);
+
+
+
+        console.log(categoryChoice);
+        
+        graph = d3.select(".aGraph").transition();
+
+        // var x, y;
+        x = d3.scale.linear()
+           .domain([0, d3.max(values)])
+           .range([0, w]);
+
+        y = d3.scale.ordinal()
+           .domain(indices)
+           .rangeRoundBands([0, h]);
+
+        graph.selectAll("rect")
+           .data(values)
+           .enter().append("rect")
+           .attr("x", left_width)
+           .attr("y", function (value, index) { 
+                // use the index as input instead of value; y(index) instead of y(value)
+                return y(index); 
+            })
+           .attr("width", x)
+           .attr("height", y.rangeBand());
 
         graph.selectAll("text.score")
           .data(values)
@@ -383,140 +419,79 @@
 
 
 
-
-
-
-        // var x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
-        // // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-        // // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-        // var y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
-
-        // // create yAxis
-        // var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
-        // // create left yAxis
-        // var yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
-        
-        // graph.append("g")
-        //       .attr("class", "x axis")
-        //       .attr("transform", "translate(0," + h + ")")
-        //       .call(xAxis);
-
-        // graph.append("g")
-        //       .attr("class", "y axis")
-        //       // .attr("transform", "translate(-25,0)")
-        //       .call(yAxisLeft);
-
-        // var x_label;
-        // if (datasetChoice == 'frequency') {
-        //     x_label = "time period (days)";
-        // } else {
-        //     x_label = "£/day";
-        // }
-
-        // // Add the x-axis labels    
-        // graph.append("text")
-        //     .attr("class", "x label")
-        //     .attr("text-anchor", "end")
-        //     .attr("x", w-20)
-        //     .attr("y", h+40)
-        //     .text(x_label);
-
-        // // Add the y-axis to the left
-        // graph.append("text")
-        //     .attr("class", "y label")
-        //     .attr("text-anchor", "end")
-        //     .attr("y", -70)
-        //     .attr("dy", ".75em")
-        //     .attr("transform", "rotate(-90)")
-        //     .text("Frequency");
-        // // create a line function that can convert data[] into x and y points
-        // var line = d3.svg.line()
-        //     // assign the X function to plot our line as we wish
-        //     .x(function(d) { 
-        //         // return the X coordinate where we want to plot this datapoint
-        //         return x(d[0]); 
-        //     })
-        //     .y(function(d) { 
-        //         // return the Y coordinate where we want to plot this datapoint
-        //         return y(d[1]); 
-        //     })
-        //     .interpolate("basis");
-
-        // graph.append("path")
-        //     .attr("d", line(data));
     };
 
-    // A function to update the graph with a transition
-    // ================================================
-    function updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice) {
 
-        console.log(categoryChoice);
+
+    // function updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice) {
+
+    //     console.log(categoryChoice);
         
-        data = graphs[categoryChoice][binRange][datasetChoice];
-        data_x_min = d3.min(Unzip(data, 0));
-        data_x_max = d3.max(Unzip(data, 0));
-        data_x_range = Math.abs(data_x_max-data_x_min); 
+    //     data = graphs[categoryChoice][binRange][datasetChoice];
+    //     data_x_min = d3.min(Unzip(data, 0));
+    //     data_x_max = d3.max(Unzip(data, 0));
+    //     data_x_range = Math.abs(data_x_max-data_x_min); 
 
-        x_axis_min = data_x_min + (xMin*data_x_range);
-        x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
+    //     x_axis_min = data_x_min + (xMin*data_x_range);
+    //     x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
 
-        data_y_min = d3.min(Unzip(data, 1));
-        data_y_max = d3.max(Unzip(data, 1));
-        data_y_range = Math.abs(data_y_max-data_y_min); 
+    //     data_y_min = d3.min(Unzip(data, 1));
+    //     data_y_max = d3.max(Unzip(data, 1));
+    //     data_y_range = Math.abs(data_y_max-data_y_min); 
 
-        y_axis_min = data_y_min + (yMin*data_y_range);
-        y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
+    //     y_axis_min = data_y_min + (yMin*data_y_range);
+    //     y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
         
-        line = d3.svg.line()
-            // assign the X function to plot our line as we wish
-            .x(function(d) { 
-                // return the X coordinate where we want to plot this datapoint
-                return x(d[0]); 
-            })
-            .y(function(d) { 
-                // return the Y coordinate where we want to plot this datapoint
-                return y(d[1]); 
-            })
-        .interpolate("basis");
+    //     line = d3.svg.line()
+    //         // assign the X function to plot our line as we wish
+    //         .x(function(d) { 
+    //             // return the X coordinate where we want to plot this datapoint
+    //             return x(d[0]); 
+    //         })
+    //         .y(function(d) { 
+    //             // return the Y coordinate where we want to plot this datapoint
+    //             return y(d[1]); 
+    //         })
+    //     .interpolate("basis");
 
         
-        x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
-        // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-        // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-        y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
+    //     x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
+    //     // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+    //     // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
+    //     y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
         
-        // create yAxis
-        xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
-        // create left yAxis
-        yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
-        // x.domain(d3.extent(data_new, function(d) { return x(d[0]); }));
-        // y.domain([0, d3.max(data_new, function(d) { return x(d[1]); })]);
+    //     // create yAxis
+    //     xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+    //     // create left yAxis
+    //     yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
+    //     // x.domain(d3.extent(data_new, function(d) { return x(d[0]); }));
+    //     // y.domain([0, d3.max(data_new, function(d) { return x(d[1]); })]);
 
-        graph = d3.select(".aGraph").transition();
+    //     graph = d3.select(".aGraph").transition();
 
-        graph.select(".x.axis")
-            // .duration(750)
-            .call(xAxis);
+    //     graph.select(".x.axis")
+    //         // .duration(750)
+    //         .call(xAxis);
 
-        graph.select(".y.axis")
-            // .duration(750)
-            .call(yAxisLeft);
+    //     graph.select(".y.axis")
+    //         // .duration(750)
+    //         .call(yAxisLeft);
 
-        var x_label;
-        if (datasetChoice == 'frequency') {
-            x_label = "time period (days)";
-        } else {
-            x_label = "£/day";
-        }
+    //     var x_label;
+    //     if (datasetChoice == 'frequency') {
+    //         x_label = "time period (days)";
+    //     } else {
+    //         x_label = "£/day";
+    //     }
 
-        graph.select(".x.label")
-            .text(x_label);
+    //     graph.select(".x.label")
+    //         .text(x_label);
 
-        // graph.transition().attr("d", line(data));      
-            // .duration(750)
-        graph.selectAll("path")
-            .attr("d", line(data));
-    };
+    //     // graph.transition().attr("d", line(data));      
+    //         // .duration(750)
+    //     graph.selectAll("path")
+    //         .attr("d", line(data));
+    // };
 
 
 </script>
