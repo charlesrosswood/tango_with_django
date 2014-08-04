@@ -386,8 +386,7 @@
 
         sel = d3.selectAll("rect")
            .data(values)
-           // .transition()
-           .exit().remove()
+           .transition()
            .enter().append("rect")
            .attr("x", left_width)
            .attr("y", function (value, index) { 
@@ -396,6 +395,7 @@
             })
            .attr("width", x)
            .attr("height", y.rangeBand());
+           .exit().remove()
 
         // graph.selectAll("text.score")
         //   .data(values)
