@@ -346,18 +346,20 @@
           .data(values)
           .enter().append("text")
           .attr("x", function(d) { return x(d) + left_width; })
-          .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
+          .attr("y", function(d) { return y(d) + y.rangeBand()/2; } )
           .attr("dx", -5)
           .attr("dy", ".36em")
           .attr("text-anchor", "end")
           .attr('class', 'score')
           .text(String);
 
+        console.log(function(d) { return y(d) + y.rangeBand()/2; });
+        
         graph.selectAll("text.name")
           .data(tags)
           .enter().append("text")
           .attr("x", left_width / 2)
-          .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
+          .attr("y", function(d) { return y(d) + y.rangeBand()/2; } )
           .attr("dy", ".36em")
           .attr("text-anchor", "middle")
           .attr('class', 'name')

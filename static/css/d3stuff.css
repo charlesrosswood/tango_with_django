@@ -43,12 +43,15 @@ path {
   text-align: center;
 }
 
+.aGraph {
+  position:absolute;
+  top:50px;
+  left:0;
+}
+
 .aGraph rect {
   stroke: white;
   fill: steelblue;
-  position:absolute;
-  top:30px;
-  left:0;
 }
 
 .aGraph text.score {
