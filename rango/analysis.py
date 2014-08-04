@@ -269,29 +269,29 @@ def read_turk_csv( csvfile ):
 	# 	else: # then odd element
 	# 		new_title_row.extend( [str(title_row[i]).replace('\r','')] )
 	try:
-		HITID_column = new_title_row.index("HITID")
+		HITID_column = new_title_row.index('"HITID"')
 	except:
 		HITID_column = new_title_row.index("HITID")
 	# group_column = new_title_row.index("Tag")
 	try:
-		Internal_Tag_column = new_title_row.index("Internal_Tag")
+		Internal_Tag_column = new_title_row.index('"Internal_Tag"')
 	except:
 		Internal_Tag_column = new_title_row.index("Internal_Tag") 
 
 	try:
-		Merchant_Name_column = new_title_row.index("Merchant_Name")
+		Merchant_Name_column = new_title_row.index('"Merchant_Name"')
 	except:
 		Merchant_Name_column = new_title_row.index("Merchant_Name")
 
 	try:		
-		Transaction_Amount_column = new_title_row.index("Transaction_Amount")
+		Transaction_Amount_column = new_title_row.index('"Transaction_Amount"')
 	except:
 		Transaction_Amount_column = new_title_row.index("Transaction_Amount")
 
-	Merchant_Code_column = new_title_row.index("Merchant_Code")
-	Worker_column = new_title_row.index("Worker")
-	Answer_column = new_title_row.index("Answer")
-	Date_column = new_title_row.index("Date")
+	Merchant_Code_column = new_title_row.index('"Merchant_Code"')
+	Worker_column = new_title_row.index('"Worker"')
+	Answer_column = new_title_row.index('"Answer"')
+	Date_column = new_title_row.index('"Date"')
 
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
