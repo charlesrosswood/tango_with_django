@@ -386,7 +386,7 @@
 
         sel = d3.selectAll("rect")
            .data(values)
-           .transition()
+           // .transition()
            .exit().remove()
            .enter().append("rect")
            .attr("x", left_width)
