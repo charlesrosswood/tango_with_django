@@ -226,6 +226,7 @@
         var unzipped_array = [];    
 
         for (var i=0; i < array.length; i++) {
+            if array[i][index_to_unzip]
             unzipped_array.push(array[i][index_to_unzip]);
         };  
 
@@ -353,8 +354,6 @@
           .attr('class', 'score')
           .text(String);
 
-        console.log(function(d) { return y(d) + y.rangeBand()/2; });
-        
         graph.selectAll("text.name")
           .data(tags)
           .enter().append("text")
