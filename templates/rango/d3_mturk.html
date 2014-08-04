@@ -357,7 +357,7 @@
           .data(tags)
           .enter().append("text")
           .attr("x", left_width / 2)
-          .attr("y", function(d) { return y(d) + y.rangeBand()/2; } )
+          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
           .attr("dy", ".36em")
           .attr("text-anchor", "middle")
           .attr('class', 'name')
