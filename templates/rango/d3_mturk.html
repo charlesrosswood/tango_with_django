@@ -17,7 +17,7 @@
 {% block content %}
 
 
-<div id="graph" class="aGraph" style="position:relative;top:0px;left:0;">
+<div id="graph" class="aGraph" style="position:absolute;top:30px;left:0;">
 
     <select name="tags_or_categories" id="tags_or_categories">
         {% for category in graph_types %}
@@ -46,6 +46,8 @@
 
     <br>
  -->
+    <br>
+
     <div class="some_label">
         x-axis range
         <div id="x_range"></div>
@@ -126,6 +128,10 @@
     console.log(graphs);
 
     var categoryChoice = getTagOrCategoryValue();
+
+
+    console.log(Unzip(graphs[categoryChoice], 'high level tag'));
+    console.log(Unzip(graphs[categoryChoice], 'value'));
     // var datasetChoice = getDatasetCategoryValue();
     // var binRange = parseInt($("#bin_range").val());
     var xMin = parseFloat($("#x_range").val()[0]);
@@ -263,6 +269,11 @@
         // width = 400,
         bar_height = h / tags.length;
         // height = bar_height * tags.length;
+
+        console.log("width, height, margins");
+        console.log(w);
+        console.log(h);
+        console.log(m);
 
         graph = d3.select(".aGraph").append("svg")
             .attr("width", w + m[1] + m[3])
