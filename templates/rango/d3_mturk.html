@@ -373,8 +373,9 @@
 
 
         console.log(categoryChoice);
+        console.log(values);
         
-        graph = d3.select(".aGraph").transition();
+        graph = d3.select(".aGraph");//.transition();
 
         // var x, y;
         x = d3.scale.linear()
@@ -387,6 +388,7 @@
 
         graph.selectAll("rect")
            .data(values)
+           .transition()
            .enter().append("rect")
            .attr("x", left_width)
            .attr("y", function (value, index) { 
