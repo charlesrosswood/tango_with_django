@@ -310,7 +310,7 @@ def analyse_mturk(request):
 			
 			print analysed_tags.keys()[0]
 
-			graph_types = list(set(analysed_tags['high level tags'] + analysed_tags['low level tags']))
+			graph_types = list(set(analysed_tags['high level tags'].keys() + analysed_tags['low level tags'].keys()))
 			
 			print graph_types
 
