@@ -270,9 +270,10 @@
         values = Unzip(graphs[categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
-        bar_height = h / tags.length;
+        bar_height = h / tags.length,
         // height = bar_height * tags.length;
-
+        indices = d3.range(0, values.length); 
+        
         console.log("width, height, margins");
         console.log(w);
         console.log(h);
@@ -320,15 +321,18 @@
            .domain([0, d3.max(values)])
            .range([0, w]);
 
-        y = d3.scale.linear()
-           .domain(values)
-           .rangeBands([0, h]);
+        y = d3.scale.ordinal()
+           .domain(indices)
+           .rangeRoundBands([0, h]);
 
         graph.selectAll("rect")
            .data(values)
            .enter().append("rect")
            .attr("x", left_width)
-           .attr("y", y)
+           .attr("y", function (value, index) { 
+            // use the index as input instead of value; y(index) instead of y(value)
+            return y(index); 
+            })
            .attr("width", x)
            .attr("height", y.rangeBand());
 
