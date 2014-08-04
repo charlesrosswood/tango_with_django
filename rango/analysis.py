@@ -304,7 +304,7 @@ def read_turk_csv( csvfile ):
 			low_level_tag = turk_tag.split('::')[1]
 
 			if mcc_tag not in data_dict.keys():
-				data_dict.update( {mcc_tag:{} )#{'high level tag':{}, 'low level tag':{}}})
+				data_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
 			# if narrative not in data_dict.keys():
 			# 	data_dict.update( {narrative:{'high level tag':{}, 'low level tag':{}}})
 
