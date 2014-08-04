@@ -232,6 +232,20 @@
         return unzipped_array;
     };
 
+    function string_Unzip(array, index_to_unzip) {
+        var unzipped_array = [];    
+
+        for (var i=0; i < array.length; i++) {
+            if ((array[i][index_to_unzip].slice(0,1) == "'") || (array[i][index_to_unzip].slice(0,1) == "\"")) {
+                string_to_add = array[i][index_to_unzip].slice(1);
+            };
+
+            unzipped_array.push(string_to_add);
+        };  
+
+        return unzipped_array;
+    };
+
     // // A function to get the value of the slider
     // // =========================================
     // function getBinRange() {
@@ -266,7 +280,7 @@
     // =========================================
     function drawGraph(categoryChoice, xMin, xMax, yMin, yMax){
 
-        var tags = Unzip(graphs[categoryChoice], 'high level tag'), //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
+        var tags = string_Unzip(graphs[categoryChoice], 'high level tag'), //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
         values = Unzip(graphs[categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
