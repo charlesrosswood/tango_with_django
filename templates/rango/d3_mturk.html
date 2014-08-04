@@ -30,16 +30,16 @@
         {% endfor %}
     </select>
     
-<!--     <select name="dataset_choice" id="dataset_choice">
+    <select name="dataset_choice" id="dataset_choice">
         {% for category in dataset_options %}
-            {% if category == "turk tag" %}
+            {% if category == "high level tags" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
             {% endif %}
         {% endfor %}
     </select>
- -->
+
  <!--    <div class="some_label"> 
         Number of bins
         <div id="bin_range"></div>
@@ -47,7 +47,7 @@
 
     <br>
  -->
-    <br>
+<!--     <br>
 
     <div class="some_label">
         x-axis range
@@ -61,7 +61,7 @@
         <div id="y_range"></div>
     </div>
 
-    <br>
+    <br> -->
 
 </div>
 {% endblock %}
@@ -88,17 +88,17 @@
     // To initially run the function:
     $(window).resize();
 
-    // Make a nice slider for x range
-    $("#x_range").noUiSlider({
-        start: [0.00, 1.00],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 1.0
-        }
-    });
-    $("#x_range").width(w);
-    $("#x_range").css('marginLeft', m[0] + 'px');
+    // // Make a nice slider for x range
+    // $("#x_range").noUiSlider({
+    //     start: [0.00, 1.00],
+    //     connect: true,
+    //     range: {
+    //         'min': 0,
+    //         'max': 1.0
+    //     }
+    // });
+    // $("#x_range").width(w);
+    // $("#x_range").css('marginLeft', m[0] + 'px');
 
     // // Make a nice slider for bin range
     // $("#bin_range").noUiSlider({
@@ -113,35 +113,34 @@
     // $("#bin_range").css('marginLeft', m[0] + 'px');
 
 
-    // Make a nice slider for x range
-    $("#y_range").noUiSlider({
-        start: [0.00, 1.00],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 1.0
-        }
-    });
-    $("#y_range").width(w);
-    $("#y_range").css('marginLeft', m[0] + 'px');
+    // // Make a nice slider for x range
+    // $("#y_range").noUiSlider({
+    //     start: [0.00, 1.00],
+    //     connect: true,
+    //     range: {
+    //         'min': 0,
+    //         'max': 1.0
+    //     }
+    // });
+    // $("#y_range").width(w);
+    // $("#y_range").css('marginLeft', m[0] + 'px');
 
     var graphs = {{ graph|safe }}; // Django markup to get the data
     
     console.log(graphs);
 
     var categoryChoice = getTagOrCategoryValue();
-
+    var datasetChoice = getDatasetCategoryValue();
 
     console.log(Unzip(graphs[categoryChoice], 'high level tag'));
     console.log(Unzip(graphs[categoryChoice], 'value'));
-    // var datasetChoice = getDatasetCategoryValue();
     // var binRange = parseInt($("#bin_range").val());
-    var xMin = parseFloat($("#x_range").val()[0]);
-    var xMax = parseFloat($("#x_range").val()[1]);
-    var yMin = parseFloat($("#y_range").val()[0]);
-    var yMax = parseFloat($("#y_range").val()[1]);
+    // var xMin = parseFloat($("#x_range").val()[0]);
+    // var xMax = parseFloat($("#x_range").val()[1]);
+    // var yMin = parseFloat($("#y_range").val()[0]);
+    // var yMax = parseFloat($("#y_range").val()[1]);
     
-    drawGraph(categoryChoice, xMin, xMax, yMin, yMax); // this draws the graph on page load
+    drawGraph(categoryChoice, datasetChoice); // this draws the graph on page load
 
     // // A jQuery event to update the graph on changing the bin size slider
     // $("#bin_range").on('change', function() {
@@ -156,68 +155,68 @@
     //     updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
     // });
     
-    $("#x_range").on('change', function() {
-        categoryChoice = getTagOrCategoryValue();
-        // datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        xMin = parseFloat($("#x_range").val()[0]);
-        xMax = parseFloat($("#x_range").val()[1]);
-        yMin = parseFloat($("#y_range").val()[0]);
-        yMax = parseFloat($("#y_range").val()[1]);
-
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    });
-
-    $("#y_range").on('change', function() {
-        categoryChoice = getTagOrCategoryValue();
-        // datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        xMin = parseFloat($("#x_range").val()[0]);
-        xMax = parseFloat($("#x_range").val()[1]);
-        yMin = parseFloat($("#y_range").val()[0]);
-        yMax = parseFloat($("#y_range").val()[1]);
-
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    });
-
-    // a jQuery event to update the graph on changing the category from the drop down
-    $('#tags_or_categories').on('change', function (e) {
-        categoryChoice = getTagOrCategoryValue();
-        // datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        xMin = parseFloat($("#x_range").val()[0]);
-        xMax = parseFloat($("#x_range").val()[1]);
-        yMin = parseFloat($("#y_range").val()[0]);
-        yMax = parseFloat($("#y_range").val()[1]);
-
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    });
-    
-    // a jQuery event to update the graph on changing the category from the drop down
-    $('#category_choice').on('change', function (e) {
-        categoryChoice = getTagOrCategoryValue();
-        // datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        xMin = parseFloat($("#x_range").val()[0]);
-        xMax = parseFloat($("#x_range").val()[1]);
-        yMin = parseFloat($("#y_range").val()[0]);
-        yMax = parseFloat($("#y_range").val()[1]);
-
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    });
-
-    // // a jQuery event to update the graph on changing the category from the drop down
-    // $('#dataset_choice').on('change', function (e) {
+    // $("#x_range").on('change', function() {
     //     categoryChoice = getTagOrCategoryValue();
-    //     datasetChoice = getDatasetCategoryValue();
-    //     binRange = parseInt($("#bin_range").val());
+    //     // datasetChoice = getDatasetCategoryValue();
+    //     // binRange = parseInt($("#bin_range").val());
     //     xMin = parseFloat($("#x_range").val()[0]);
     //     xMax = parseFloat($("#x_range").val()[1]);
     //     yMin = parseFloat($("#y_range").val()[0]);
     //     yMax = parseFloat($("#y_range").val()[1]);
 
-    //     updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
+    //     updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
     // });
+
+    // $("#y_range").on('change', function() {
+    //     categoryChoice = getTagOrCategoryValue();
+    //     // datasetChoice = getDatasetCategoryValue();
+    //     // binRange = parseInt($("#bin_range").val());
+    //     xMin = parseFloat($("#x_range").val()[0]);
+    //     xMax = parseFloat($("#x_range").val()[1]);
+    //     yMin = parseFloat($("#y_range").val()[0]);
+    //     yMax = parseFloat($("#y_range").val()[1]);
+
+    //     updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
+    // });
+
+    // a jQuery event to update the graph on changing the category from the drop down
+    $('#tags_or_categories').on('change', function (e) {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
+        // binRange = parseInt($("#bin_range").val());
+        // xMin = parseFloat($("#x_range").val()[0]);
+        // xMax = parseFloat($("#x_range").val()[1]);
+        // yMin = parseFloat($("#y_range").val()[0]);
+        // yMax = parseFloat($("#y_range").val()[1]);
+
+        updateGraph(categoryChoice, datasetChoice);
+    });
+    
+    // // a jQuery event to update the graph on changing the category from the drop down
+    // $('#category_choice').on('change', function (e) {
+    //     categoryChoice = getTagOrCategoryValue();
+    //     datasetChoice = getDatasetCategoryValue();
+    //     // binRange = parseInt($("#bin_range").val());
+    //     xMin = parseFloat($("#x_range").val()[0]);
+    //     xMax = parseFloat($("#x_range").val()[1]);
+    //     yMin = parseFloat($("#y_range").val()[0]);
+    //     yMax = parseFloat($("#y_range").val()[1]);
+
+    //     updateGraph(categoryChoice, datasetChoice);
+    // });
+
+    // a jQuery event to update the graph on changing the category from the drop down
+    $('#dataset_choice').on('change', function (e) {
+        categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
+        // binRange = parseInt($("#bin_range").val());
+        // xMin = parseFloat($("#x_range").val()[0]);
+        // xMax = parseFloat($("#x_range").val()[1]);
+        // yMin = parseFloat($("#y_range").val()[0]);
+        // yMax = parseFloat($("#y_range").val()[1]);
+
+        updateGraph(categoryChoice, datasetChoice);
+    });
 
     // A function to perform Python-style unzipping
     // ============================================
@@ -251,17 +250,17 @@
     //     return parseFloat($("#binRange").val());
     // };
     
-    // A function to get the value of the slider
-    // =========================================
-    function getxMin() {
-        return parseFloat($("#xMin").val());
-    };
+    // // A function to get the value of the slider
+    // // =========================================
+    // function getxMin() {
+    //     return parseFloat($("#xMin").val());
+    // };
     
-    // A function to get the value of the slider
-    // =========================================
-    function getxMax() {
-        return parseFloat($("#xMax").val());
-    };
+    // // A function to get the value of the slider
+    // // =========================================
+    // function getxMax() {
+    //     return parseFloat($("#xMax").val());
+    // };
 
     // A function to get the value of the category drop down menu
     // ==========================================================
@@ -269,11 +268,11 @@
         return $('#tags_or_categories').val();
     }
 
-    // // A function to get the value of the category drop down menu
-    // // ==========================================================
-    // function getDatasetCategoryValue() {
-    //     return $('#dataset_choice').val();
-    // }
+    // A function to get the value of the category drop down menu
+    // ==========================================================
+    function getDatasetCategoryValue() {
+        return $('#dataset_choice').val();
+    }
 
 
 
@@ -334,10 +333,10 @@
 
     // A function to draw the graph first time around
     // =========================================
-    function drawGraph(categoryChoice, xMin, xMax, yMin, yMax){
+    function drawGraph(categoryChoice, datasetChoice){
 
-        var tags = string_Unzip(graphs[categoryChoice], 'high level tag'), //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
-        values = Unzip(graphs[categoryChoice], 'value'),//[8, 4, 9, 12, 11],
+        var tags = string_Unzip(graphs[datasetChoice][categoryChoice], 'high level tag'), //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
+        values = Unzip(graphs[datasetChoice][categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
         bar_height = h / tags.length,
@@ -403,10 +402,10 @@
 
     // A function to update the graph with a transition
     // ================================================
-    function updateGraph(categoryChoice, xMin, xMax, yMin, yMax){
+    function updateGraph(categoryChoice, datasetChoice){
 
-        tags = string_Unzip(graphs[categoryChoice], 'high level tag'); //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
-        values = Unzip(graphs[categoryChoice], 'value');//[8, 4, 9, 12, 11],
+        tags = string_Unzip(graphs[datasetChoice][categoryChoice], 'high level tag'); //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
+        values = Unzip(graphs[datasetChoice][categoryChoice], 'value');//[8, 4, 9, 12, 11],
         // graph,
         // width = 400,
         bar_height = h / tags.length;

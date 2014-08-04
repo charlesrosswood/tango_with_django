@@ -305,13 +305,13 @@ def analyse_mturk(request):
 			analysed_tags = analysis.read_turk_csv( csv_file )
 
 			graph = json.dumps(analysed_tags)
-			dataset_options = ['turk tag', 'narrative']
+			dataset_options = ['high level tags', 'low level tags']
 			template = 'rango/d3_mturk.html'
 			
 			context_dict = {
 				'graph': graph,
-				'graph_types':sorted(analysed_tags.keys()),#, key=str.lower()),
-				'dataset_options': dataset_options
+				'graph_types':sorted(analysed_tags.keys()),# this is the categories tags
+				'dataset_options': dataset_options # this is the high or low level tags
 			}
 
 			return render_to_response(template, context_dict, context)
