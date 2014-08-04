@@ -451,7 +451,8 @@
                 return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand());
+           .attr("height", y.rangeBand())
+           .transition();
            // .exit().remove();
 
         // graph.selectAll("text.score")
