@@ -280,7 +280,8 @@
         
         var values = Unzip(graphs[categoryChoice], 'value');
         var indices = d3.range(0, values.length); 
- 
+        var left_width = 100;
+        
         var x, y;
         x = d3.scale.linear()
            .domain([0, d3.max(values)])
