@@ -260,6 +260,7 @@ def read_turk_csv( csvfile ):
 	# data_dict[ 'out' ] = {'amount':[], 'date':[]}
 
 	new_title_row = csv_list[0].split(',')
+	print 'new_title_row', new_title_row, len(new_title_row)
 	# new_title_row = []
 	# for i in xrange(len(title_row)):
 	# 	if i%2 == 0: # then even element
@@ -271,8 +272,8 @@ def read_turk_csv( csvfile ):
 
 	# try:
 	for i in xrange(len(new_title_row)):
-		
 		title = new_title_row[i]
+		print i, title
 
 		if "HITID" in title:
 			HITID_column = i
