@@ -142,7 +142,7 @@
     var yMin = parseFloat($("#y_range").val()[0]);
     var yMax = parseFloat($("#y_range").val()[1]);
     
-    drawGraph(categoryChoice, xMin, xMax, yMin, yMax); // this draws the graph on page load
+    draw(categoryChoice, xMin, xMax, yMin, yMax); // this draws the graph on page load
 
     // // A jQuery event to update the graph on changing the bin size slider
     // $("#bin_range").on('change', function() {
@@ -276,6 +276,55 @@
     //     return $('#dataset_choice').val();
     // }
 
+    function draw(categoryChoice, xMin, xMax, yMin, yMax) {
+        
+        var values = Unzip(graphs[categoryChoice], 'value');
+        var indices = d3.range(0, values.length); 
+ 
+        var x, y;
+        x = d3.scale.linear()
+           .domain([0, d3.max(values)])
+           .range([0, w]);
+
+        y = d3.scale.ordinal()
+           .domain(indices)
+           .rangeRoundBands([0, h]);
+
+  
+        // var bars = d3.select("#work_queues_chart")
+        //     .selectAll("div")
+        //     .attr("id","work_queues_chart")
+        //     .data(data);
+         
+        var graph_canvas = d3.select(".aGraph").append("svg")
+            .attr("width", w + m[1] + m[3] + left_width)
+            .attr("height", h + m[0] + m[2]);
+
+        var bars = graph.selectAll("rect")
+           .data(values);
+
+        // enter selection
+        bars
+            .enter().append("rect");
+
+        // update selection
+        bars
+           .attr("x", left_width)
+           .attr("y", function (value, index) { 
+                // use the index as input instead of value; y(index) instead of y(value)
+                return y(index); 
+            })
+           .attr("width", x)
+           .attr("height", y.rangeBand());
+
+        // bars
+        //     .style("width", function (d) {return scale(d) + "%";})
+        //     .text(function (d) {return d;});
+        
+        // exit selection
+        bars
+            .exit().remove();
+    };
     // A function to draw the graph first time around
     // =========================================
     function drawGraph(categoryChoice, xMin, xMax, yMin, yMax){
