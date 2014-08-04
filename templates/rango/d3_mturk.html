@@ -443,15 +443,15 @@
         sel = d3.selectAll("rect")
            .data(values)
            .transition()
-           .enter().append("rect")
+           .append("rect")
            .attr("x", left_width)
            .attr("y", function (value, index) { 
                 // use the index as input instead of value; y(index) instead of y(value)
                 return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand())
-           .exit().remove();
+           .attr("height", y.rangeBand());
+           // .exit().remove();
 
         // graph.selectAll("text.score")
         //   .data(values)
