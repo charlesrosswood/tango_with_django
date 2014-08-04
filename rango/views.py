@@ -308,9 +308,9 @@ def analyse_mturk(request):
 			dataset_options = ['high level tags', 'low level tags']
 			template = 'rango/d3_mturk.html'
 			
-			print analysed_tags.keys()
+			print analysed_tags.keys()[0]
 
-			graph_types = list(set(analysed_tags.keys()[0] + analysed_tags.keys()[1]))
+			graph_types = list(set(analysed_tags['high level tags'] + analysed_tags['low level tags']))
 			
 			print graph_types
 
