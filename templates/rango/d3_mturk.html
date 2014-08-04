@@ -82,7 +82,6 @@
              top: ($(window).height() - $('.aGraph').outerHeight())/2,
          }).fadeIn(5000);
      }, 20);
-        
 
     });
     
@@ -166,7 +165,7 @@
         yMin = parseFloat($("#y_range").val()[0]);
         yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
+        draw(categoryChoice, xMin, xMax, yMin, yMax);
     });
 
     $("#y_range").on('change', function() {
@@ -178,7 +177,7 @@
         yMin = parseFloat($("#y_range").val()[0]);
         yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
+        draw(categoryChoice, xMin, xMax, yMin, yMax);
     });
 
     // a jQuery event to update the graph on changing the category from the drop down
@@ -191,7 +190,7 @@
         yMin = parseFloat($("#y_range").val()[0]);
         yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
+        draw(categoryChoice, xMin, xMax, yMin, yMax);
     });
     
     // a jQuery event to update the graph on changing the category from the drop down
@@ -204,7 +203,7 @@
         yMin = parseFloat($("#y_range").val()[0]);
         yMax = parseFloat($("#y_range").val()[1]);
 
-        updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
+        draw(categoryChoice, xMin, xMax, yMin, yMax);
     });
 
     // // a jQuery event to update the graph on changing the category from the drop down
