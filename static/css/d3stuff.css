@@ -46,4 +46,15 @@ path {
 .aGraph rect {
   stroke: white;
   fill: steelblue;
+  position:absolute;
+  top:30px;
+  left:0;
+}
+
+.aGraph text.score {
+  fill: white;
+}
+
+.aGraph text.name {
+  fill: #000;
 }

@@ -17,7 +17,8 @@
 {% block content %}
 
 
-<div id="graph" class="aGraph" style="position:absolute;top:30px;left:0;">
+<div id="graph" class="aGraph">
+<!-- style="position:absolute;top:30px;left:0;"> -->
 
     <select name="tags_or_categories" id="tags_or_categories">
         {% for category in graph_types %}
@@ -59,6 +60,8 @@
         y-axis range
         <div id="y_range"></div>
     </div>
+
+    <br>
 
 </div>
 {% endblock %}
@@ -275,8 +278,10 @@
         console.log(h);
         console.log(m);
 
+        var left_width = 100;
+
         graph = d3.select(".aGraph").append("svg")
-            .attr("width", w + m[1] + m[3])
+            .attr("width", w + m[1] + m[3] + left_width)
             .attr("height", h + m[0] + m[2]);
         // chart = d3.select($("#step-1")[0]) 
         //   .append('svg')
@@ -322,13 +327,41 @@
         graph.selectAll("rect")
            .data(values)
            .enter().append("rect")
-           .attr("x", 0)
+           .attr("x", left_width)
            .attr("y", y)
            .attr("width", x)
            .attr("height", y.rangeBand());
 
+       // graph.selectAll("text")
+       //    .data(values)
+       //    .enter().append("text")
+       //    .attr("x", x)
+       //    .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
+       //    .attr("dx", -5)
+       //    .attr("dy", ".36em")
+       //    .attr("text-anchor", "end")
+       //    .text(String);
 
+        graph.selectAll("text.score")
+          .data(values)
+          .enter().append("text")
+          .attr("x", function(d) { return x(d) + left_width; })
+          .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
+          .attr("dx", -5)
+          .attr("dy", ".36em")
+          .attr("text-anchor", "end")
+          .attr('class', 'score')
+          .text(String);
 
+        graph.selectAll("text.name")
+          .data(tags)
+          .enter().append("text")
+          .attr("x", left_width / 2)
+          .attr("y", function(d){ return y(d) + y.rangeBand()/2; } )
+          .attr("dy", ".36em")
+          .attr("text-anchor", "middle")
+          .attr('class', 'name')
+          .text(String);
 
 
 
