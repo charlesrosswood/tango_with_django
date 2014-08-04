@@ -296,15 +296,6 @@ def read_turk_csv( csvfile ):
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
 			new_row = row.split(',')
-			# new_row = []
-			# for i in xrange(len(row)):
-			# 	if i%2 == 0: # then even element
-			# 		temp_to_add = row[i].split(',')
-
-			# 		temp_to_add = [element.replace('\r','') for element in temp_to_add if ( element.strip() != ',' and element.strip() != '')]
-			# 		new_row.extend( temp_to_add )
-			# 	else: # then odd element
-			# 		new_row.extend( [str(row[i]).replace('\r','')] )
 
 			narrative = new_row[Merchant_Name_column].lower()
 			mcc_tag = new_row[Merchant_Code_column].lower()
@@ -312,94 +303,45 @@ def read_turk_csv( csvfile ):
 			high_level_tag = turk_tag.split('::')[0]
 			low_level_tag = turk_tag.split('::')[1]
 
-			# try:
-			# 	date = datetime.datetime.strptime(new_row[date_column], '%d/%m/%Y')
-			# except:
-			# 	elements_of_date = new_row[date_column].split('-')
-			# 	date_stringy = str(elements_of_date[0])
-			# 	for element_of_date in elements_of_date[1:]:
-			# 		if len(element_of_date) < 2:
-			# 			element_of_date = '0' + str(element_of_date)
-			# 		date_stringy += '-' + str(element_of_date)
-
-			# 	date = datetime.datetime.strptime(date_stringy, '%Y-%m-%d')
-
-			# amount = float(new_row[amount_column])
-
 			if mcc_tag not in data_dict.keys():
-				data_dict.update( {mcc_tag:{'high level tag':{}, 'low level tag':{}}})
-			if narrative not in data_dict.keys():
-				data_dict.update( {narrative:{'high level tag':{}, 'low level tag':{}}})
-			# if tag not in data_dict.keys():
-			# 	data_dict.update( {tag:{'amount':[], 'date':[]}})
+				data_dict.update( {mcc_tag:{} )#{'high level tag':{}, 'low level tag':{}}})
+			# if narrative not in data_dict.keys():
+			# 	data_dict.update( {narrative:{'high level tag':{}, 'low level tag':{}}})
 
-			if high_level_tag not in data_dict[mcc_tag]['high level tag'].keys():
-				data_dict[mcc_tag]['high level tag'].update( {high_level_tag:1} )
+			if high_level_tag not in data_dict[mcc_tag].keys():#['high level tag'].keys():
+				data_dict[mcc_tag].update( {high_level_tag:1} )
 			else:
-				data_dict[mcc_tag]['high level tag'][high_level_tag] += 1
+				data_dict[mcc_tag][high_level_tag] += 1
 			
-			if low_level_tag not in data_dict[mcc_tag]['low level tag'].keys():
-				data_dict[mcc_tag]['low level tag'].update( {low_level_tag:1} )
-			else:
-				data_dict[mcc_tag]['low level tag'][low_level_tag] += 1
-
-			if high_level_tag not in data_dict[narrative]['high level tag'].keys():
-				data_dict[narrative]['high level tag'].update( {high_level_tag:1} )
-			else:
-				data_dict[narrative]['high level tag'][high_level_tag] += 1
-			
-			if low_level_tag not in data_dict[narrative]['low level tag'].keys():
-				data_dict[narrative]['low level tag'].update( {low_level_tag:1} )
-			else:
-				data_dict[narrative]['low level tag'][low_level_tag] += 1
-			
-			# data_dict[tag][ 'amount' ].append( amount )
-			# data_dict[tag][ 'date' ].append( date )
-
-			# data_dict[ 'totals' ][ 'amount' ].append( amount )
-			# data_dict[ 'totals' ][ 'date' ].append( date )
-
-			# if amount < 0.0 :
-			# 	data_dict[ 'out' ][ 'amount' ].append( amount )
-			# 	data_dict[ 'out' ][ 'date' ].append( date )
+			# if low_level_tag not in data_dict[mcc_tag]['low level tag'].keys():
+			# 	data_dict[mcc_tag]['low level tag'].update( {low_level_tag:1} )
 			# else:
-			# 	data_dict[ 'in' ][ 'amount' ].append( amount )
-			# 	data_dict[ 'in' ][ 'date' ].append( date )
+			# 	data_dict[mcc_tag]['low level tag'][low_level_tag] += 1
+
+			# if high_level_tag not in data_dict[narrative]['high level tag'].keys():
+			# 	data_dict[narrative]['high level tag'].update( {high_level_tag:1} )
+			# else:
+			# 	data_dict[narrative]['high level tag'][high_level_tag] += 1
+			
+			# if low_level_tag not in data_dict[narrative]['low level tag'].keys():
+			# 	data_dict[narrative]['low level tag'].update( {low_level_tag:1} )
+			# else:
+			# 	data_dict[narrative]['low level tag'][low_level_tag] += 1
 
 	csvfile.csv_file.close()
 
-	# return_dict = {}
+	return_dict = {}
 
 	# today = datetime.datetime.now()
 
-	# for category, data in data_dict.iteritems():
-
-	# 	# days_since_now = []
-	# 	# for i in xrange(len(data[ 'date' ])):
-	# 	# 	days_since_now.append( abs((today - data[ 'date' ][i]).total_seconds()/86400.0) )
-
-	# 	# new_diffs, grouped_spends = groupingTransactions( days_since_now, data_dict[category][ 'amount' ], 1 )
-
-	# 	# if new_diffs != [] and grouped_spends != []:
-	# 	# 	inserting_zero_element = [0.0] + new_diffs
-
-	# 	# 	spends_per_day = []
-	# 	# 	time_diffs = []
-
-	# 	# 	for i in xrange(len(grouped_spends)):
-	# 	# 		spends_per_day.append( grouped_spends[i] / (inserting_zero_element[i+1]-inserting_zero_element[i]) )
-	# 	# 		time_diffs.append( (inserting_zero_element[i+1]-inserting_zero_element[i]) )
-
-	# 	# 	return_dict.update( {category:{}} )
-
-	# 	for i in xrange(20):
-	# 		num_of_bins = ((i+1)*3)
-	# 		spends_per_day_dataset = binning_data( spends_per_day, num_of_bins )
-	# 		frequency_dataset = binning_data( time_diffs, num_of_bins )
-
-	# 		dict_to_add = {i:{'spends per day':spends_per_day_dataset, 'frequency':frequency_dataset}}
-	# 		return_dict[ category ].update( dict_to_add )
-
-
-	return data_dict
-	
+	for mcc_tag, data in data_dict.iteritems(): # category can be mcc_category or transaction narrative
+		if mcc_tag not in return_dict.keys():
+			return_dict.update( {mcc_tag:[]} )
+		for high_level_tag in data.keys():
+			dict_to_add = {
+				'high level tag': high_level_tag,
+				'value': data[high_level_tag]
+				}
+			return_dict[mcc_tag].append( dict_to_add )
+			
+	return return_dict

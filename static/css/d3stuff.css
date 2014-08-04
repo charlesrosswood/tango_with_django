@@ -42,3 +42,8 @@ path {
 .some_label {
   text-align: center;
 }
+
+.aGraph rect {
+  stroke: white;
+  fill: steelblue;
+}
