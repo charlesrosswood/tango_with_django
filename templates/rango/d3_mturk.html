@@ -439,7 +439,9 @@
            .domain(indices)
            .rangeRoundBands([0, h]);
 
-        d3.select("svg").remove();//transition();
+        graph = d3.select(".aGraph");
+
+        graph.select("svg").remove();//transition();
         
         graph = d3.select(".aGraph").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
