@@ -270,31 +270,51 @@ def read_turk_csv( csvfile ):
 	# 		new_title_row.extend( [str(title_row[i]).replace('\r','')] )
 
 	# try:
-	HITID_column = new_title_row.index('"HITID"')
-	# except:
-		# HITID_column = new_title_row.index("HITID")
-	# group_column = new_title_row.index("Tag")
+	for i in xrange(len(new_title_row)):
+		
+		title = new_title_row[i]
 
-	# try:
-	Merchant_Name_column = new_title_row.index('"Merchant_Name"')
-	# except:
-	# 	Merchant_Name_column = new_title_row.index("Merchant_Name")
+		if "HITID" in title:
+			HITID_column = i
+		elif "Merchant_Name" in title:
+			Merchant_Name_column = i
+		elif "Transaction_Amount" in title:
+			Transaction_Amount_column = i
+		elif "Internal_Tag" in title:
+			Internal_Tag_column = i
+		elif "Merchant_Code" in title:
+			Merchant_Code_column = i
+		elif "Worker" in title:
+			Worker_column = i
+		elif "Answer" in title:
+			Answer_column = i
+		elif "Date" in title:
+			Date_column = i
+	# HITID_column = new_title_row.index('"HITID"')
+	# # except:
+	# 	# HITID_column = new_title_row.index("HITID")
+	# # group_column = new_title_row.index("Tag")
 
-	# try:		
-	Transaction_Amount_column = new_title_row.index('"Transaction_Amount"')
-	# except:
-	# 	Transaction_Amount_column = new_title_row.index("Transaction_Amount")
+	# # try:
+	# Merchant_Name_column = new_title_row.index('"Merchant_Name"')
+	# # except:
+	# # 	Merchant_Name_column = new_title_row.index("Merchant_Name")
 
-	# try:
-	Internal_Tag_column = new_title_row.index('"Internal_Tag"')
-	# except:
-		# Internal_Tag_column = new_title_row.index("Internal_Tag") 
+	# # try:		
+	# Transaction_Amount_column = new_title_row.index('"Transaction_Amount"')
+	# # except:
+	# # 	Transaction_Amount_column = new_title_row.index("Transaction_Amount")
+
+	# # try:
+	# Internal_Tag_column = new_title_row.index('"Internal_Tag"')
+	# # except:
+	# 	# Internal_Tag_column = new_title_row.index("Internal_Tag") 
 
 
-	Merchant_Code_column = new_title_row.index('"Merchant_Code"')
-	Worker_column = new_title_row.index('"Worker"')
-	Answer_column = new_title_row.index('"Answer"')
-	Date_column = new_title_row.index('"Date"')
+	# Merchant_Code_column = new_title_row.index('"Merchant_Code"')
+	# Worker_column = new_title_row.index('"Worker"')
+	# Answer_column = new_title_row.index('"Answer"')
+	# Date_column = new_title_row.index('"Date"')
 
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
