@@ -320,7 +320,7 @@
            .domain([0, d3.max(values)])
            .range([0, w]);
 
-        y = d3.scale.ordinal()
+        y = d3.scale.linear()
            .domain(values)
            .rangeBands([0, h]);
 
