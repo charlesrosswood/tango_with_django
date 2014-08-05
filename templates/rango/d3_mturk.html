@@ -110,22 +110,25 @@
     var categoryChoice1 = getTagOrCategory1Value();
     var datasetChoice1 = getDatasetCategory1Value();
     var keys1 = Object.keys(graphs[datasetChoice1]);
-    if categoryChoice1 in keys1:
-        drawGraph1(categoryChoice1, datasetChoice1); // this draws the graph on page load
+    if (keys1.indexOf(categoryChoice1) >= 0) {
+        updateGraph1(categoryChoice1, datasetChoice1);
+    }
 
     var categoryChoice2 = getTagOrCategory2Value();
     var datasetChoice2 = getDatasetCategory2Value();
     var keys2 = Object.keys(graphs[datasetChoice2]);
-    if categoryChoice2 in keys2:
-        drawGraph2(categoryChoice2, datasetChoice2); // this draws the graph on page load
+    if (keys2.indexOf(categoryChoice2) >= 0) {
+        updateGraph2(categoryChoice2, datasetChoice2);
+    }
 
     // a jQuery event to update the graph on changing the category from the drop down
     $('#tags_or_categories1').on('change', function (e) {
         categoryChoice1 = getTagOrCategory1Value();
         datasetChoice1 = getDatasetCategory1Value();
 
-        if categoryChoice1 in keys1:
+        if (keys1.indexOf(categoryChoice1) >= 0) {
             updateGraph1(categoryChoice1, datasetChoice1);
+        }
     });
   
     // a jQuery event to update the graph on changing the category from the drop down
@@ -133,8 +136,9 @@
         categoryChoice1 = getTagOrCategory1Value();
         datasetChoice1 = getDatasetCategory1Value();
 
-        if categoryChoice1 in keys1:
+        if (keys1.indexOf(categoryChoice1) >= 0) {
             updateGraph1(categoryChoice1, datasetChoice1);
+        }
     });
  
     // a jQuery event to update the graph on changing the category from the drop down
@@ -142,8 +146,9 @@
         categoryChoice2 = getTagOrCategory2Value();
         datasetChoice2 = getDatasetCategory2Value();
     
-        if categoryChoice2 in keys2:
+        if (keys2.indexOf(categoryChoice2) >= 0) {
             updateGraph2(categoryChoice2, datasetChoice2);
+        }
     });
   
     // a jQuery event to update the graph on changing the category from the drop down
@@ -151,8 +156,9 @@
         categoryChoice2 = getTagOrCategory2Value();
         datasetChoice2 = getDatasetCategory2Value();
         
-        if categoryChoice2 in keys2:
+        if (keys2.indexOf(categoryChoice2) >= 0) {
             updateGraph2(categoryChoice2, datasetChoice2);
+        }
      });
 
     // A function to perform Python-style unzipping
