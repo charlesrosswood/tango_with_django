@@ -245,7 +245,7 @@
                 // return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand());
+           .attr("height", bar_height);
 
         graph.selectAll("text.score")
           .data(values)
@@ -322,7 +322,7 @@
                 // return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand());
+           .attr("height", bar_height);
            // .transition();
            // .exit().remove();
 
@@ -393,7 +393,7 @@
                 //return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand());
+           .attr("height", bar_height);
 
         graph.selectAll("text.score")
           .data(values)
