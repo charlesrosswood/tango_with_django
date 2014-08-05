@@ -306,7 +306,7 @@ def analyse_mturk(request):
 
 			graph = json.dumps(analysed_tags)
 			dataset_options_1 = ['mcc to high level tags', 'mcc to low level tags']
-			dataset_options_1 = ['high level tags to mcc', 'low level tags to mcc']
+			dataset_options_2 = ['high level tags to mcc', 'low level tags to mcc']
 			template = 'rango/d3_mturk.html'
 			
 			# print analysed_tags.keys()[0]
