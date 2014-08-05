@@ -32,7 +32,7 @@
     
     <select name="dataset_choice1" id="dataset_choice1">
         {% for category in dataset_options_1 %}
-            {% if category == "high level tags" %}
+            {% if category == "mcc to high level tags" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
@@ -86,6 +86,7 @@
     // a jQuery event to update the graph on changing the category from the drop down
     $('#dataset_choice1').on('change', function (e) {
         categoryChoice = getTagOrCategoryValue();
+        datasetChoice = getDatasetCategoryValue();
 
         updateGraph(categoryChoice, datasetChoice);
     });
