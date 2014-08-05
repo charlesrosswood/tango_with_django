@@ -41,7 +41,7 @@
     </select>
     
     <br>
-    
+
     <select name="tags_or_categories2" id="tags_or_categories2">
         {% for category in graph_types_2 %}
             {% if category == "transport" %}
@@ -102,9 +102,9 @@
     $(window).resize(function(){
      setInterval(function() {
          $('#graph').css({
-             position:'relative',
+             position:'absolute',
              left: ($(window).width() - $('#graph').outerWidth())/2,
-             top: ($(window).height() - $('#graph').outerHeight())/2,
+             top: 100,//($(window).height() - $('#graph').outerHeight())/2,
          }).fadeIn(5000);
     }, 20);
 
