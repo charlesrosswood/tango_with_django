@@ -326,6 +326,12 @@ def read_turk_csv( csvfile ):
 
 			narrative = new_row[Merchant_Name_column].lower()
 			mcc_tag = new_row[Merchant_Code_column].lower()
+
+			if mcc_tag[0] == '"':
+				mcc_tag = mcc_tag[1:]
+			if mcc_tag[-1]== '"':
+				mcc_tag[:-1]
+
 			turk_tag = new_row[Answer_column].lower()
 			high_level_tag = turk_tag.split('::')[0]
 			low_level_tag = turk_tag.split('::')[1]
