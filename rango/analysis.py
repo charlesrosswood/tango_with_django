@@ -407,8 +407,8 @@ def read_turk_csv( csvfile ):
 	data_dict['mcc to high level tags'] = mcc_to_high_level_tag_dict
 	data_dict['mcc to low level tags'] = mcc_to_low_level_tag_dict
 
-	data_dict['high level to mcc'] = high_level_tag_to_mcc_dict
-	data_dict['low level to mcc'] = low_level_tag_to_mcc_dict
+	data_dict['high level tags to mcc'] = high_level_tag_to_mcc_dict
+	data_dict['low level tags to mcc'] = low_level_tag_to_mcc_dict
 
 	csvfile.csv_file.close()
 
