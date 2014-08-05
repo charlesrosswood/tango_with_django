@@ -26,5 +26,5 @@ urlpatterns = patterns('',
     url(r'^addcsv/$', views.add_csv, name='addcsv'), 
     url(r'^d3stuff/$', views.d3_stuff, name='d3stuff'),
     url(r'^analysemturk/$', views.analyse_mturk, name='analysemturk'), 
-
+    url(r'^d3transitions/$', views.d3_transitions, name='d3transitions'),
 )
