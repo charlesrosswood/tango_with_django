@@ -305,19 +305,23 @@ def analyse_mturk(request):
 			analysed_tags = analysis.read_turk_csv( csv_file )
 
 			graph = json.dumps(analysed_tags)
-			dataset_options = ['high level tags', 'low level tags']
+			dataset_options_1 = ['mcc to high level tags', 'mcc to low level tags']
+			dataset_options_1 = ['high level tags to mcc', 'low level tags to mcc']
 			template = 'rango/d3_mturk.html'
 			
 			print analysed_tags.keys()[0]
 
-			graph_types = list(set(analysed_tags['high level tags'].keys() + analysed_tags['low level tags'].keys()))
+			graph_types_1 = list(set(analysed_tags['mcc to high level tags'].keys() + analysed_tags['mcc to low level tags'].keys()))
+			graph_types_1 = list(set(analysed_tags['high level tags to mcc'].keys() + analysed_tags['low level tags to mcc'].keys()))
 			
 			print graph_types
 
 			context_dict = {
 				'graph': graph,
-				'graph_types':sorted(graph_types),# this is the categories tags
-				'dataset_options': dataset_options # this is the high or low level tags
+				'graph_types_1':sorted(graph_types_1),# this is the categories tags
+				'dataset_options_1': dataset_options_1, # this is the high or low level tags
+				'graph_types_2':sorted(graph_types_2),# this is the categories tags
+				'dataset_options_2': dataset_options_2 # this is the high or low level tags
 			}
 
 			return render_to_response(template, context_dict, context)

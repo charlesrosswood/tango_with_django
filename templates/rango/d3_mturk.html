@@ -17,11 +17,11 @@
 {% block content %}
 
 
-<div id="graph" class="aGraph">
+<div id="graph1" class="aGraph">
 <!-- style="position:absolute;top:30px;left:0;"> -->
 <br><br><br><br><br>
-    <select name="tags_or_categories" id="tags_or_categories">
-        {% for category in graph_types %}
+    <select name="tags_or_categories" id="tags_or_categories1">
+        {% for category in graph_types_1 %}
             {% if category == "airlines" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
@@ -30,8 +30,8 @@
         {% endfor %}
     </select>
     
-    <select name="dataset_choice" id="dataset_choice">
-        {% for category in dataset_options %}
+    <select name="dataset_choice" id="dataset_choice1">
+        {% for category in dataset_options_1 %}
             {% if category == "high level tags" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
@@ -40,28 +40,6 @@
         {% endfor %}
     </select>
 
- <!--    <div class="some_label"> 
-        Number of bins
-        <div id="bin_range"></div>
-    </div>
-
-    <br>
- -->
-<!--     <br>
-
-    <div class="some_label">
-        x-axis range
-        <div id="x_range"></div>
-    </div>
-
-    <br>
-
-    <div class="some_label">
-        y-axis range
-        <div id="y_range"></div>
-    </div>
-
-    <br> -->
 
 </div>
 {% endblock %}
@@ -76,10 +54,10 @@
 
     $(window).resize(function(){
      setInterval(function() {
-         $('.aGraph').css({
+         $('#graph1').css({
              position:'absolute',
-             left: ($(window).width() - $('.aGraph').outerWidth())/2,
-             top: ($(window).height() - $('.aGraph').outerHeight())/2,
+             left: ($(window).width() - $('#graph1').outerWidth())/2,
+             top: ($(window).height() - $('#graph1').outerHeight())/2,
          }).fadeIn(5000);
      }, 20);
 
@@ -88,43 +66,6 @@
     // To initially run the function:
     $(window).resize();
 
-    // // Make a nice slider for x range
-    // $("#x_range").noUiSlider({
-    //     start: [0.00, 1.00],
-    //     connect: true,
-    //     range: {
-    //         'min': 0,
-    //         'max': 1.0
-    //     }
-    // });
-    // $("#x_range").width(w);
-    // $("#x_range").css('marginLeft', m[0] + 'px');
-
-    // // Make a nice slider for bin range
-    // $("#bin_range").noUiSlider({
-    //     start: 9,
-    //     step: 1,
-    //     range: {
-    //         'min': 0,
-    //         'max': 19
-    //     }
-    // });
-    // $("#bin_range").width(w);
-    // $("#bin_range").css('marginLeft', m[0] + 'px');
-
-
-    // // Make a nice slider for x range
-    // $("#y_range").noUiSlider({
-    //     start: [0.00, 1.00],
-    //     connect: true,
-    //     range: {
-    //         'min': 0,
-    //         'max': 1.0
-    //     }
-    // });
-    // $("#y_range").width(w);
-    // $("#y_range").css('marginLeft', m[0] + 'px');
-
     var graphs = {{ graph|safe }}; // Django markup to get the data
     
     console.log(graphs);
@@ -132,88 +73,19 @@
     var categoryChoice = getTagOrCategoryValue();
     var datasetChoice = getDatasetCategoryValue();
 
-    // console.log(Unzip(graphs[categoryChoice], 'high level tag'));
-    // console.log(Unzip(graphs[categoryChoice], 'value'));
-    // var binRange = parseInt($("#bin_range").val());
-    // var xMin = parseFloat($("#x_range").val()[0]);
-    // var xMax = parseFloat($("#x_range").val()[1]);
-    // var yMin = parseFloat($("#y_range").val()[0]);
-    // var yMax = parseFloat($("#y_range").val()[1]);
-    
     drawGraph(categoryChoice, datasetChoice); // this draws the graph on page load
 
-    // // A jQuery event to update the graph on changing the bin size slider
-    // $("#bin_range").on('change', function() {
-    //     categoryChoice = getTagOrCategoryValue();
-    //     datasetChoice = getDatasetCategoryValue();
-    //     binRange = parseInt($("#bin_range").val());
-    //     xMin = parseFloat($("#x_range").val()[0]);
-    //     xMax = parseFloat($("#x_range").val()[1]);
-    //     yMin = parseFloat($("#y_range").val()[0]);
-    //     yMax = parseFloat($("#y_range").val()[1]);
-
-    //     updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice);
-    // });
-    
-    // $("#x_range").on('change', function() {
-    //     categoryChoice = getTagOrCategoryValue();
-    //     // datasetChoice = getDatasetCategoryValue();
-    //     // binRange = parseInt($("#bin_range").val());
-    //     xMin = parseFloat($("#x_range").val()[0]);
-    //     xMax = parseFloat($("#x_range").val()[1]);
-    //     yMin = parseFloat($("#y_range").val()[0]);
-    //     yMax = parseFloat($("#y_range").val()[1]);
-
-    //     updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    // });
-
-    // $("#y_range").on('change', function() {
-    //     categoryChoice = getTagOrCategoryValue();
-    //     // datasetChoice = getDatasetCategoryValue();
-    //     // binRange = parseInt($("#bin_range").val());
-    //     xMin = parseFloat($("#x_range").val()[0]);
-    //     xMax = parseFloat($("#x_range").val()[1]);
-    //     yMin = parseFloat($("#y_range").val()[0]);
-    //     yMax = parseFloat($("#y_range").val()[1]);
-
-    //     updateGraph(categoryChoice, xMin, xMax, yMin, yMax);
-    // });
-
     // a jQuery event to update the graph on changing the category from the drop down
-    $('#tags_or_categories').on('change', function (e) {
+    $('#tags_or_categories1').on('change', function (e) {
         categoryChoice = getTagOrCategoryValue();
         datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        // xMin = parseFloat($("#x_range").val()[0]);
-        // xMax = parseFloat($("#x_range").val()[1]);
-        // yMin = parseFloat($("#y_range").val()[0]);
-        // yMax = parseFloat($("#y_range").val()[1]);
-
+ 
         updateGraph(categoryChoice, datasetChoice);
     });
-    
-    // // a jQuery event to update the graph on changing the category from the drop down
-    // $('#category_choice').on('change', function (e) {
-    //     categoryChoice = getTagOrCategoryValue();
-    //     datasetChoice = getDatasetCategoryValue();
-    //     // binRange = parseInt($("#bin_range").val());
-    //     xMin = parseFloat($("#x_range").val()[0]);
-    //     xMax = parseFloat($("#x_range").val()[1]);
-    //     yMin = parseFloat($("#y_range").val()[0]);
-    //     yMax = parseFloat($("#y_range").val()[1]);
-
-    //     updateGraph(categoryChoice, datasetChoice);
-    // });
-
+  
     // a jQuery event to update the graph on changing the category from the drop down
-    $('#dataset_choice').on('change', function (e) {
+    $('#dataset_choice1').on('change', function (e) {
         categoryChoice = getTagOrCategoryValue();
-        datasetChoice = getDatasetCategoryValue();
-        // binRange = parseInt($("#bin_range").val());
-        // xMin = parseFloat($("#x_range").val()[0]);
-        // xMax = parseFloat($("#x_range").val()[1]);
-        // yMin = parseFloat($("#y_range").val()[0]);
-        // yMax = parseFloat($("#y_range").val()[1]);
 
         updateGraph(categoryChoice, datasetChoice);
     });
@@ -230,105 +102,18 @@
         return unzipped_array;
     };
 
-    // function string_Unzip(array, index_to_unzip) {
-    //     var unzipped_array = [];    
-
-    //     for (var i=0; i < array.length; i++) {
-    //         if ((array[i][index_to_unzip].slice(0,1) == "'") || (array[i][index_to_unzip].slice(0,1) == "\"")) {
-    //             string_to_add = array[i][index_to_unzip].slice(1);
-    //         };
-
-    //         unzipped_array.push(string_to_add);
-    //     };  
-
-    //     return unzipped_array;
-    // };
-
-    // // A function to get the value of the slider
-    // // =========================================
-    // function getBinRange() {
-    //     return parseFloat($("#binRange").val());
-    // };
-    
-    // // A function to get the value of the slider
-    // // =========================================
-    // function getxMin() {
-    //     return parseFloat($("#xMin").val());
-    // };
-    
-    // // A function to get the value of the slider
-    // // =========================================
-    // function getxMax() {
-    //     return parseFloat($("#xMax").val());
-    // };
 
     // A function to get the value of the category drop down menu
     // ==========================================================
     function getTagOrCategoryValue() {
-        return $('#tags_or_categories').val();
+        return $('#tags_or_categories1').val();
     }
 
     // A function to get the value of the category drop down menu
     // ==========================================================
     function getDatasetCategoryValue() {
-        return $('#dataset_choice').val();
+        return $('#dataset_choice1').val();
     }
-
-
-
-
-    // function draw(categoryChoice, xMin, xMax, yMin, yMax) {
-        
-    //     var values = Unzip(graphs[categoryChoice], 'value');
-    //     var indices = d3.range(0, values.length); 
-    //     var left_width = 100;
-
-    //     var x, y;
-    //     x = d3.scale.linear()
-    //        .domain([0, d3.max(values)])
-    //        .range([0, w]);
-
-    //     y = d3.scale.ordinal()
-    //        .domain(indices)
-    //        .rangeRoundBands([0, h]);
-
-  
-    //     // var bars = d3.select("#work_queues_chart")
-    //     //     .selectAll("div")
-    //     //     .attr("id","work_queues_chart")
-    //     //     .data(data);
-         
-    //     var graph_canvas = d3.select(".aGraph").append("svg")
-    //         .attr("width", w + m[1] + m[3] + left_width)
-    //         .attr("height", h + m[0] + m[2]);
-
-    //     graph_canvas.transition();
-
-    //     var bars = graph_canvas.selectAll("rect")
-    //        .data(values);
-
-    //     // enter selection
-    //     bars
-    //         .enter().append("rect");
-
-    //     // update selection
-    //     bars
-    //        .attr("x", left_width)
-    //        .attr("y", function (value, index) { 
-    //             // use the index as input instead of value; y(index) instead of y(value)
-    //             return y(index); 
-    //         })
-    //        .attr("width", x)
-    //        .attr("height", y.rangeBand());
-
-    //     // bars
-    //     //     .style("width", function (d) {return scale(d) + "%";})
-    //     //     .text(function (d) {return d;});
-        
-    //     // exit selection
-    //     bars
-    //         .exit().remove();
-    // };
 
 
     // A function to draw the graph first time around
@@ -350,7 +135,7 @@
 
         var left_width = 300;
 
-        graph = d3.select(".aGraph").append("svg")
+        graph = d3.select("#graph1").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
             .attr("height", h + m[0] + m[2]);
 
@@ -419,17 +204,9 @@
 
         var left_width = 300;
 
-        // graph = d3.select(".aGraph").transition();
-        //     .append("svg")
-        //     .attr("width", w + m[1] + m[3] + left_width)
-        //     .attr("height", h + m[0] + m[2]);
-
         console.log(categoryChoice);
         console.log(values);
-        
-        // graph = d3.select(".aGraph");//.transition();
-
-        // var x, y;
+ 
         x = d3.scale.linear()
            .domain([0, d3.max(values)])
            .range([0, w]);
@@ -438,11 +215,11 @@
            .domain(indices)
            .rangeRoundBands([0, h]);
 
-        graph = d3.select(".aGraph");
+        graph = d3.select("#graph");
 
         graph.select("svg").remove();//transition();
         
-        graph = d3.select(".aGraph").append("svg")
+        graph = d3.select("#graph").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
             .attr("height", h + m[0] + m[2]);
 
@@ -483,77 +260,6 @@
           .text(String);
     };
 
-
-
-    // function updateGraph(categoryChoice, binRange, xMin, xMax, yMin, yMax, datasetChoice) {
-
-    //     console.log(categoryChoice);
-        
-    //     data = graphs[categoryChoice][binRange][datasetChoice];
-    //     data_x_min = d3.min(Unzip(data, 0));
-    //     data_x_max = d3.max(Unzip(data, 0));
-    //     data_x_range = Math.abs(data_x_max-data_x_min); 
-
-    //     x_axis_min = data_x_min + (xMin*data_x_range);
-    //     x_axis_max = data_x_max - ((1.0-xMax)*data_x_range);
-
-    //     data_y_min = d3.min(Unzip(data, 1));
-    //     data_y_max = d3.max(Unzip(data, 1));
-    //     data_y_range = Math.abs(data_y_max-data_y_min); 
-
-    //     y_axis_min = data_y_min + (yMin*data_y_range);
-    //     y_axis_max = data_y_max - ((1.0-yMax)*data_y_range);
-        
-    //     line = d3.svg.line()
-    //         // assign the X function to plot our line as we wish
-    //         .x(function(d) { 
-    //             // return the X coordinate where we want to plot this datapoint
-    //             return x(d[0]); 
-    //         })
-    //         .y(function(d) { 
-    //             // return the Y coordinate where we want to plot this datapoint
-    //             return y(d[1]); 
-    //         })
-    //     .interpolate("basis");
-
-        
-    //     x = d3.scale.linear().domain([x_axis_min, x_axis_max]).range([0, w]);
-    //     // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-    //     // var y = d3.scale.linear().domain([y_min, y_max]).range([h, 0]);
-    //     y = d3.scale.linear().domain([y_axis_min, y_axis_max]).range([h, 0]);
-        
-    //     // create yAxis
-    //     xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
-    //     // create left yAxis
-    //     yAxisLeft = d3.svg.axis().scale(y).ticks(8).orient("left");
-    //     // x.domain(d3.extent(data_new, function(d) { return x(d[0]); }));
-    //     // y.domain([0, d3.max(data_new, function(d) { return x(d[1]); })]);
-
-    //     graph = d3.select(".aGraph").transition();
-
-    //     graph.select(".x.axis")
-    //         // .duration(750)
-    //         .call(xAxis);
-
-    //     graph.select(".y.axis")
-    //         // .duration(750)
-    //         .call(yAxisLeft);
-
-    //     var x_label;
-    //     if (datasetChoice == 'frequency') {
-    //         x_label = "time period (days)";
-    //     } else {
-    //         x_label = "£/day";
-    //     }
-
-    //     graph.select(".x.label")
-    //         .text(x_label);
-
-    //     // graph.transition().attr("d", line(data));      
-    //         // .duration(750)
-    //     graph.selectAll("path")
-    //         .attr("d", line(data));
-    // };
 
 
 </script>

@@ -317,8 +317,11 @@ def read_turk_csv( csvfile ):
 	# Answer_column = new_title_row.index('"Answer"')
 	# Date_column = new_title_row.index('"Date"')
 
-	high_level_tag_dict = {}
-	low_level_tag_dict = {}
+	mcc_to_high_level_tag_dict = {}
+	mcc_to_low_level_tag_dict = {}
+
+	high_level_tag_to_mcc_dict = {}
+	low_level_tag_to_mcc_dict = {}
 
 	for row in csv_list[1:]:
 		if row != '' and row != '\n':
@@ -352,22 +355,39 @@ def read_turk_csv( csvfile ):
 				low_level_tag = low_level_tag[:-1]
 
 
-			if mcc_tag not in high_level_tag_dict.keys():
-				high_level_tag_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
-			if mcc_tag not in low_level_tag_dict.keys():
-				low_level_tag_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
+			if mcc_tag not in mcc_to_high_level_tag_dict.keys():
+				mcc_to_high_level_tag_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
+			if mcc_tag not in mcc_to_low_level_tag_dict.keys():
+				mcc_to_low_level_tag_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
+
+			if high_level_tag not in high_level_tag_to_mcc_dict.keys():
+				high_level_tag_to_mcc_dict.update( {high_level_tag:{}} )
+			if low_level_tag not in low_level_tag_to_mcc_dict.keys():
+				low_level_tag_to_mcc_dict.update( {low_level_tag:{}} )
+
+
 			# if narrative not in data_dict.keys():
 			# 	data_dict.update( {narrative:{'high level tag':{}, 'low level tag':{}}})
 
-			if high_level_tag not in high_level_tag_dict[mcc_tag].keys():#['high level tag'].keys():
-				high_level_tag_dict[mcc_tag].update( {high_level_tag:1} )
+			if high_level_tag not in mcc_to_high_level_tag_dict[mcc_tag].keys():#['high level tag'].keys():
+				mcc_to_high_level_tag_dict[mcc_tag].update( {high_level_tag:1} )
 			else:
-				high_level_tag_dict[mcc_tag][high_level_tag] += 1
+				mcc_to_high_level_tag_dict[mcc_tag][high_level_tag] += 1
 
-			if low_level_tag not in low_level_tag_dict[mcc_tag].keys():#['high level tag'].keys():
-				low_level_tag_dict[mcc_tag].update( {low_level_tag:1} )
+			if low_level_tag not in mcc_to_low_level_tag_dict[mcc_tag].keys():#['high level tag'].keys():
+				mcc_to_low_level_tag_dict[mcc_tag].update( {low_level_tag:1} )
 			else:
-				low_level_tag_dict[mcc_tag][low_level_tag] += 1
+				mcc_to_low_level_tag_dict[mcc_tag][low_level_tag] += 1
+
+			if mcc_tag not in high_level_tag_to_mcc_dict[high_level_tag].keys():
+				high_level_tag_to_mcc_dict[high_level_tag].update( {mcc_tag:1} )
+			else:
+				high_level_tag_to_mcc_dict[high_level_tag][mcc_tag] += 1
+			if mcc_tag not in low_level_tag_to_mcc_dict[low_level_tag].keys():
+				low_level_tag_to_mcc_dict[low_level_tag].update( {mcc_tag:1} )
+			else:
+				low_level_tag_to_mcc_dict[low_level_tag][mcc_tag] += 1
+
 			
 			# if low_level_tag not in data_dict[mcc_tag]['low level tag'].keys():
 			# 	data_dict[mcc_tag]['low level tag'].update( {low_level_tag:1} )
@@ -384,26 +404,31 @@ def read_turk_csv( csvfile ):
 			# else:
 			# 	data_dict[narrative]['low level tag'][low_level_tag] += 1
 
-	data_dict['high level tags'] = high_level_tag_dict
-	data_dict['low level tags'] = low_level_tag_dict
+	data_dict['mcc to high level tags'] = mcc_to_high_level_tag_dict
+	data_dict['mcc to low level tags'] = mcc_to_low_level_tag_dict
+
+	data_dict['high level to mcc'] = high_level_tag_to_mcc_dict
+	data_dict['low level to mcc'] = low_level_tag_to_mcc_dict
 
 	csvfile.csv_file.close()
 
 	return_dict = {}
 
 	# today = datetime.datetime.now()
-	return_dict['high level tags'] = {}
-	return_dict['low level tags'] = {}
+	return_dict['mcc to high level tags'] = {}
+	return_dict['mcc to low level tags'] = {}
+	return_dict['high level tags to mcc'] = {}
+	return_dict['low level tags to mcc'] = {}
 
-	for high_or_low_level_tag in data_dict.keys():
-		for mcc_tag, data in data_dict[high_or_low_level_tag].iteritems(): # category can be mcc_category or transaction narrative
-			if mcc_tag not in return_dict[high_or_low_level_tag].keys():
-				return_dict[high_or_low_level_tag].update( {mcc_tag:[]} )
+	for tag_mapping in data_dict.keys():
+		for mcc_tag, data in data_dict[tag_mapping].iteritems(): # category can be mcc_category or transaction narrative
+			if mcc_tag not in return_dict[tag_mapping].keys():
+				return_dict[tag_mapping].update( {mcc_tag:[]} )
 			for high_level_tag in data.keys():
 				dict_to_add = {
 					'tag': high_level_tag,
 					'value': data[high_level_tag]
 					}
-				return_dict[high_or_low_level_tag][mcc_tag].append( dict_to_add )
+				return_dict[tag_mapping][mcc_tag].append( dict_to_add )
 			
 	return return_dict
