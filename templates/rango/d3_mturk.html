@@ -20,7 +20,7 @@
 <div id="graph1" class="aGraph">
 <!-- style="position:absolute;top:30px;left:0;"> -->
 <br><br><br><br><br>
-    <select name="tags_or_categories" id="tags_or_categories1">
+    <select name="tags_or_categories1" id="tags_or_categories1">
         {% for category in graph_types_1 %}
             {% if category == "airlines" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
@@ -30,7 +30,7 @@
         {% endfor %}
     </select>
     
-    <select name="dataset_choice" id="dataset_choice1">
+    <select name="dataset_choice1" id="dataset_choice1">
         {% for category in dataset_options_1 %}
             {% if category == "high level tags" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
