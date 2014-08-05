@@ -319,69 +319,71 @@
 
 
         // REMOVED - ADD BACK IN FOR USE
-        // graph.select("svg").remove();//transition();
+        graph.select("svg").remove();//transition();
 
-        // graph = d3.select("#graph").append("svg")
-        //     .attr("width", w )
-        //     .attr("height", svg_height + m[0] + m[2]);
-        // END
-
-        // ADDED
-        svg_element = graph.select("svg")
+        graph = d3.select("#graph").append("svg")
+            .attr("width", w )
             .attr("height", svg_height + m[0] + m[2]);
         // END
 
+        // ADDED
+        // svg_element = graph.select("svg")
+        //     .attr("height", svg_height + m[0] + m[2]);
+        // END
+
         // REMOVED
-        // graph.selectAll("rect")
-        //    .data(values)
+        graph.selectAll("rect")
+           .data(values)
         // END
 
         // ADDED
-        var bars = graph.selectAll("rect")
-            .data(values)
+        // var bars = graph.selectAll("rect")
+        //     .data(values)
         // END
 
            // .transition()
         // ADDED
-        bars
+        // bars
         // END
            .enter()
            .append("rect")
            // REMOVED
-           // .attr("x", left_width)
-           // .attr("y", function (value, index) { 
-           //      // use the index as input instead of value; y(index) instead of y(value)
-           //      return index*bar_height;
-           //      // return y(index); 
-           //  })
-           // .attr("width", x)
-           // .attr("height", bar_height);
+           .attr("x", left_width)
+           .attr("y", function (value, index) { 
+                // use the index as input instead of value; y(index) instead of y(value)
+                return index*bar_height;
+                // return y(index); 
+            })
+           .attr("width", x)
+           .attr("height", bar_height);
            //END
 
            // .transition();
            // .exit().remove();
 
         // ADDED
-        bars.exit()
-            .transition()
-            .duration(300)
-            .ease("exp")
-                .attr("width", 0)
-                .remove()
+        // bars.exit()
+        //     .transition()
+        //     .duration(300)
+        //     .ease("exp")
+        //         .attr("width", 0)
+        //         .remove()
         // END
 
-        bars
-            .transition()
-            .duration(300)
-            .ease("quad")
-                .attr("x", left_width)
-                .attr("y", function (value, index) { 
-                    // use the index as input instead of value; y(index) instead of y(value)
-                    return index*bar_height;
-                    // return y(index); 
-                })
-                .attr("width", x)
-                .attr("height", bar_height);
+        // ADDED
+        // bars
+        //     .transition()
+        //     .duration(300)
+        //     .ease("quad")
+        //         .attr("x", left_width)
+        //         .attr("y", function (value, index) { 
+        //             // use the index as input instead of value; y(index) instead of y(value)
+        //             return index*bar_height;
+        //             // return y(index); 
+        //         })
+        //         .attr("width", x)
+        //         .attr("height", bar_height);
+        // END
 
         graph.selectAll("text.score")
           .data(values)
