@@ -43,12 +43,12 @@ path {
   text-align: center;
 }
 
-.aGraph {
+/*.aGraph {
   position:relative;
   top:50px;
   left:0;
 }
-
+*/
 .aGraph rect {
   stroke: white;
   fill: steelblue;

@@ -71,7 +71,7 @@
 <script>
     // define dimensions of graph
     var m = [80, 80, 80, 80]; // margins
-    var w = 1000 - m[1] - m[3]; // width
+    var w = 800 - m[1] - m[3]; // width
     var h = 400 - m[0] - m[2]; // height
 
     $(window).resize(function(){
@@ -348,7 +348,7 @@
         console.log(h);
         console.log(m);
 
-        var left_width = 100;
+        var left_width = 300;
 
         graph = d3.select(".aGraph").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
