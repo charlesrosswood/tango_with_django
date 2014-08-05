@@ -48,7 +48,7 @@
 
     <select name="tags_or_categories2" id="tags_or_categories2">
         {% for category in graph_types_2 %}
-            {% if category == "restaurants" %}
+            {% if category == "transport" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
@@ -58,7 +58,7 @@
     
     <select name="dataset_choice2" id="dataset_choice2">
         {% for category in dataset_options_2 %}
-            {% if category == "mcc to high level tags" %}
+            {% if category == "high level tags to mcc" %}
                 <option value="{{ category }}" selected> {{ category }} </option>
             {% else %}
                 <option value="{{ category }}"> {{ category }} </option>
@@ -106,6 +106,7 @@
     var categoryChoice1 = getTagOrCategory1Value();
     var datasetChoice1 = getDatasetCategory1Value();
     if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
+        d3.select("#graph2").select("svg").remove();//transition();
         drawGraph1(categoryChoice1, datasetChoice1);
     };
 
@@ -113,6 +114,7 @@
     var datasetChoice2 = getDatasetCategory2Value();
     if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
         console.log("here");
+        d3.select("#graph1").select("svg").remove();//transition();
         drawGraph2(categoryChoice2, datasetChoice2);
     };
 
@@ -122,6 +124,7 @@
         datasetChoice1 = getDatasetCategory1Value();
 
         if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
+            d3.select("#graph2").select("svg").remove();//transition();
             updateGraph1(categoryChoice1, datasetChoice1);
         };
     });
@@ -132,6 +135,7 @@
         datasetChoice1 = getDatasetCategory1Value();
 
         if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
+            d3.select("#graph2").select("svg").remove();//transition();
             updateGraph1(categoryChoice1, datasetChoice1);
         };
     });
@@ -142,7 +146,7 @@
         datasetChoice2 = getDatasetCategory2Value();
     
         if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
-            console.log("here2");
+            d3.select("#graph1").select("svg").remove();//transition();
             updateGraph2(categoryChoice2, datasetChoice2);
         };
     });
@@ -153,8 +157,7 @@
         datasetChoice2 = getDatasetCategory2Value();
         
         if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
-            console.log("here3");
-
+            d3.select("#graph1").select("svg").remove();//transition();
             updateGraph2(categoryChoice2, datasetChoice2);
         };
      });
@@ -205,7 +208,7 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
-        bar_height = 25,//h / tags.length;
+        bar_height = 30,//h / tags.length;
         svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
@@ -276,7 +279,7 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value');//[8, 4, 9, 12, 11],
         // graph,
         // width = 400,
-        bar_height = 25,//h / tags.length;
+        bar_height = 30,//h / tags.length;
         svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
@@ -353,7 +356,7 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
-        bar_height = 25,//h / tags.length;
+        bar_height = 30,//h / tags.length;
         svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
@@ -424,7 +427,7 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value');//[8, 4, 9, 12, 11],
         // graph,
         // width = 400,
-        bar_height = 15,//h / tags.length;
+        bar_height = 30,//h / tags.length;
         svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
