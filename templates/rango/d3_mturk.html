@@ -99,20 +99,20 @@
 
     $(window).resize(function(){
      setInterval(function() {
-         $('#graph1').css({
+         $('#graph').css({
              position:'relative',
              left: ($(window).width() - $('#graph1').outerWidth())/2,
              top: ($(window).height() - $('#graph1').outerHeight())/2,
          }).fadeIn(5000);
     }, 20);
 
-    setInterval(function() {
-         $('#graph2').css({
-             position:'relative',
-             left: ($(window).width() - $('#graph2').outerWidth())/2,
-             // top: ($(window).height() - $('#graph2').outerHeight())/2,
-         }).fadeIn(5000);
-    }, 20);
+    // setInterval(function() {
+    //      $('#graph2').css({
+    //          position:'relative',
+    //          left: ($(window).width() - $('#graph2').outerWidth())/2,
+    //          // top: ($(window).height() - $('#graph2').outerHeight())/2,
+    //      }).fadeIn(5000);
+    // }, 20);
     });
     
     // To initially run the function:
