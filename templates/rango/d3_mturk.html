@@ -215,11 +215,11 @@
            .domain(indices)
            .rangeRoundBands([0, h]);
 
-        graph = d3.select("#graph");
+        graph = d3.select("#graph1");
 
         graph.select("svg").remove();//transition();
         
-        graph = d3.select("#graph").append("svg")
+        graph = d3.select("#graph1").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
             .attr("height", h + m[0] + m[2]);
 
