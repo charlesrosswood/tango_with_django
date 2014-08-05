@@ -42,6 +42,32 @@
 
 
 </div>
+
+<div id="graph2" class="aGraph">
+<!-- style="position:absolute;top:30px;left:0;"> -->
+<br><br><br><br><br>
+    <select name="tags_or_categories2" id="tags_or_categories2">
+        {% for category in graph_types_2 %}
+            {% if category == "airlines" %}
+                <option value="{{ category }}" selected> {{ category }} </option>
+            {% else %}
+                <option value="{{ category }}"> {{ category }} </option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    
+    <select name="dataset_choice2" id="dataset_choice2">
+        {% for category in dataset_options_2 %}
+            {% if category == "mcc to high level tags" %}
+                <option value="{{ category }}" selected> {{ category }} </option>
+            {% else %}
+                <option value="{{ category }}"> {{ category }} </option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+
+</div>
 {% endblock %}
 
 {% block js %}
@@ -55,9 +81,20 @@
     $(window).resize(function(){
      setInterval(function() {
          $('#graph1').css({
-             position:'absolute',
+             position:'relative',
              left: ($(window).width() - $('#graph1').outerWidth())/2,
              top: ($(window).height() - $('#graph1').outerHeight())/2,
+         }).fadeIn(5000);
+     }, 20);
+
+    });
+
+    $(window).resize(function(){
+     setInterval(function() {
+         $('#graph2').css({
+             position:'relative',
+             left: ($(window).width() - $('#graph2').outerWidth())/2,
+             top: ($(window).height() - $('#graph2').outerHeight())/2,
          }).fadeIn(5000);
      }, 20);
 
