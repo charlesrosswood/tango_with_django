@@ -96,8 +96,8 @@
 <script>
     // define dimensions of graph
     var m = [80, 80, 80, 80]; // margins
-    var w = 800 - m[1] - m[3]; // width
-    var h = 800 - m[0] - m[2]; // height
+    var w = $(window).width() - m[1] - m[3]; // width
+    // var h = 800 - m[0] - m[2]; // height
 
     $(window).resize(function(){
      setInterval(function() {
@@ -239,10 +239,11 @@
         console.log(h);
         console.log(m);
 
-        var left_width = 300;
+        var bar_widths = 400;
+        var left_width = w - bar_widths;
 
         graph = d3.select("#graph").append("svg")
-            .attr("width", w + m[1] + m[3] + left_width)
+            .attr("width", w)
             .attr("height", svg_height + m[0] + m[2]);
 
         console.log(categoryChoice);
@@ -250,7 +251,7 @@
         var x, y;
         x = d3.scale.linear()
            .domain([0, d3.max(values)])
-           .range([0, w]);
+           .range([0, bar_widths]);
 
         y = d3.scale.ordinal()
            .domain(indices)
@@ -310,14 +311,15 @@
         console.log(h);
         console.log(m);
 
-        var left_width = 300;
+        bar_widths = 400;
+        left_width = w - bar_widths;
 
         console.log(categoryChoice);
         console.log(values);
  
         x = d3.scale.linear()
            .domain([0, d3.max(values)])
-           .range([0, w]);
+           .range([0, bar_widths]);
 
         y = d3.scale.ordinal()
            .domain(indices)
@@ -328,7 +330,7 @@
         graph.select("svg").remove();//transition();
         
         graph = d3.select("#graph").append("svg")
-            .attr("width", w + m[1] + m[3] + left_width)
+            .attr("width", w )
             .attr("height", svg_height + m[0] + m[2]);
 
         graph.selectAll("rect")
