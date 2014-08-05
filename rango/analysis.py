@@ -334,7 +334,7 @@ def read_turk_csv( csvfile ):
 			if mcc_tag[0] == '"':
 				mcc_tag = mcc_tag[1:]
 			if mcc_tag[-1] == '"':
-				mcc_tag = mcc_tag[:-2]
+				mcc_tag = mcc_tag[:-1]
 
 			# if turk_tag[0] == '"':
 			# 	turk_tag = turk_tag[1:]
@@ -344,12 +344,12 @@ def read_turk_csv( csvfile ):
 			if high_level_tag[0] == '"':
 				high_level_tag = high_level_tag[1:]
 			if high_level_tag[-1] == '"':
-				high_level_tag = high_level_tag[:-2]
+				high_level_tag = high_level_tag[:-1]
 
 			if low_level_tag[0] == '"':
 				low_level_tag = low_level_tag[1:]
 			if low_level_tag[-1] == '"':
-				low_level_tag = low_level_tag[:-2]
+				low_level_tag = low_level_tag[:-1]
 
 
 			if mcc_tag not in high_level_tag_dict.keys():
