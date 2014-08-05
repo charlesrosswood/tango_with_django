@@ -330,7 +330,7 @@ def read_turk_csv( csvfile ):
 			if mcc_tag[0] == '"':
 				mcc_tag = mcc_tag[1:]
 			if mcc_tag[-1] == '"':
-				mcc_tag[:-2]
+				mcc_tag = mcc_tag[:-2]
 
 			turk_tag = new_row[Answer_column].lower()
 			high_level_tag = turk_tag.split('::')[0]
