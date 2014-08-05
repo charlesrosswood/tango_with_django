@@ -326,15 +326,31 @@ def read_turk_csv( csvfile ):
 
 			narrative = new_row[Merchant_Name_column].lower()
 			mcc_tag = new_row[Merchant_Code_column].lower().strip()
+			
+			turk_tag = new_row[Answer_column].lower()
+			high_level_tag = turk_tag.split('::')[0]
+			low_level_tag = turk_tag.split('::')[1]
 
 			if mcc_tag[0] == '"':
 				mcc_tag = mcc_tag[1:]
 			if mcc_tag[-1] == '"':
 				mcc_tag = mcc_tag[:-2]
 
-			turk_tag = new_row[Answer_column].lower()
-			high_level_tag = turk_tag.split('::')[0]
-			low_level_tag = turk_tag.split('::')[1]
+			# if turk_tag[0] == '"':
+			# 	turk_tag = turk_tag[1:]
+			# if turk_tag[-1] == '"':
+			# 	turk_tag = turk_tag[:-2]
+
+			if high_level_tag[0] == '"':
+				high_level_tag = high_level_tag[1:]
+			if high_level_tag[-1] == '"':
+				high_level_tag = high_level_tag[:-2]
+
+			if low_level_tag[0] == '"':
+				low_level_tag = low_level_tag[1:]
+			if low_level_tag[-1] == '"':
+				low_level_tag = low_level_tag[:-2]
+
 
 			if mcc_tag not in high_level_tag_dict.keys():
 				high_level_tag_dict.update( {mcc_tag:{}} )#{'high level tag':{}, 'low level tag':{}}})
