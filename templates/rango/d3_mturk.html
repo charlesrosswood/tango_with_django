@@ -349,7 +349,8 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value'),//[8, 4, 9, 12, 11],
         graph,
         // width = 400,
-        bar_height = h / tags.length,
+        bar_height = 15,//h / tags.length;
+        svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
         
@@ -358,11 +359,11 @@
         console.log(h);
         console.log(m);
 
-        var left_width = 300;
+        var left_width = 900;
 
         graph = d3.select("#graph2").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
-            .attr("height", h + m[0] + m[2]);
+            .attr("height", svg_height + m[0] + m[2]);
 
         console.log(categoryChoice);
       
@@ -381,7 +382,8 @@
            .attr("x", left_width)
            .attr("y", function (value, index) { 
                 // use the index as input instead of value; y(index) instead of y(value)
-                return y(index); 
+                return index*bar_height;
+                //return y(index); 
             })
            .attr("width", x)
            .attr("height", y.rangeBand());
@@ -390,7 +392,7 @@
           .data(values)
           .enter().append("text")
           .attr("x", function(d) { return x(d) + left_width; })
-          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("y", function(d, i) { return i*bar_height + bar_height/2; } )//y(i) + y.rangeBand()/2; } )
           .attr("dx", -5)
           .attr("dy", ".36em")
           .attr("text-anchor", "end")
@@ -401,7 +403,7 @@
           .data(tags)
           .enter().append("text")
           .attr("x", left_width / 2)
-          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("y", function(d, i) { return i*bar_height + bar_height/2; } )//y(i) + y.rangeBand()/2; } )
           .attr("dy", ".36em")
           .attr("text-anchor", "middle")
           .attr('class', 'name')
@@ -418,7 +420,8 @@
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value');//[8, 4, 9, 12, 11],
         // graph,
         // width = 400,
-        bar_height = h / tags.length;
+        bar_height = 15,//h / tags.length;
+        svg_height = bar_height*tags.length,
         // height = bar_height * tags.length;
         indices = d3.range(0, values.length); 
         
@@ -427,7 +430,7 @@
         console.log(h);
         console.log(m);
 
-        var left_width = 300;
+        var left_width = 600;
 
         console.log(categoryChoice);
         console.log(values);
@@ -446,7 +449,7 @@
         
         graph = d3.select("#graph2").append("svg")
             .attr("width", w + m[1] + m[3] + left_width)
-            .attr("height", h + m[0] + m[2]);
+            .attr("height", svg_height + m[0] + m[2]);
 
         graph.selectAll("rect")
            .data(values)
@@ -456,10 +459,11 @@
            .attr("x", left_width)
            .attr("y", function (value, index) { 
                 // use the index as input instead of value; y(index) instead of y(value)
-                return y(index); 
+                return index*bar_height;
+                //return y(index); 
             })
            .attr("width", x)
-           .attr("height", y.rangeBand());
+           .attr("height", bar_height);//y.rangeBand());
            // .transition();
            // .exit().remove();
 
@@ -467,7 +471,7 @@
           .data(values)
           .enter().append("text")
           .attr("x", function(d) { return x(d) + left_width; })
-          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("y", function(d, i) { return i*bar_height + bar_height/2; })//return y(i) + y.rangeBand()/2; } )
           .attr("dx", -5)
           .attr("dy", ".36em")
           .attr("text-anchor", "end")
@@ -478,7 +482,7 @@
           .data(tags)
           .enter().append("text")
           .attr("x", left_width / 2)
-          .attr("y", function(d, i) { return y(i) + y.rangeBand()/2; } )
+          .attr("y", function(d, i) { return i*bar_height + bar_height/2; })//return y(i) + y.rangeBand()/2; } )
           .attr("dy", ".36em")
           .attr("text-anchor", "middle")
           .attr('class', 'name')
