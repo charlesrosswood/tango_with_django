@@ -404,7 +404,7 @@
     // ================================================
     function updateGraph(categoryChoice, datasetChoice){
 
-        tags = string_Unzip(graphs[datasetChoice][categoryChoice], 'high level tag'); //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
+        tags = Unzip(graphs[datasetChoice][categoryChoice], 'high level tag'); //['John', 'Tim', 'Sam', 'Greg', 'Charles'],
         values = Unzip(graphs[datasetChoice][categoryChoice], 'value');//[8, 4, 9, 12, 11],
         // graph,
         // width = 400,
