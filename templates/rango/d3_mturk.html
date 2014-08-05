@@ -40,6 +40,8 @@
         {% endfor %}
     </select>
     
+    <br>
+    
     <select name="tags_or_categories2" id="tags_or_categories2">
         {% for category in graph_types_2 %}
             {% if category == "transport" %}
@@ -101,8 +103,8 @@
      setInterval(function() {
          $('#graph').css({
              position:'relative',
-             left: ($(window).width() - $('#graph1').outerWidth())/2,
-             top: ($(window).height() - $('#graph1').outerHeight())/2,
+             left: ($(window).width() - $('#graph').outerWidth())/2,
+             top: ($(window).height() - $('#graph').outerHeight())/2,
          }).fadeIn(5000);
     }, 20);
 
@@ -125,7 +127,7 @@
     var categoryChoice1 = getTagOrCategory1Value();
     var datasetChoice1 = getDatasetCategory1Value();
     if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
-        // d3.select("#graph").select("svg").remove();//transition();
+        d3.select("#graph").select("svg").remove();//transition();
         drawGraph(categoryChoice1, datasetChoice1);
     };
 
@@ -133,7 +135,7 @@
     var datasetChoice2 = getDatasetCategory2Value();
     if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
         // console.log("here");
-        // d3.select("#graph").select("svg").remove();//transition();
+        d3.select("#graph").select("svg").remove();//transition();
         drawGraph(categoryChoice2, datasetChoice2);
     };
 
@@ -143,7 +145,7 @@
         datasetChoice1 = getDatasetCategory1Value();
 
         if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
-            // d3.select("#graph").select("svg").remove();//transition();
+            d3.select("#graph").select("svg").remove();//transition();
             updateGraph(categoryChoice1, datasetChoice1);
         };
     });
@@ -154,7 +156,7 @@
         datasetChoice1 = getDatasetCategory1Value();
 
         if (Object.keys(graphs[datasetChoice1]).indexOf(categoryChoice1) >= 0) {
-            // d3.select("#graph").select("svg").remove();//transition();
+            d3.select("#graph").select("svg").remove();//transition();
             updateGraph(categoryChoice1, datasetChoice1);
         };
     });
@@ -165,7 +167,7 @@
         datasetChoice2 = getDatasetCategory2Value();
     
         if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
-            // d3.select("#graph").select("svg").remove();//transition();
+            d3.select("#graph").select("svg").remove();//transition();
             updateGraph(categoryChoice2, datasetChoice2);
         };
     });
@@ -176,7 +178,7 @@
         datasetChoice2 = getDatasetCategory2Value();
         
         if (Object.keys(graphs[datasetChoice2]).indexOf(categoryChoice2) >= 0) {
-            // d3.select("#graph").select("svg").remove();//transition();
+            d3.select("#graph").select("svg").remove();//transition();
             updateGraph(categoryChoice2, datasetChoice2);
         };
      });
