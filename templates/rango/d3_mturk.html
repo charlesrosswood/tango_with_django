@@ -15,11 +15,23 @@
 {% block page_title %}Visualise data{% endblock %} 
 
 {% block content %}
+<br><br><br><br><br>
 
+<div id="demo">
+    <div id="buttons">
+        <button id="data1">Set Data to data 1</button>
+        <button id="data2">Set Data to data 2</button>
+    <br>
+        <button id="random">Make Random Data</button>
+        <input id="num" value=10></input>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg"></svg>
+</div>
+
+<br>
 
 <div id="graph" class="aGraph">
 <!-- style="position:absolute;top:30px;left:0;"> -->
-<br><br><br><br><br>
     <select name="tags_or_categories1" id="tags_or_categories1">
         {% for category in graph_types_1 %}
             {% if category == "airlines" %}
@@ -65,18 +77,7 @@
 
 </div>
 
-<br>
 
-<div id="demo">
-    <div id="buttons">
-        <button id="data1">Set Data to data 1</button>
-        <button id="data2">Set Data to data 2</button>
-    <br>
-        <button id="random">Make Random Data</button>
-        <input id="num" value=10></input>
-    </div>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg"></svg>
-</div>
 
 <!-- <div id="graph2" class="aGraph">
 
