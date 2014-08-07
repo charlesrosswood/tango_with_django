@@ -245,6 +245,136 @@ def read_transactions_csv( csvfile ):
 
 
 	return return_dict
+
+def read_large_transactions_csv( csvfile ):
+	"""
+	This function does no analysis, it just groups transactions that occur
+	in a particular category together, it does not generate a histogram.
+	"""
+	csvfile.csv_file.open(mode='rb') # opening the file for reading ans such like
+	csv_list = csvfile.csv_file.read().split('\n')
+
+	data_dict = { }
+	data_dict[ 'totals' ] = {'amount':[], 'date':[]}
+	data_dict[ 'in' ] = {'amount':[], 'date':[]}
+	data_dict[ 'out' ] = {'amount':[], 'date':[]}
+
+	title_row = csv_list[0].split('"')
+	new_title_row = []
+	for i in xrange(len(title_row)):
+		if i%2 == 0: # then even element
+			temp_to_add = title_row[i].split(',')
+			temp_to_add = [element.replace('\r','') for element in temp_to_add if (element.strip() != '' and element.strip() != ',')]
+			new_title_row.extend( temp_to_add )
+		else: # then odd element
+			new_title_row.extend( [str(title_row[i]).replace('\r','')] )
+
+	# try:
+	# 	group_column = new_title_row.index("Group")
+	# except:
+	# 	group_column = new_title_row.index("transactionTag")
+	# # group_column = new_title_row.index("Tag")
+	# try:
+	# 	tag_column = new_title_row.index("Tag")
+	# except:
+	# 	tag_column = new_title_row.index("transactionTag") 
+
+	try:
+		amount_column = new_title_row.index("Transaction Amount")
+	except:
+		amount_column = new_title_row.index("transactionAmount")
+
+	try:		
+		tag_column = new_title_row.index("Visa MCC Category Code")
+	except:
+		tag_column = new_title_row.index("Visa MCC Category Code")
+
+	for row in csv_list[1:]:
+		if row != '' and row != '\n':
+			row = row.split('"')
+			new_row = []
+			for i in xrange(len(row)):
+				if i%2 == 0: # then even element
+					temp_to_add = row[i].split('|')
+
+					temp_to_add = [element.replace('\r','') for element in temp_to_add if ( element.strip() != '|' and element.strip() != '')]
+					new_row.extend( temp_to_add )
+				else: # then odd element
+					new_row.extend( [str(row[i]).replace('\r','')] )
+
+			# category = new_row[group_column].lower()
+			tag = new_row[tag_column].lower()
+
+			# try:
+			# 	date = datetime.datetime.strptime(new_row[date_column], '%d/%m/%Y')
+			# except:
+			# 	elements_of_date = new_row[date_column].split('-')
+			# 	date_stringy = str(elements_of_date[0])
+			# 	for element_of_date in elements_of_date[1:]:
+			# 		if len(element_of_date) < 2:
+			# 			element_of_date = '0' + str(element_of_date)
+			# 		date_stringy += '-' + str(element_of_date)
+
+			# 	date = datetime.datetime.strptime(date_stringy, '%Y-%m-%d')
+
+			amount = float(new_row[amount_column])
+
+			# if category not in data_dict.keys():
+			# 	data_dict.update( {category:{'amount':[], 'date':[]}})
+			if tag not in data_dict.keys():
+				data_dict.update( {tag:{'amount':[], 'date':[]}})
+
+			# data_dict[category][ 'amount' ].append( amount )
+			# data_dict[category][ 'date' ].append( date )
+			data_dict[tag][ 'amount' ].append( amount )
+			# data_dict[tag][ 'date' ].append( date )
+
+			data_dict[ 'totals' ][ 'amount' ].append( amount )
+			# data_dict[ 'totals' ][ 'date' ].append( date )
+
+			if amount < 0.0 :
+				data_dict[ 'out' ][ 'amount' ].append( amount )
+				# data_dict[ 'out' ][ 'date' ].append( date )
+			else:
+				data_dict[ 'in' ][ 'amount' ].append( amount )
+				# data_dict[ 'in' ][ 'date' ].append( date )
+
+	csvfile.csv_file.close()
+
+	return_dict = {}
+
+	# today = datetime.datetime.now()
+
+	for category, data in data_dict.iteritems():
+
+		# days_since_now = []
+		# for i in xrange(len(data[ 'date' ])):
+		# 	days_since_now.append( abs((today - data[ 'date' ][i]).total_seconds()/86400.0) )
+
+		# new_diffs, grouped_spends = groupingTransactions( days_since_now, data_dict[category][ 'amount' ], 1 )
+
+		# if new_diffs != [] and grouped_spends != []:
+			# inserting_zero_element = [0.0] + new_diffs
+
+			# spends = []
+			# # time_diffs = []
+
+			# for i in xrange(len(grouped_spends)):
+			# 	spends.append( grouped_spends[i] / (inserting_zero_element[i+1]-inserting_zero_element[i]) )
+			# 	time_diffs.append( (inserting_zero_element[i+1]-inserting_zero_element[i]) )
+
+		return_dict.update( {category:{}} )
+
+		for i in xrange(20):
+			num_of_bins = ((i+1)*3)
+			spends_per_day_dataset = binning_data( data_dict[category][ 'amount' ], num_of_bins )
+			# frequency_dataset = binning_data( time_diffs, num_of_bins )
+
+			dict_to_add = {i:{'spends':spends_per_day_dataset}}
+			return_dict[ category ].update( dict_to_add )
+
+
+	return return_dict
 	
 def read_turk_csv( csvfile ):
 	"""

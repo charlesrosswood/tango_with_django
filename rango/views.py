@@ -355,3 +355,50 @@ def analyse_mturk(request):
 
 	return render_to_response(template, context_dict, context)
 	# return HttpResponse("Rango says hello world!")
+
+def RBS_transactions_analysis(request):
+
+	template = 'rango/add_csv.html'
+	context = RequestContext( request )
+
+	file_uploaded = False
+	graph = 'false'
+	# the easy way to populate a generated form from a POST request
+	if request.method == 'POST':
+		csv_form = UploadFileForm(data=request.POST, files=request.FILES)
+
+		if csv_form.is_valid(): # method to check whether all the fields are correct
+			csv_file = csv_form.save() # save the user object
+			file_uploaded = True
+			# print 'csv_file.csv_file is', csv_file.csv_file
+			analysed_txns = analysis.read_large_transactions_csv( csv_file )
+			graph = json.dumps(analysed_txns)
+			dataset_options = ['spends']
+			template = 'rango/d3_histograms.html'
+			
+			context_dict = {
+				'graph': graph,
+				'graph_types':sorted(analysed_txns.keys(), key=str.lower),
+				'dataset_options': dataset_options
+			}
+
+			return render_to_response(template, context_dict, context)
+			# return HttpResponseRedirect(reverse('d3stuff'))
+		else:
+			print csv_form.errors # display any errors in the form back to the user (and in a console print)
+
+	# else the request was blank so we need to set up a blank user form
+	else:
+		csv_form = UploadFileForm()
+
+	# this gets info about the machine the request from etc....check it out
+
+	# the context_dict gets passed to the template and variables on the page are the keys of the dict with values of the values of the dict
+	context_dict = {
+		'csv_form':csv_form,
+		'file_uploaded':file_uploaded,
+		'graph':graph
+	}
+
+	return render_to_response(template, context_dict, context)
+	
