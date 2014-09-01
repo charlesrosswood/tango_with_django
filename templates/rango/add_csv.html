@@ -22,9 +22,9 @@
 		</div>
 		<div class="viewchart">
 			Click to view chart
-		</div> -->
+		</div>
 
-<!-- 		<div class="chart">
+		<div class="chart">
 		</div> -->
 
 	<!-- {% else %} -->
@@ -34,8 +34,8 @@
 			</div>
 
 			<div id="addcsv_form">
-				<!-- <form id="addcsv_form" method="post" action="/rango/addcsv/" enctype="multipart/form-data"> -->
-				<form id="addcsv_form" method="post" action="/rango/analysemturk/" enctype="multipart/form-data">
+				<form id="addcsv_form" method="post" action="/rango/addcsv/" enctype="multipart/form-data">
+				<!-- <form id="addcsv_form" method="post" action="/rango/analysemturk/" enctype="multipart/form-data"> -->
 
 					{% csrf_token %}
 					{% for field in csv_form %}
