@@ -24,7 +24,8 @@
 			$(document).ready(function() {
 				// Instantiate a counter
 				clock = new FlipClock($('.clock'), {
-					clockFace: 'HourlyCounter'
+					clockFace: 'HourlyCounter',
+					countdown: true
 				});
 				// Attach a click event to a button a increment the clock
 				// $('.increment').click(function() {
@@ -44,16 +45,16 @@
 				// });
 				// /*
 				// Use this code if you want to autoincrement the counter.
-				var timer = new FlipClock.Timer(clock, {
-					callbacks: {
-						interval: function() {
-							clock.decrement();
-						}
-					}
-				});
-				timer.setCountdown(true);
-				timer.setTime(3600);
-				timer.start();
+				// var timer = new FlipClock.Timer(clock, {
+				// 	callbacks: {
+				// 		interval: function() {
+				// 			clock.decrement();
+				// 		}
+				// 	}
+				// });
+
+				clock.setTime(3600);
+				clock.start();
 
 				
 			});
