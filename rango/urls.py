@@ -28,5 +28,4 @@ urlpatterns = patterns('',
     url(r'^analysemturk/$', views.analyse_mturk, name='analysemturk'), 
     url(r'^d3transitions/$', views.d3_transitions, name='d3transitions'),
     url(r'^rbstransactions/$', views.RBS_transactions_analysis, name='RBStransactionsanalysis'),
-
 )
