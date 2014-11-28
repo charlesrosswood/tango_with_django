@@ -1,12 +1,13 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="/assets/css/flipclock.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/flipclock.css' %}">
 	</head>
 	<body>
 		<div class="your-clock"></div>
+
+		<script type="text/javascript" src="{% static 'js/flipclock.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 		
-		<script src="/assets/js/libs/jquery.js"></script>
-		<script src="/assets/js/flipclock/flipclock.min.js"></script>
 	</body>
 </html>
 
