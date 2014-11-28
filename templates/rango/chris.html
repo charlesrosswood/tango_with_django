@@ -52,8 +52,9 @@
 				// 		}
 				// 	}
 				// });
-
-				clock.setTime(3600);
+				var date_night_time = new Date(2014, 11, 28, 18, 0, 0, 0).getTime() / 1000;
+				var time_now = new Date().getTime() / 1000;
+				clock.setTime(date_night_time - time_now);
 				clock.start();
 
 				
