@@ -36,6 +36,17 @@ def index(request):
 	}
 
 	return render_to_response(template, context_dict, context)
+	# return HttpResponse("Rango says hello world!")def index(request):
+
+def chris(request):
+	template = 'rango/chris.html'
+	# this gets info about the machine the request from etc....check it out
+	context = RequestContext( request )
+
+	context_dict = {
+	}
+
+	return render_to_response(template, context_dict, context)
 	# return HttpResponse("Rango says hello world!")
 
 def d3_stuff(request):
