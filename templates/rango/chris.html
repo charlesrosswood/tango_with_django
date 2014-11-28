@@ -4,21 +4,57 @@
 
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/flipclock.css' %}">
-		<script type="text/javascript" src="{% static 'js/flipclock.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/flipclock.css' %}">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<script src="{% static 'js/flipclock.js' %}"></script>		
 	</head>
 	<body>
-		<div class="your-clock"></div>
+		<div class="clock" style="margin:2em;"></div>
 
+		<button type="button" class="increment" style="margin: 25px; font-size: 20px; padding: 15px;">+1</button>
+		
+		<button type="button" class="decrement" style="margin: 25px; font-size: 20px; padding: 15px;">-1</button>
+		
+		<button type="button" class="reset" style="margin: 25px; font-size: 20px; padding: 15px;">Reset</button>
+		
+		<script type="text/javascript">
+			var clock;
+			$(document).ready(function() {
+				// Instantiate a counter
+				clock = new FlipClock($('.clock'), 101, {
+					clockFace: 'Counter'
+				});
+				// Attach a click event to a button a increment the clock
+				$('.increment').click(function() {
+					//clock.setValue(10);
+					// Or you could decrease the clock
+					// clock.decrement();
+					clock.increment();
+					// Or set it to a specific value
+					// clock.setValue(x);
+				});
+				// Attach a click event to a button a decrement the clock
+				$('.decrement').click(function() {
+					clock.decrement();
+				});
+				$('.reset').click(function() {
+					clock.reset();
+				});
+				/*
+				// Use this code if you want to autoincrement the counter.
+				var timer = new FlipClock.Timer(clock, {
+					callbacks: {
+						interval: function() {
+							clock.increment();
+						}
+					}
+				});
+				timer.start();
+				*/
+			});
+		</script>
 		
 	</body>
-</html>
-
-<script>
-	var	clock = $('.your-clock').FlipClock({
-	});
-
-	clock.setTime(3600);
-	clock.setCountdown(true);
-</script>
+</html> 
